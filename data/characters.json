@@ -274,47 +274,47 @@
     "image": "rui.webp"
   },
   {
-    "name": "와카나 레이",
+    "name": "레이야",
     "band": "raise-a-suilen",
     "part": "Ba. & Vo.",
     "id": "layer-wakana-rei",
-    "japanese": "和奏 レイ",
+    "japanese": "LAYER",
     "color": "#CC0000",
     "image": "layer.webp"
   },
   {
-    "name": "아사히 롯카",
+    "name": "록",
     "band": "raise-a-suilen",
     "part": "Gt.",
     "id": "lock-asahi-rokka",
-    "japanese": "朝日 六花",
+    "japanese": "LOCK",
     "color": "#AAEE22",
     "image": "lock.webp"
   },
   {
-    "name": "사토 마스키",
+    "name": "마스킹",
     "band": "raise-a-suilen",
     "part": "Dr.",
     "id": "masking-sato-masuki",
-    "japanese": "佐藤 ますき",
+    "japanese": "MASKING",
     "color": "#eebb44",
     "image": "masking.webp"
   },
   {
-    "name": "뉴바라 레오나",
+    "name": "파레오",
     "band": "raise-a-suilen",
     "part": "Key.",
     "id": "pareo-nyubara-reona",
-    "japanese": "鳰原 令王那",
+    "japanese": "PAERO",
     "color": "#FF99BB",
     "image": "pareo.webp"
   },
   {
-    "name": "타마데 치유",
+    "name": "츄츄",
     "band": "raise-a-suilen",
     "part": "DJ",
     "id": "chu-tamade-chiyu",
-    "japanese": "玉出 ちゆ",
+    "japanese": "CHU²",
     "color": "#00BBFF",
     "image": "chuchu.webp"
   },
@@ -410,7 +410,7 @@
   },
   {
     "name": "나카마치 아라레",
-    "band": "mewtype",
+    "band": "yumemita",
     "part": "Vo.",
     "id": "nakamachi-arale",
     "japanese": "仲町 あられ",
@@ -419,7 +419,7 @@
   },
   {
     "name": "미야나가 노노카",
-    "band": "mewtype",
+    "band": "yumemita",
     "part": "Gt.",
     "id": "miyanaga-nonoka",
     "japanese": "宮永 ののか",
@@ -428,7 +428,7 @@
   },
   {
     "name": "미네츠키 리츠",
-    "band": "mewtype",
+    "band": "yumemita",
     "part": "Gt.",
     "id": "minetsuki-ritsu",
     "japanese": "峰月 律",
@@ -437,7 +437,7 @@
   },
   {
     "name": "후지 미야코",
-    "band": "mewtype",
+    "band": "yumemita",
     "part": "Key.",
     "id": "fuji-miyako",
     "japanese": "藤 都子",
@@ -446,7 +446,7 @@
   },
   {
     "name": "센고쿠 유노",
-    "band": "mewtype",
+    "band": "yumemita",
     "part": "DJ & Mp.",
     "id": "sengoku-yuno",
     "japanese": "千石 ユノ",
@@ -542,5 +542,68 @@
     "japanese": "四宮 寧月",
     "color": "#9999FF",
     "image": "shizuku.webp"
+  },
+  {
+    "name": "비올라",
+    "band": "others",
+    "part": "페어리 부케",
+    "id": "viola",
+    "japanese": "ヴィオラ",
+    "color": "#DD96F9",
+    "image": "viola.webp"
+  },
+  {
+    "name": "벨",
+    "band": "others",
+    "part": "페어리 부케",
+    "id": "bell",
+    "japanese": "ベル",
+    "color": "#DD96F9",
+    "image": "bell.webp"
+  },
+  {
+    "name": "포포",
+    "band": "others",
+    "part": "페어리 부케",
+    "id": "popo",
+    "japanese": "ポポ",
+    "color": "#DD96F9",
+    "image": "popo.webp"
+  },
+  {
+    "name": "우시고메 유리",
+    "band": "others",
+    "part": "Glitter*Green",
+    "id": "ushugome-yuri",
+    "japanese": "牛込 ゆり",
+    "color": "#ffb6c1",
+    "image": "yuri.webp"
+  },
+  {
+    "name": "토야마 아스카",
+    "band": "others",
+    "part": "카스미 동생",
+    "id": "toyama-asuka",
+    "japanese": "戸山 明日香",
+    "color": "#ff9ea9",
+    "image": "asuka.webp"
+  },
+  {
+    "name": "사와미 카나타",
+    "band": "millsage",
+    "part": "Key. & Vo.",
+    "id": "sawami-kanata",
+    "japanese": "沢海 奏多",
+    "color": "#FFFF6C",
+    "image": "kanata.webp"
+  },
+  {
+    "name": "스미타 마나",
+    "band": "others",
+    "part": "sumimi",
+    "id": "sumita-mana",
+    "japanese": "純田 まな",
+    "color": "#bbff77",
+    "image": "mana.webp"
   }
 ]

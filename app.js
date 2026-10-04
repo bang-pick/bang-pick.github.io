@@ -51,7 +51,7 @@ const hasPicks = () => picks.all.size > 0 || couples.length > 0 || pendingCouple
 function renderBands() {
   const select = $('#band-filter');
   select.replaceChildren(new Option('전체 밴드', 'all'));
-  for (const band of bands) {
+  for (const band of bands.filter(({ id }) => scope !== 'band' || id !== 'others')) {
     select.add(new Option(band.name, band.id));
   }
   select.value = activeBand;
@@ -62,7 +62,8 @@ function renderCharacters() {
   const search = query.toLowerCase();
   const ranks = new Map([...picks.all].map((id, index) => [id, index + 1]));
   const visible = characters.filter((character) => {
-    const matchBand = activeBand === 'all' || character.band === activeBand;
+    const matchBand = (activeBand === 'all' || character.band === activeBand)
+      && (scope !== 'band' || character.band !== 'others');
     const text = `${character.name} ${character.japanese} ${character.alternateName || ''} ${bandById[character.band].name}`.toLowerCase();
     return matchBand && text.includes(search);
   });
@@ -125,15 +126,15 @@ function renderCharacters() {
         switcher.type = 'button';
         switcher.className = 'character-form-switch';
         switcher.dataset.formId = id;
-        switcher.textContent = alternateForms.has(id) ? '미셸 모습' : '미사키 모습';
-        card.querySelector('.character-info').append(switcher);
+        switcher.textContent = alternateForms.has(id) ? '미셸' : '미사키';
+        card.querySelector('.portrait').append(switcher);
       }
       grid.append(card);
     }
   }
   $('#empty-state').hidden = visible.length !== 0;
-  $('#roster-title').textContent = activeBand === 'all' ? '모든 캐릭터' : band.name;
-  $('#roster-subtitle').textContent = scope === 'all' ? `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)` : scope === 'couples' ? `두 캐릭터를 순서대로 선택하세요. ${couples.length}/3쌍${pendingCouple ? ' · 한 명 선택됨' : ''}` : '선택한 밴드 안에서 최애를 골라보세요.';
+  $('#roster-title').textContent = activeBand === 'all' ? '전체' : band.name;
+  $('#roster-subtitle').textContent = scope === 'all' ? `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)` : scope === 'couples' ? `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/3쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}` : '선택한 밴드 안에서 최애를 골라보세요.';
   const pairList = $('#couple-selection');
   pairList.hidden = scope !== 'couples';
   pairList.replaceChildren();
@@ -142,7 +143,10 @@ function renderCharacters() {
     pair.className = 'couple-selection-item';
     const label = document.createElement('span');
     const name = (id) => alternateForms.has(id) ? characterById[id].alternateName : characterById[id].name;
-    label.textContent = `${index + 1}. ${name(firstId)} → ${name(secondId)}`;
+    const firstName = name(firstId);
+    const secondName = name(secondId);
+    const couplingName = `${firstName.split(' ').at(-1).slice(0, 2)}${secondName.split(' ').at(-1).slice(0, 2)}`;
+    label.textContent = `${index + 1}. ${couplingName} (${firstName} → ${secondName})`;
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.dataset.removeCouple = index;
@@ -175,7 +179,7 @@ function toggleCharacter(id) {
   }
   persist();
   if (scope === 'all') {
-    $('#roster-subtitle').textContent = `최애 9명을 골라보세요. ${picks.all.size}/${bestNineLimit}명 선택`;
+    $('#roster-subtitle').textContent = `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)`;
   }
   updateCharacterCards();
   renderPicks();

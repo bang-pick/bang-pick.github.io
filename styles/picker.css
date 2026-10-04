@@ -190,7 +190,7 @@
   padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: #fff;
+  background: var(--paper);
   font-size: 13px;
 }
 
@@ -201,7 +201,7 @@
   border-radius: 4px;
   background: #fff;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -236,15 +236,22 @@
 }
 
 .character-form-switch {
-  width: 100%;
-  min-height: 30px;
-  margin-top: 8px;
+  position: absolute;
+  z-index: 2;
+  bottom: 12px;
+  left: 50%;
+  width: min(120px, calc(100% - 24px));
+  min-height: 28px;
+  margin: 0;
+  padding: 0 8px;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: #fff;
+  background: rgb(255 255 255 / 88%);
+  backdrop-filter: blur(8px);
   color: var(--muted);
   font-size: 12px;
   cursor: pointer;
+  transform: translateX(-50%);
 }
 
 .character-form-switch:hover {

@@ -14,7 +14,7 @@ export const pickedEntries = (picks, outputScope) => (outputScope === 'all'
   : outputScope === 'couples'
     ? (picks.couples || []).flatMap((pair) => pair.map((id) => ({ id, bandId: characterById[id]?.band })))
     : Object.entries(picks.bands).flatMap(([bandId, set]) => [...set].map((id) => ({ id, bandId }))))
-  .filter((entry) => entry.bandId);
+  .filter((entry) => entry.bandId && (outputScope !== 'band' || entry.bandId !== 'others'));
 
 const characterForm = (id, picks) => {
   const character = characterById[id];
@@ -35,7 +35,7 @@ function createPoster(outputScope, nickname, picks) {
   owner.className = 'print-poster-owner';
   owner.textContent = nickname.trim() || '나';
   const title = document.createElement('span');
-  title.textContent = `의 ${outputScope === 'all' ? '베스트 9' : outputScope === 'couples' ? '최애컾' : '밴드별 최애'}`;
+  title.textContent = `의 ${outputScope === 'all' ? '베스트 9' : outputScope === 'couples' ? '최애커플' : '밴드별 최애'}`;
   const logo = document.createElement('img');
   logo.src = exclamationImage;
   logo.alt = '';
@@ -84,7 +84,7 @@ function createPoster(outputScope, nickname, picks) {
     }
     const info = document.createElement('footer');
     info.className = 'print-poster-info';
-    if (outputScope === 'all') {
+    if (outputScope === 'all' || outputScope === 'couples') {
       const bandLine = document.createElement('div');
       bandLine.className = 'print-poster-band';
       const logo = bandBigLogo(band) || bandLogo(band);

@@ -10,12 +10,13 @@
 }
 
 .text-button {
-  padding: 0 0 6px;
-  border: 0;
-  border-bottom: 1px solid #a5a69e;
-  background: none;
-  color: #555750;
-  font-size: 13px;
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
   cursor: pointer;
 }
 
@@ -263,7 +264,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 18px;
+  gap: 36px;
 }
 
 .print-couple-arrow {

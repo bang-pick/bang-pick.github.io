@@ -63,7 +63,7 @@
     "logo": "avemujica.webp"
   },
   {
-    "id": "mewtype",
+    "id": "yumemita",
     "name": "무한대 뮤타입",
     "short": "무한대 뮤타입",
     "color": "#ff7788",
@@ -82,5 +82,12 @@
     "short": "일가 덤락!",
     "color": "#FFAA33",
     "logo": "dumbrock.webp"
+  },
+  {
+    "id": "others",
+    "name": "기타",
+    "short": "기타",
+    "color": "#CCCCCC",
+    "logo": "others.webp"
   }
 ]
