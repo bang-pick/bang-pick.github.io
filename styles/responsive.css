@@ -17,15 +17,11 @@
   }
   .workspace { grid-area: workspace; }
   .picked-section { grid-area: picked; }
-  .workspace {
-    padding: 28px;
-  }
   .picked-section {
     position: sticky;
     top: 18px;
     max-height: calc(100vh - 36px);
     overflow: auto;
-    padding: 28px;
   }
 }
 
@@ -46,9 +42,6 @@
   .selection-layout {
     gap: 12px;
     margin-top: 12px;
-  }
-  .selection-layout > * {
-    min-width: 0;
   }
   .intro {
     padding: 34px 24px 215px;
@@ -74,14 +67,23 @@
   }
   .filters {
     grid-template-columns: minmax(0, 1fr);
-    min-width: 0;
     overflow: hidden;
   }
   .scope-tabs {
-    gap: 18px;
+    gap: 6px;
+    margin-bottom: 18px;
   }
   .scope-tab {
+    align-items: center;
+    min-height: 50px;
+    padding: 8px 4px;
+    text-align: center;
+  }
+  .scope-tab strong {
     font-size: 13px;
+  }
+  .scope-tab span {
+    display: none;
   }
   .roster-title {
     display: block;

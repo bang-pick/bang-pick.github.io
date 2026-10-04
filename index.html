@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#f31864" />
     <meta name="description" content="BanG Dream! 최애캐를 기록하고 공유해보세요!" />
     <title>방픽!</title>
-    <link rel="stylesheet" href="./styles/base.css?v=20261004-1" />
-    <link rel="stylesheet" href="./styles/picker.css?v=20261004-1" />
-    <link rel="stylesheet" href="./styles/poster.css?v=20261004-1" />
-    <link rel="stylesheet" href="./styles/responsive.css?v=20261004-1" />
+    <link rel="stylesheet" href="./styles/base.css?v=20261004-4" />
+    <link rel="stylesheet" href="./styles/picker.css?v=20261004-4" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261004-4" />
+    <link rel="stylesheet" href="./styles/responsive.css?v=20261004-4" />
     <link rel="icon" href="./assets/favicon.ico" />
 
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://bang-pick.github.io/" />
     <meta property="og:site_name" content="방픽!" />
 
-    <script src="./app.js?v=20261004-1" type="module"></script>
+    <script src="./app.js?v=20261004-4" type="module"></script>
   </head>
   <body>
     <header class="topbar">
@@ -37,7 +37,7 @@
     <main id="top">
       <section class="intro" id="pick">
         <div class="intro-visual" aria-hidden="true">
-          <img class="active" src="./assets/images/main-1.webp" alt="" />
+          <img src="./assets/images/main-1.webp" alt="" />
         </div>
         <div class="intro-copy">
           <h2>BanG Dream!</h2>
@@ -58,6 +58,7 @@
                 <span>내 닉네임</span>
                 <input id="nickname" type="text" maxlength="24" placeholder="닉네임 입력" autocomplete="nickname" />
               </label>
+              <div class="couple-selection" id="couple-selection" hidden></div>
               <div class="rank-editor" id="rank-editor" hidden></div>
               <div id="poster-preview" aria-label="선택한 캐릭터 최애표 미리보기" hidden></div>
               <div class="poster-empty" id="poster-empty">캐릭터를 선택하면 최애표가 여기에 표시됩니다.</div>
@@ -71,39 +72,34 @@
           <div class="section-heading">
             <h2>최애표 만들기</h2>
           </div>
-          <div class="pick-layout">
-            <aside class="filters" aria-label="캐릭터 필터">
-              <label class="search-box">
-                <span class="search-symbol" aria-hidden="true"></span>
-                <input id="search" type="search" placeholder="이름으로 찾기" autocomplete="off" />
-              </label>
-              <select id="band-filter" class="band-select" aria-label="밴드 필터"></select>
-            </aside>
+          <div class="scope-tabs" role="tablist" aria-label="최애표 종류">
+            <button class="scope-tab selected" data-scope="all" role="tab" aria-selected="true"><strong>베스트 9</strong><span>9명 순위 정하기</span></button>
+            <button class="scope-tab" data-scope="band" role="tab" aria-selected="false"><strong>밴드별 최애</strong><span>밴드당 한 명씩</span></button>
+            <button class="scope-tab" data-scope="couples" role="tab" aria-selected="false"><strong>최애 커플</strong><span>최대 네 쌍 고르기</span></button>
+          </div>
+          <aside class="filters" aria-label="캐릭터 필터">
+            <label class="search-box">
+              <span class="search-symbol" aria-hidden="true"></span>
+              <input id="search" type="search" placeholder="이름으로 찾기" autocomplete="off" />
+            </label>
+            <select id="band-filter" class="band-select" aria-label="밴드 필터"></select>
+          </aside>
 
-            <div class="roster">
-              <div class="roster-toolbar">
-                <div class="scope-tabs" role="tablist" aria-label="최애 범위">
-                  <button class="scope-tab selected" data-scope="all" role="tab" aria-selected="true">베스트 9</button>
-                  <button class="scope-tab" data-scope="band" role="tab" aria-selected="false">밴드별 최애</button>
-                  <button class="scope-tab" data-scope="couples" role="tab" aria-selected="false">최애커플</button>
-                </div>
-              </div>
-              <div class="roster-title">
-                <h3 id="roster-title">모든 캐릭터</h3>
-                <span id="roster-subtitle">최애 9명을 골라보세요. 0/9명 선택</span>
-              </div>
-              <div class="couple-selection" id="couple-selection" hidden></div>
-              <div id="characters" aria-live="polite"></div>
-              <div class="empty-state" id="empty-state" hidden>
-                <strong>찾는 캐릭터가 없어요.</strong><span>다른 이름으로 검색해 보세요.</span>
-              </div>
+          <div class="roster">
+            <div class="roster-title">
+              <h3 id="roster-title">모든 캐릭터</h3>
+              <span id="roster-subtitle">최애 9명을 골라보세요. 0/9명 선택</span>
+            </div>
+            <div id="characters" aria-live="polite"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <strong>찾는 캐릭터가 없어요.</strong><span>다른 이름으로 검색해 보세요.</span>
             </div>
           </div>
         </section>
       </div>
     </main>
     <footer>
-      <span><b>비공식・비영리 팬 사이트</b><br />©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
+      <span>본 사이트는 BanG Dream! 공식 사이트와 관련이 없는 <b>비공식・비영리 팬 사이트</b>입니다.<br />本サイトは「BanG Dream!」公式サイトとは関係のない、非公式・非営利のファンサイトです。</span>
       <a href="https://bang-dream.com/artist/" target="_blank" rel="noopener noreferrer">이미지 출처</a>
     </footer>
   </body>

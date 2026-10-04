@@ -16,12 +16,15 @@ export const pickedEntries = (picks, outputScope) => (outputScope === 'all'
     : Object.entries(picks.bands).flatMap(([bandId, set]) => [...set].map((id) => ({ id, bandId }))))
   .filter((entry) => entry.bandId && (outputScope !== 'band' || entry.bandId !== 'others'));
 
-const characterForm = (id, picks) => {
+export const characterForm = (id, picks) => {
   const character = characterById[id];
   return picks.alternateForms?.has(id) && character.alternateName
     ? { ...character, name: character.alternateName, japanese: character.alternateJapanese, color: character.alternateColor, image: character.alternateImage }
     : character;
 };
+
+export const couplingName = (firstId, secondId, picks) =>
+  [firstId, secondId].map((id) => characterForm(id, picks).name.split(' ').at(-1).slice(0, 2)).join('');
 
 function createPoster(outputScope, nickname, picks) {
   const entries = pickedEntries(picks, outputScope);
@@ -98,7 +101,8 @@ function createPoster(outputScope, nickname, picks) {
       }
       info.append(bandLine);
     }
-    const name = document.createElement('strong');
+    const name = document.createElement('span');
+    name.style.fontFamily = "'Godo'";
     name.textContent = character.name;
     info.append(name);
     card.append(portrait, info);
@@ -108,14 +112,13 @@ function createPoster(outputScope, nickname, picks) {
   if (outputScope === 'couples') {
     const list = document.createElement('div');
     list.className = 'print-couples';
-    for (const [firstId, secondId] of picks.couples || []) {
-      const first = characterForm(firstId, picks);
-      const second = characterForm(secondId, picks);
+    const pairs = picks.couples || [];
+    for (const [firstId, secondId] of pairs.slice(0, 4)) {
       const pair = document.createElement('div');
       pair.className = 'print-couple';
-      const name = document.createElement('strong');
+      const name = document.createElement('span');
       name.className = 'print-couple-name';
-      name.textContent = `${first.name.split(' ').at(-1).slice(0, 2)}${second.name.split(' ').at(-1).slice(0, 2)}`;
+      name.textContent = couplingName(firstId, secondId, picks);
       const cards = document.createElement('div');
       cards.className = 'print-couple-cards';
       const direction = document.createElement('div');
@@ -162,6 +165,17 @@ function createPoster(outputScope, nickname, picks) {
   return poster;
 }
 
+export function fitPosterPreview() {
+  const preview = document.querySelector('#poster-preview');
+  const poster = preview.firstElementChild;
+  if (!poster || preview.hidden || !preview.clientWidth) return;
+  const scale = preview.clientWidth / poster.offsetWidth;
+  const transform = `scale(${scale})`;
+  const height = `${poster.scrollHeight * scale}px`;
+  if (poster.style.transform !== transform) poster.style.transform = transform;
+  if (preview.style.height !== height) preview.style.height = height;
+}
+
 export function renderPosterPreview(scope, nickname, picks) {
   const preview = document.querySelector('#poster-preview');
   const empty = document.querySelector('#poster-empty');
@@ -174,10 +188,8 @@ export function renderPosterPreview(scope, nickname, picks) {
   }
   preview.replaceChildren(poster);
   preview.hidden = false;
-  const scale = preview.clientWidth / 1200;
-  poster.style.transform = `scale(${scale})`;
-  preview.style.height = `${poster.scrollHeight * scale}px`;
   empty.hidden = true;
+  fitPosterPreview();
 }
 
 function inlineComputedStyles(source, target) {
@@ -281,7 +293,7 @@ export async function saveFavoritesImage(scope) {
   const url = URL.createObjectURL(blob);
   const link = Object.assign(document.createElement('a'), {
     href: url,
-    download: scope === 'all' ? 'bandori-best-nine.png' : 'bandori-band-picks.png',
+    download: scope === 'all' ? 'bandori-best-nine.png' : scope === 'couples' ? 'bandori-favorite-couples.png' : 'bandori-band-picks.png',
   });
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);

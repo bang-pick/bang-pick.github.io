@@ -4,12 +4,15 @@ import {
   bandBigLogo,
   bandLogo,
   characterById,
+  characterForm,
   characterImage,
+  couplingName,
+  fitPosterPreview,
   initials,
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js';
+} from './poster.js?v=20261004-3';
 
 const bestNineLimit = 9;
 const storageKey = 'bandori-pick-v1';
@@ -23,7 +26,7 @@ const picks = {
     new Set((saved.bands?.[band.id] || []).filter((id) => characterById[id]).slice(-1)),
   ])),
 };
-const couples = (saved.couples || []).map((pair) => pair.filter((id) => characterById[id])).filter((pair) => pair.length === 2).slice(0, 3);
+const couples = (saved.couples || []).map((pair) => pair.filter((id) => characterById[id])).filter((pair) => pair.length === 2).slice(0, 4);
 const alternateForms = new Set(saved.alternateForms || []);
 picks.couples = couples;
 picks.alternateForms = alternateForms;
@@ -47,6 +50,18 @@ const selectedSet = (character) => scope === 'all'
     ? new Set([...couples.flat(), pendingCouple].filter(Boolean))
     : picks.bands[activeBand === 'all' ? character.band : activeBand];
 const hasPicks = () => picks.all.size > 0 || couples.length > 0 || pendingCouple || Object.values(picks.bands).some((set) => set.size > 0);
+const ranksById = () => new Map([...picks.all].map((id, index) => [id, index + 1]));
+
+function updateCardSelection(card, ranks) {
+  const id = card.dataset.characterId;
+  const character = characterById[id];
+  const rank = scope === 'all' ? ranks.get(id) || 0 : 0;
+  const chosen = scope === 'all' ? Boolean(rank) : selectedSet(character).has(id);
+  card.classList.toggle('chosen', chosen);
+  card.querySelector('.picked-mark').textContent = scope === 'all' ? `${rank}위` : '✓';
+  card.setAttribute('aria-pressed', String(chosen));
+  card.setAttribute('aria-label', `${characterForm(id, picks).name}, ${bandById[character.band].name}${chosen ? (rank ? `, ${rank}위 선택됨` : ', 선택됨') : ', 선택'}`);
+}
 
 function renderBands() {
   const select = $('#band-filter');
@@ -60,7 +75,7 @@ function renderBands() {
 function renderCharacters() {
   const band = bandById[activeBand];
   const search = query.toLowerCase();
-  const ranks = new Map([...picks.all].map((id, index) => [id, index + 1]));
+  const ranks = ranksById();
   const visible = characters.filter((character) => {
     const matchBand = (activeBand === 'all' || character.band === activeBand)
       && (scope !== 'band' || character.band !== 'others');
@@ -89,26 +104,18 @@ function renderCharacters() {
     }
     for (const character of group.characters) {
       const id = character.id;
-      const displayName = alternateForms.has(id) ? character.alternateName || character.name : character.name;
-      const displayJapanese = alternateForms.has(id) ? character.alternateJapanese || character.japanese : character.japanese;
-      const displayColor = alternateForms.has(id) ? character.alternateColor || character.color : character.color;
-      const chosen = selectedSet(character).has(id);
+      const display = characterForm(id, picks);
       const characterBand = bandById[character.band];
       const card = document.createElement('div');
-      card.className = `character-card${chosen ? ' chosen' : ''}`;
+      card.className = 'character-card';
       card.setAttribute('role', 'button');
       card.tabIndex = 0;
       card.dataset.characterId = id;
-      const rank = scope === 'all' ? ranks.get(id) || 0 : 0;
-      card.setAttribute('aria-pressed', String(chosen));
-      card.setAttribute('aria-label', `${character.name}, ${characterBand.name}${chosen ? (rank ? `, ${rank}위 선택됨` : ', 선택됨') : ', 선택'}`);
       card.style.setProperty('--band-color', characterBand.color);
-      card.style.setProperty('--character-color', displayColor || characterBand.color);
-      const sprite = characterImage(alternateForms.has(id) && character.alternateName
-        ? { ...character, image: character.alternateImage || character.image }
-        : character);
+      card.style.setProperty('--character-color', display.color || characterBand.color);
+      const sprite = characterImage(display);
       const logo = bandBigLogo(characterBand) || bandLogo(characterBand);
-      card.innerHTML = `<span class="portrait"><span class="portrait-initial">${initials(displayName)}</span>${sprite ? `<img src="${sprite}" alt="" loading="lazy" />` : ''}<span class="picked-mark" aria-hidden="true">${scope === 'all' ? `${rank}위` : '✓'}</span></span><span class="character-info"><span class="character-band">${logo ? `<img src="${logo}" alt="" loading="lazy" />` : characterBand.name}</span><span class="character-name">${displayName}</span><span class="character-sub">${displayJapanese} <i>·</i> ${character.part}</span></span>`;
+      card.innerHTML = `<span class="portrait"><span class="portrait-initial">${initials(display.name)}</span>${sprite ? `<img src="${sprite}" alt="" loading="lazy" />` : ''}<span class="picked-mark" aria-hidden="true"></span></span><span class="character-info"><span class="character-band">${logo ? `<img src="${logo}" alt="" loading="lazy" />` : characterBand.name}</span><span class="character-name">${display.name}</span><span class="character-sub">${display.japanese} <i>·</i> ${character.part}</span></span>`;
       const image = card.querySelector('.portrait > img');
       if (image) {
         image.addEventListener('load', () => card.classList.add('has-image'), { once: true });
@@ -119,8 +126,8 @@ function renderCharacters() {
           } else image.remove();
         });
       }
-    const logoImage = card.querySelector('.character-band img');
-    if (logoImage) logoImage.addEventListener('error', () => { logoImage.parentElement.textContent = characterBand.name; }, { once: true });
+      const logoImage = card.querySelector('.character-band img');
+      if (logoImage) logoImage.addEventListener('error', () => { logoImage.parentElement.textContent = characterBand.name; }, { once: true });
       if (character.alternateName) {
         const switcher = document.createElement('button');
         switcher.type = 'button';
@@ -129,12 +136,13 @@ function renderCharacters() {
         switcher.textContent = alternateForms.has(id) ? '미셸' : '미사키';
         card.querySelector('.portrait').append(switcher);
       }
+      updateCardSelection(card, ranks);
       grid.append(card);
     }
   }
   $('#empty-state').hidden = visible.length !== 0;
   $('#roster-title').textContent = activeBand === 'all' ? '전체' : band.name;
-  $('#roster-subtitle').textContent = scope === 'all' ? `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)` : scope === 'couples' ? `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/3쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}` : '선택한 밴드 안에서 최애를 골라보세요.';
+  $('#roster-subtitle').textContent = scope === 'all' ? `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)` : scope === 'couples' ? `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/4쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}` : '선택한 밴드 안에서 최애를 골라보세요.';
   const pairList = $('#couple-selection');
   pairList.hidden = scope !== 'couples';
   pairList.replaceChildren();
@@ -142,11 +150,7 @@ function renderCharacters() {
     const pair = document.createElement('div');
     pair.className = 'couple-selection-item';
     const label = document.createElement('span');
-    const name = (id) => alternateForms.has(id) ? characterById[id].alternateName : characterById[id].name;
-    const firstName = name(firstId);
-    const secondName = name(secondId);
-    const couplingName = `${firstName.split(' ').at(-1).slice(0, 2)}${secondName.split(' ').at(-1).slice(0, 2)}`;
-    label.textContent = `${index + 1}. ${couplingName} (${firstName} → ${secondName})`;
+    label.textContent = `${index + 1}. ${couplingName(firstId, secondId, picks)}`;
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.dataset.removeCouple = index;
@@ -161,7 +165,7 @@ function toggleCharacter(id) {
     if (pendingCouple) {
       if (pendingCouple !== id) couples.push([pendingCouple, id]);
       pendingCouple = null;
-    } else if (couples.length < 3) pendingCouple = id;
+    } else if (couples.length < 4) pendingCouple = id;
     persist();
     renderCharacters();
     renderPicks();
@@ -187,23 +191,14 @@ function toggleCharacter(id) {
 
 function renderPicks() {
   const entries = pickedEntries(picks, scope);
-  $('#save-image').disabled = scope === 'couples' ? couples.length === 0 : entries.length === 0;
+  $('#save-image').disabled = entries.length === 0;
   renderRankEditor();
   renderPosterPreview(scope, nickname, picks);
 }
 
 function updateCharacterCards() {
-  const ranks = new Map([...picks.all].map((id, index) => [id, index + 1]));
-  document.querySelectorAll('.character-card').forEach((card) => {
-    const id = card.dataset.characterId;
-    const character = characterById[id];
-    const rank = scope === 'all' ? ranks.get(id) || 0 : 0;
-    const chosen = scope === 'all' ? Boolean(rank) : selectedSet(character).has(id);
-    card.classList.toggle('chosen', chosen);
-    card.querySelector('.picked-mark').textContent = scope === 'all' ? `${rank}위` : '✓';
-    card.setAttribute('aria-pressed', String(chosen));
-    card.setAttribute('aria-label', `${character.name}, ${bandById[character.band].name}${chosen ? (rank ? `, ${rank}위 선택됨` : ', 선택됨') : ', 선택'}`);
-  });
+  const ranks = ranksById();
+  document.querySelectorAll('.character-card').forEach((card) => updateCardSelection(card, ranks));
 }
 
 function renderRankEditor() {
@@ -257,7 +252,7 @@ function render() {
   });
 }
 
-window.addEventListener('resize', () => renderPosterPreview(scope, nickname, picks));
+new ResizeObserver(fitPosterPreview).observe($('#poster-preview'));
 $('#characters').addEventListener('click', (event) => {
   const switcher = event.target.closest('.character-form-switch');
   if (switcher) {
@@ -319,7 +314,7 @@ $('#save-image').addEventListener('click', async () => {
   } catch (error) {
     window.alert(error.message || '이미지를 저장하지 못했습니다.');
   } finally {
-    button.disabled = scope === 'couples' ? couples.length === 0 : pickedEntries(picks, scope).length === 0;
+    button.disabled = pickedEntries(picks, scope).length === 0;
   }
 });
 document.addEventListener('keydown', (event) => {

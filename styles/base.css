@@ -39,7 +39,7 @@ html {
 body {
   min-width: 320px;
   margin: 0;
-  background: #eef0f2;
+  background: linear-gradient(90deg,#fdf1f4,#faf2fd,#ebf9fd,#eafdf3,#fdfcea,#fdf2ec);
 }
 
 button, input {
@@ -166,12 +166,6 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: top;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-
-.intro-visual img.active {
-  opacity: 1;
 }
 
 .intro-copy {

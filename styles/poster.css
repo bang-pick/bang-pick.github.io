@@ -62,13 +62,10 @@
 }
 
 .rank-editor-heading {
-  display: grid;
-  gap: 7px;
   margin-bottom: 14px;
 }
 
 .rank-editor-heading span,
-.rank-editor-heading p,
 .nickname-field span {
   margin: 0;
   color: var(--muted);
@@ -241,7 +238,8 @@
 
 .print-couples {
   display: grid;
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
   margin-top: 28px;
 }
 
@@ -256,20 +254,19 @@
   display: block;
   color: #22231f;
   font-family: 'Godo', sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   text-align: center;
 }
 
 .print-couple-cards {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
   align-items: center;
-  gap: 36px;
 }
 
 .print-couple-arrow {
   color: var(--accent);
-  font-size: 38px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1;
 }
@@ -280,10 +277,6 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
-
-.print-couple-cards .print-poster-portrait {
-  height: 340px;
 }
 
 .print-poster-card {
@@ -321,7 +314,8 @@
   backdrop-filter: blur(10px);
   color: #fff;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
+  font-family: 'Godo';
   line-height: 1;
   white-space: nowrap;
 }
@@ -360,8 +354,8 @@
   justify-content: center;
   text-align: center;
   gap: 6px;
-  min-height: 80px;
-  padding: 10px 16px;
+  min-height: 90px;
+  padding: 16px;
   background: #fff;
 }
 
@@ -386,12 +380,13 @@
   object-fit: contain;
 }
 
-.print-poster-info strong {
+.print-poster-info span {
   min-width: 0;
   width: 100%;
   overflow: hidden;
   font-size: 18px;
-  font-weight: 650;
+  font-weight: 400;
+  font-family: 'Godo';
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -465,10 +460,6 @@
   cursor: not-allowed;
 }
 
-.image-button span {
-  font-size: 16px;
-}
-
 /* Footer */
 body > footer {
   display: flex;
@@ -477,6 +468,7 @@ body > footer {
   padding: 32px max(24px, calc((100vw - 1400px) / 2));
   margin: 0 auto;
   border-top: 1px solid #dfe1e4;
+  background: #fff;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.6;
