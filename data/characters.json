@@ -1,0 +1,546 @@
+[
+  {
+    "name": "토야마 카스미",
+    "band": "poppin-party",
+    "part": "Gt. & Vo.",
+    "id": "toyama-kasumi",
+    "japanese": "戸山 香澄",
+    "color": "#f52",
+    "image": "kasumi.webp"
+  },
+  {
+    "name": "하나조노 타에",
+    "band": "poppin-party",
+    "part": "Gt.",
+    "id": "hanazono-tae",
+    "japanese": "花園 たえ",
+    "color": "#07d",
+    "image": "tae.webp"
+  },
+  {
+    "name": "우시고메 리미",
+    "band": "poppin-party",
+    "part": "Ba.",
+    "id": "ushigome-rimi",
+    "japanese": "牛込 りみ",
+    "color": "#f5b",
+    "image": "rimi.webp"
+  },
+  {
+    "name": "야마부키 사야",
+    "band": "poppin-party",
+    "part": "Dr.",
+    "id": "yamabuki-saya",
+    "japanese": "山吹 沙綾",
+    "color": "#fc1",
+    "image": "saya.webp"
+  },
+  {
+    "name": "이치가야 아리사",
+    "band": "poppin-party",
+    "part": "Key.",
+    "id": "ichigaya-arisa",
+    "japanese": "市ヶ谷 有咲",
+    "color": "#a6d",
+    "image": "arisa.webp"
+  },
+  {
+    "name": "미타케 란",
+    "band": "afterglow",
+    "part": "Gt. & Vo.",
+    "id": "mitake-ran",
+    "japanese": "美竹 蘭",
+    "color": "#EE0022",
+    "image": "ran.webp"
+  },
+  {
+    "name": "아오바 모카",
+    "band": "afterglow",
+    "part": "Gt.",
+    "id": "aoba-moca",
+    "japanese": "青葉 モカ",
+    "color": "#00CCAA",
+    "image": "moca.webp"
+  },
+  {
+    "name": "우에하라 히마리",
+    "band": "afterglow",
+    "part": "Ba.",
+    "id": "uehara-himari",
+    "japanese": "上原 ひまり",
+    "color": "#FF9999",
+    "image": "himari.webp"
+  },
+  {
+    "name": "우다가와 토모에",
+    "band": "afterglow",
+    "part": "Dr.",
+    "id": "udagawa-tomoe",
+    "japanese": "宇田川 巴",
+    "color": "#BB0033",
+    "image": "tomoe.webp"
+  },
+  {
+    "name": "하자와 츠구미",
+    "band": "afterglow",
+    "part": "Key.",
+    "id": "hazawa-tsugumi",
+    "japanese": "羽沢 つぐみ",
+    "color": "#FFEE88",
+    "image": "tsugumi.webp"
+  },
+  {
+    "name": "마루야마 아야",
+    "band": "pastel-palettes",
+    "part": "Vo.",
+    "id": "maruyama-aya",
+    "japanese": "丸山 彩",
+    "color": "#FF88BB",
+    "image": "aya.webp"
+  },
+  {
+    "name": "히카와 히나",
+    "band": "pastel-palettes",
+    "part": "Gt.",
+    "id": "hikawa-hina",
+    "japanese": "氷川 日菜",
+    "color": "#55DDEE",
+    "image": "hina.webp"
+  },
+  {
+    "name": "시라사기 치사토",
+    "band": "pastel-palettes",
+    "part": "Ba.",
+    "id": "shirasagi-chisato",
+    "japanese": "白鷺 千聖",
+    "color": "#FFEEAA",
+    "image": "chisato.webp"
+  },
+  {
+    "name": "야마토 마야",
+    "band": "pastel-palettes",
+    "part": "Dr.",
+    "id": "yamato-maya",
+    "japanese": "大和 麻弥",
+    "color": "#99DD88",
+    "image": "maya.webp"
+  },
+  {
+    "name": "와카미야 이브",
+    "band": "pastel-palettes",
+    "part": "Key.",
+    "id": "wakamiya-eve",
+    "japanese": "若宮 イヴ",
+    "color": "#DDBBFF",
+    "image": "eve.webp"
+  },
+  {
+    "name": "미나토 유키나",
+    "band": "roselia",
+    "part": "Vo.",
+    "id": "minato-yukina",
+    "japanese": "湊 友希那",
+    "color": "#8811BB",
+    "image": "yukina.webp"
+  },
+  {
+    "name": "히카와 사요",
+    "band": "roselia",
+    "part": "Gt.",
+    "id": "hikawa-sayo",
+    "japanese": "氷川 紗夜",
+    "color": "#00AABB",
+    "image": "sayo.webp"
+  },
+  {
+    "name": "이마이 리사",
+    "band": "roselia",
+    "part": "Ba.",
+    "id": "imai-lisa",
+    "japanese": "今井 リサ",
+    "color": "#DD2200",
+    "image": "lisa.webp"
+  },
+  {
+    "name": "우다가와 아코",
+    "band": "roselia",
+    "part": "Dr.",
+    "id": "udagawa-ako",
+    "japanese": "宇田川 あこ",
+    "color": "#DD0088",
+    "image": "ako.webp"
+  },
+  {
+    "name": "시로카네 린코",
+    "band": "roselia",
+    "part": "Key.",
+    "id": "shirokane-rinko",
+    "japanese": "白金 燐子",
+    "color": "#BBBBBB",
+    "image": "rinko.webp"
+  },
+  {
+    "name": "츠루마키 코코로",
+    "band": "hello-happy-world",
+    "part": "Vo.",
+    "id": "tsurumaki-kokoro",
+    "japanese": "弦巻 こころ",
+    "color": "#FFEE22",
+    "image": "kokoro.webp"
+  },
+  {
+    "name": "세타 카오루",
+    "band": "hello-happy-world",
+    "part": "Gt.",
+    "id": "seta-kaoru",
+    "japanese": "瀬田 薫",
+    "color": "#aa33cc",
+    "image": "kaoru.webp"
+  },
+  {
+    "name": "키타자와 하구미",
+    "band": "hello-happy-world",
+    "part": "Ba.",
+    "id": "kitazawa-hagumi",
+    "japanese": "北沢 はぐみ",
+    "color": "#FF9922",
+    "image": "hagumi.webp"
+  },
+  {
+    "name": "마츠바라 카논",
+    "band": "hello-happy-world",
+    "part": "Dr.",
+    "id": "matsubara-kanon",
+    "japanese": "松原 花音",
+    "color": "#44DDFF",
+    "image": "kanon.webp"
+  },
+  {
+    "name": "미셸",
+    "band": "hello-happy-world",
+    "part": "DJ",
+    "id": "michelle",
+    "japanese": "ミッシェル",
+    "color": "#DD33CC",
+    "image": "misaki.webp",
+    "alternateName": "오쿠사와 미사키",
+    "alternateJapanese": "奥沢 美咲",
+    "alternateColor": "#006699",
+    "alternateImage": "misaki_2.webp"
+  },
+  {
+    "name": "쿠라타 마시로",
+    "band": "morfonica",
+    "part": "Vo.",
+    "id": "kurata-mashiro",
+    "japanese": "倉田 ましろ",
+    "color": "#6677CC",
+    "image": "mashiro.webp"
+  },
+  {
+    "name": "키리가야 토우코",
+    "band": "morfonica",
+    "part": "Gt.",
+    "id": "kirigaya-toko",
+    "japanese": "桐ヶ谷 透子",
+    "color": "#EE6666",
+    "image": "toko.webp"
+  },
+  {
+    "name": "히로마치 나나미",
+    "band": "morfonica",
+    "part": "Ba.",
+    "id": "hiromachi-nanami",
+    "japanese": "広町 七深",
+    "color": "#ee7744",
+    "image": "nanami.webp"
+  },
+  {
+    "name": "후타바 츠쿠시",
+    "band": "morfonica",
+    "part": "Dr.",
+    "id": "futaba-tsukushi",
+    "japanese": "二葉 つくし",
+    "color": "#EE7788",
+    "image": "tsukushi.webp"
+  },
+  {
+    "name": "야시오 루이",
+    "band": "morfonica",
+    "part": "Vn.",
+    "id": "yashio-rui",
+    "japanese": "八潮 瑠唯",
+    "color": "#6677AA",
+    "image": "rui.webp"
+  },
+  {
+    "name": "와카나 레이",
+    "band": "raise-a-suilen",
+    "part": "Ba. & Vo.",
+    "id": "layer-wakana-rei",
+    "japanese": "和奏 レイ",
+    "color": "#CC0000",
+    "image": "layer.webp"
+  },
+  {
+    "name": "아사히 롯카",
+    "band": "raise-a-suilen",
+    "part": "Gt.",
+    "id": "lock-asahi-rokka",
+    "japanese": "朝日 六花",
+    "color": "#AAEE22",
+    "image": "lock.webp"
+  },
+  {
+    "name": "사토 마스키",
+    "band": "raise-a-suilen",
+    "part": "Dr.",
+    "id": "masking-sato-masuki",
+    "japanese": "佐藤 ますき",
+    "color": "#eebb44",
+    "image": "masking.webp"
+  },
+  {
+    "name": "뉴바라 레오나",
+    "band": "raise-a-suilen",
+    "part": "Key.",
+    "id": "pareo-nyubara-reona",
+    "japanese": "鳰原 令王那",
+    "color": "#FF99BB",
+    "image": "pareo.webp"
+  },
+  {
+    "name": "타마데 치유",
+    "band": "raise-a-suilen",
+    "part": "DJ",
+    "id": "chu-tamade-chiyu",
+    "japanese": "玉出 ちゆ",
+    "color": "#00BBFF",
+    "image": "chuchu.webp"
+  },
+  {
+    "name": "타카마츠 토모리",
+    "band": "mygo",
+    "part": "Vo.",
+    "id": "takamatsu-tomori",
+    "japanese": "高松 燈",
+    "color": "#77BBDD",
+    "image": "tomori.webp"
+  },
+  {
+    "name": "치하야 아논",
+    "band": "mygo",
+    "part": "Gt.",
+    "id": "chihaya-anon",
+    "japanese": "千早 愛音",
+    "color": "#ff8899",
+    "image": "anon.webp"
+  },
+  {
+    "name": "카나메 라나",
+    "band": "mygo",
+    "part": "Gt.",
+    "id": "kaname-rana",
+    "japanese": "要 楽奈",
+    "color": "#77dd77",
+    "image": "rana.webp"
+  },
+  {
+    "name": "나가사키 소요",
+    "band": "mygo",
+    "part": "Ba.",
+    "id": "nagasaki-soyo",
+    "japanese": "長崎 そよ",
+    "color": "#FFDD88",
+    "image": "soyo.webp"
+  },
+  {
+    "name": "시이나 타키",
+    "band": "mygo",
+    "part": "Dr.",
+    "id": "shiina-taki",
+    "japanese": "椎名 立希",
+    "color": "#7777AA",
+    "image": "taki.webp"
+  },
+  {
+    "name": "미스미 우이카",
+    "band": "ave-mujica",
+    "part": "Gt. & Vo.",
+    "id": "misumi-uika",
+    "japanese": "三角 初華",
+    "color": "#BB9955",
+    "image": "uika.webp"
+  },
+  {
+    "name": "와카바 무츠미",
+    "band": "ave-mujica",
+    "part": "Gt.",
+    "id": "wakaba-mutsumi",
+    "japanese": "若葉 睦",
+    "color": "#779977",
+    "image": "mutsumi.webp"
+  },
+  {
+    "name": "야하타 우미리",
+    "band": "ave-mujica",
+    "part": "Ba.",
+    "id": "yahata-umiri",
+    "japanese": "八幡 海鈴",
+    "color": "#335566",
+    "image": "umiri.webp"
+  },
+  {
+    "name": "유텐지 냐무",
+    "band": "ave-mujica",
+    "part": "Dr.",
+    "id": "yutenji-nyamu",
+    "japanese": "祐天寺 にゃむ",
+    "color": "#AA4477",
+    "image": "nyamu.webp"
+  },
+  {
+    "name": "토가와 사키코",
+    "band": "ave-mujica",
+    "part": "Key.",
+    "id": "togawa-sakiko",
+    "japanese": "豊川 祥子",
+    "color": "#7799CC",
+    "image": "sakiko.webp"
+  },
+  {
+    "name": "나카마치 아라레",
+    "band": "mewtype",
+    "part": "Vo.",
+    "id": "nakamachi-arale",
+    "japanese": "仲町 あられ",
+    "color": "#FFDD33",
+    "image": "arale.webp"
+  },
+  {
+    "name": "미야나가 노노카",
+    "band": "mewtype",
+    "part": "Gt.",
+    "id": "miyanaga-nonoka",
+    "japanese": "宮永 ののか",
+    "color": "#FFAACC",
+    "image": "nonoka.webp"
+  },
+  {
+    "name": "미네츠키 리츠",
+    "band": "mewtype",
+    "part": "Gt.",
+    "id": "minetsuki-ritsu",
+    "japanese": "峰月 律",
+    "color": "#5588DD",
+    "image": "ritsu.webp"
+  },
+  {
+    "name": "후지 미야코",
+    "band": "mewtype",
+    "part": "Key.",
+    "id": "fuji-miyako",
+    "japanese": "藤 都子",
+    "color": "#9977DD",
+    "image": "miyako.webp"
+  },
+  {
+    "name": "센고쿠 유노",
+    "band": "mewtype",
+    "part": "DJ & Mp.",
+    "id": "sengoku-yuno",
+    "japanese": "千石 ユノ",
+    "color": "#FF6688",
+    "image": "yuno.webp"
+  },
+  {
+    "name": "시오미 호타루",
+    "band": "millsage",
+    "part": "Key. & Vo.",
+    "id": "shiomi-hotaru",
+    "japanese": "汐見 蛍",
+    "color": "#99FF99",
+    "image": "hotaru.webp"
+  },
+  {
+    "name": "이자와 나츠메",
+    "band": "millsage",
+    "part": "Gt.",
+    "id": "izawa-natsume",
+    "japanese": "伊沢 なつめ",
+    "color": "#FF4444",
+    "image": "natsume.webp"
+  },
+  {
+    "name": "코토히라 나기",
+    "band": "millsage",
+    "part": "Gt.",
+    "id": "kotohira-nagi",
+    "japanese": "琴平 凪",
+    "color": "#5555FF",
+    "image": "nagi.webp"
+  },
+  {
+    "name": "하마사키 마호로",
+    "band": "millsage",
+    "part": "Ba.",
+    "id": "hamasaki-mahoro",
+    "japanese": "浜崎 まほろ",
+    "color": "#77FFFF",
+    "image": "mahoro.webp"
+  },
+  {
+    "name": "이즈미 호우카",
+    "band": "millsage",
+    "part": "Dr.",
+    "id": "izumi-houka",
+    "japanese": "和泉 朋花",
+    "color": "#EE99EE",
+    "image": "houka.webp"
+  },
+  {
+    "name": "스가 라이카",
+    "band": "ikka-dumbrock",
+    "part": "Gt. & Vo.",
+    "id": "suga-raika",
+    "japanese": "須賀 蕾叶",
+    "color": "#FF7700",
+    "image": "raika.webp"
+  },
+  {
+    "name": "마하시 미쿠",
+    "band": "ikka-dumbrock",
+    "part": "Gt. & Vo.",
+    "id": "mahashi-miku",
+    "japanese": "馬橋 心玖",
+    "color": "#22CCFF",
+    "image": "miku.webp"
+  },
+  {
+    "name": "야쿠라 요모기",
+    "band": "ikka-dumbrock",
+    "part": "Ba.",
+    "id": "yakura-yomogi",
+    "japanese": "矢倉 蓬咲",
+    "color": "#448888",
+    "image": "yomogi.webp"
+  },
+  {
+    "name": "우메자토 치에리",
+    "band": "ikka-dumbrock",
+    "part": "Dr.",
+    "id": "umezato-chieri",
+    "japanese": "梅里 ちえり",
+    "color": "#FF55AA",
+    "image": "chieri.webp"
+  },
+  {
+    "name": "시노미야 시즈쿠",
+    "band": "ikka-dumbrock",
+    "part": "Key.",
+    "id": "shinomiya-shizuku",
+    "japanese": "四宮 寧月",
+    "color": "#9999FF",
+    "image": "shizuku.webp"
+  }
+]
