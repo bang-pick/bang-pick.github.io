@@ -4,6 +4,7 @@
     "band": "poppin-party",
     "part": "Gt. & Vo.",
     "id": "toyama-kasumi",
+    "birthday": "07-14",
     "japanese": "戸山 香澄",
     "color": "#f52",
     "image": "kasumi.webp"
@@ -13,6 +14,7 @@
     "band": "poppin-party",
     "part": "Gt.",
     "id": "hanazono-tae",
+    "birthday": "12-04",
     "japanese": "花園 たえ",
     "color": "#07d",
     "image": "tae.webp"
@@ -22,6 +24,7 @@
     "band": "poppin-party",
     "part": "Ba.",
     "id": "ushigome-rimi",
+    "birthday": "03-23",
     "japanese": "牛込 りみ",
     "color": "#f5b",
     "image": "rimi.webp"
@@ -31,6 +34,7 @@
     "band": "poppin-party",
     "part": "Dr.",
     "id": "yamabuki-saya",
+    "birthday": "05-19",
     "japanese": "山吹 沙綾",
     "color": "#fc1",
     "image": "saya.webp"
@@ -40,6 +44,7 @@
     "band": "poppin-party",
     "part": "Key.",
     "id": "ichigaya-arisa",
+    "birthday": "10-27",
     "japanese": "市ヶ谷 有咲",
     "color": "#a6d",
     "image": "arisa.webp"
@@ -49,6 +54,7 @@
     "band": "afterglow",
     "part": "Gt. & Vo.",
     "id": "mitake-ran",
+    "birthday": "04-10",
     "japanese": "美竹 蘭",
     "color": "#EE0022",
     "image": "ran.webp"
@@ -58,6 +64,7 @@
     "band": "afterglow",
     "part": "Gt.",
     "id": "aoba-moca",
+    "birthday": "09-03",
     "japanese": "青葉 モカ",
     "color": "#00CCAA",
     "image": "moca.webp"
@@ -67,6 +74,7 @@
     "band": "afterglow",
     "part": "Ba.",
     "id": "uehara-himari",
+    "birthday": "10-23",
     "japanese": "上原 ひまり",
     "color": "#FF9999",
     "image": "himari.webp"
@@ -76,6 +84,7 @@
     "band": "afterglow",
     "part": "Dr.",
     "id": "udagawa-tomoe",
+    "birthday": "04-15",
     "japanese": "宇田川 巴",
     "color": "#BB0033",
     "image": "tomoe.webp"
@@ -85,6 +94,7 @@
     "band": "afterglow",
     "part": "Key.",
     "id": "hazawa-tsugumi",
+    "birthday": "01-07",
     "japanese": "羽沢 つぐみ",
     "color": "#FFEE88",
     "image": "tsugumi.webp"
@@ -94,6 +104,7 @@
     "band": "pastel-palettes",
     "part": "Vo.",
     "id": "maruyama-aya",
+    "birthday": "12-27",
     "japanese": "丸山 彩",
     "color": "#FF88BB",
     "image": "aya.webp"
@@ -103,6 +114,7 @@
     "band": "pastel-palettes",
     "part": "Gt.",
     "id": "hikawa-hina",
+    "birthday": "03-20",
     "japanese": "氷川 日菜",
     "color": "#55DDEE",
     "image": "hina.webp"
@@ -112,6 +124,7 @@
     "band": "pastel-palettes",
     "part": "Ba.",
     "id": "shirasagi-chisato",
+    "birthday": "04-06",
     "japanese": "白鷺 千聖",
     "color": "#FFEEAA",
     "image": "chisato.webp"
@@ -121,6 +134,7 @@
     "band": "pastel-palettes",
     "part": "Dr.",
     "id": "yamato-maya",
+    "birthday": "11-03",
     "japanese": "大和 麻弥",
     "color": "#99DD88",
     "image": "maya.webp"
@@ -130,6 +144,7 @@
     "band": "pastel-palettes",
     "part": "Key.",
     "id": "wakamiya-eve",
+    "birthday": "06-27",
     "japanese": "若宮 イヴ",
     "color": "#DDBBFF",
     "image": "eve.webp"
@@ -139,6 +154,7 @@
     "band": "roselia",
     "part": "Vo.",
     "id": "minato-yukina",
+    "birthday": "10-26",
     "japanese": "湊 友希那",
     "color": "#8811BB",
     "image": "yukina.webp"
@@ -148,6 +164,7 @@
     "band": "roselia",
     "part": "Gt.",
     "id": "hikawa-sayo",
+    "birthday": "03-20",
     "japanese": "氷川 紗夜",
     "color": "#00AABB",
     "image": "sayo.webp"
@@ -157,6 +174,7 @@
     "band": "roselia",
     "part": "Ba.",
     "id": "imai-lisa",
+    "birthday": "08-25",
     "japanese": "今井 リサ",
     "color": "#DD2200",
     "image": "lisa.webp"
@@ -166,6 +184,7 @@
     "band": "roselia",
     "part": "Dr.",
     "id": "udagawa-ako",
+    "birthday": "07-03",
     "japanese": "宇田川 あこ",
     "color": "#DD0088",
     "image": "ako.webp"
@@ -175,6 +194,7 @@
     "band": "roselia",
     "part": "Key.",
     "id": "shirokane-rinko",
+    "birthday": "10-17",
     "japanese": "白金 燐子",
     "color": "#BBBBBB",
     "image": "rinko.webp"
@@ -184,6 +204,7 @@
     "band": "hello-happy-world",
     "part": "Vo.",
     "id": "tsurumaki-kokoro",
+    "birthday": "08-08",
     "japanese": "弦巻 こころ",
     "color": "#FFEE22",
     "image": "kokoro.webp"
@@ -193,6 +214,7 @@
     "band": "hello-happy-world",
     "part": "Gt.",
     "id": "seta-kaoru",
+    "birthday": "02-28",
     "japanese": "瀬田 薫",
     "color": "#aa33cc",
     "image": "kaoru.webp"
@@ -202,6 +224,7 @@
     "band": "hello-happy-world",
     "part": "Ba.",
     "id": "kitazawa-hagumi",
+    "birthday": "07-30",
     "japanese": "北沢 はぐみ",
     "color": "#FF9922",
     "image": "hagumi.webp"
@@ -211,6 +234,7 @@
     "band": "hello-happy-world",
     "part": "Dr.",
     "id": "matsubara-kanon",
+    "birthday": "05-11",
     "japanese": "松原 花音",
     "color": "#44DDFF",
     "image": "kanon.webp"
@@ -220,6 +244,7 @@
     "band": "hello-happy-world",
     "part": "DJ",
     "id": "michelle",
+    "birthday": "10-01",
     "japanese": "ミッシェル",
     "color": "#DD33CC",
     "image": "misaki.webp",
@@ -233,6 +258,7 @@
     "band": "morfonica",
     "part": "Vo.",
     "id": "kurata-mashiro",
+    "birthday": "02-19",
     "japanese": "倉田 ましろ",
     "color": "#6677CC",
     "image": "mashiro.webp"
@@ -242,6 +268,7 @@
     "band": "morfonica",
     "part": "Gt.",
     "id": "kirigaya-toko",
+    "birthday": "12-16",
     "japanese": "桐ヶ谷 透子",
     "color": "#EE6666",
     "image": "toko.webp"
@@ -251,6 +278,7 @@
     "band": "morfonica",
     "part": "Ba.",
     "id": "hiromachi-nanami",
+    "birthday": "06-16",
     "japanese": "広町 七深",
     "color": "#ee7744",
     "image": "nanami.webp"
@@ -260,6 +288,7 @@
     "band": "morfonica",
     "part": "Dr.",
     "id": "futaba-tsukushi",
+    "birthday": "09-15",
     "japanese": "二葉 つくし",
     "color": "#EE7788",
     "image": "tsukushi.webp"
@@ -269,6 +298,7 @@
     "band": "morfonica",
     "part": "Vn.",
     "id": "yashio-rui",
+    "birthday": "11-19",
     "japanese": "八潮 瑠唯",
     "color": "#6677AA",
     "image": "rui.webp"
@@ -278,6 +308,7 @@
     "band": "raise-a-suilen",
     "part": "Ba. & Vo.",
     "id": "layer-wakana-rei",
+    "birthday": "01-13",
     "japanese": "LAYER",
     "color": "#CC0000",
     "image": "layer.webp"
@@ -287,6 +318,7 @@
     "band": "raise-a-suilen",
     "part": "Gt.",
     "id": "lock-asahi-rokka",
+    "birthday": "07-17",
     "japanese": "LOCK",
     "color": "#AAEE22",
     "image": "lock.webp"
@@ -296,6 +328,7 @@
     "band": "raise-a-suilen",
     "part": "Dr.",
     "id": "masking-sato-masuki",
+    "birthday": "05-12",
     "japanese": "MASKING",
     "color": "#eebb44",
     "image": "masking.webp"
@@ -305,7 +338,8 @@
     "band": "raise-a-suilen",
     "part": "Key.",
     "id": "pareo-nyubara-reona",
-    "japanese": "PAERO",
+    "birthday": "03-25",
+    "japanese": "PAREO",
     "color": "#FF99BB",
     "image": "pareo.webp"
   },
@@ -314,6 +348,7 @@
     "band": "raise-a-suilen",
     "part": "DJ",
     "id": "chu-tamade-chiyu",
+    "birthday": "12-07",
     "japanese": "CHU²",
     "color": "#00BBFF",
     "image": "chuchu.webp"
@@ -323,6 +358,7 @@
     "band": "mygo",
     "part": "Vo.",
     "id": "takamatsu-tomori",
+    "birthday": "11-22",
     "japanese": "高松 燈",
     "color": "#77BBDD",
     "image": "tomori.webp"
@@ -332,6 +368,7 @@
     "band": "mygo",
     "part": "Gt.",
     "id": "chihaya-anon",
+    "birthday": "09-08",
     "japanese": "千早 愛音",
     "color": "#ff8899",
     "image": "anon.webp"
@@ -341,6 +378,7 @@
     "band": "mygo",
     "part": "Gt.",
     "id": "kaname-rana",
+    "birthday": "02-22",
     "japanese": "要 楽奈",
     "color": "#77dd77",
     "image": "rana.webp"
@@ -350,6 +388,7 @@
     "band": "mygo",
     "part": "Ba.",
     "id": "nagasaki-soyo",
+    "birthday": "05-27",
     "japanese": "長崎 そよ",
     "color": "#FFDD88",
     "image": "soyo.webp"
@@ -359,6 +398,7 @@
     "band": "mygo",
     "part": "Dr.",
     "id": "shiina-taki",
+    "birthday": "08-09",
     "japanese": "椎名 立希",
     "color": "#7777AA",
     "image": "taki.webp"
@@ -368,6 +408,7 @@
     "band": "ave-mujica",
     "part": "Gt. & Vo.",
     "id": "misumi-uika",
+    "birthday": "06-26",
     "japanese": "三角 初華",
     "color": "#BB9955",
     "image": "uika.webp"
@@ -377,6 +418,7 @@
     "band": "ave-mujica",
     "part": "Gt.",
     "id": "wakaba-mutsumi",
+    "birthday": "01-14",
     "japanese": "若葉 睦",
     "color": "#779977",
     "image": "mutsumi.webp"
@@ -386,6 +428,7 @@
     "band": "ave-mujica",
     "part": "Ba.",
     "id": "yahata-umiri",
+    "birthday": "04-07",
     "japanese": "八幡 海鈴",
     "color": "#335566",
     "image": "umiri.webp"
@@ -395,6 +438,7 @@
     "band": "ave-mujica",
     "part": "Dr.",
     "id": "yutenji-nyamu",
+    "birthday": "06-01",
     "japanese": "祐天寺 にゃむ",
     "color": "#AA4477",
     "image": "nyamu.webp"
@@ -404,6 +448,7 @@
     "band": "ave-mujica",
     "part": "Key.",
     "id": "togawa-sakiko",
+    "birthday": "02-14",
     "japanese": "豊川 祥子",
     "color": "#7799CC",
     "image": "sakiko.webp"
@@ -413,6 +458,7 @@
     "band": "yumemita",
     "part": "Vo.",
     "id": "nakamachi-arale",
+    "birthday": "08-16",
     "japanese": "仲町 あられ",
     "color": "#FFDD33",
     "image": "arale.webp"
@@ -422,6 +468,7 @@
     "band": "yumemita",
     "part": "Gt.",
     "id": "miyanaga-nonoka",
+    "birthday": "04-17",
     "japanese": "宮永 ののか",
     "color": "#FFAACC",
     "image": "nonoka.webp"
@@ -431,6 +478,7 @@
     "band": "yumemita",
     "part": "Gt.",
     "id": "minetsuki-ritsu",
+    "birthday": "02-07",
     "japanese": "峰月 律",
     "color": "#5588DD",
     "image": "ritsu.webp"
@@ -440,6 +488,7 @@
     "band": "yumemita",
     "part": "Key.",
     "id": "fuji-miyako",
+    "birthday": "09-19",
     "japanese": "藤 都子",
     "color": "#9977DD",
     "image": "miyako.webp"
@@ -449,6 +498,7 @@
     "band": "yumemita",
     "part": "DJ & Mp.",
     "id": "sengoku-yuno",
+    "birthday": "11-04",
     "japanese": "千石 ユノ",
     "color": "#FF6688",
     "image": "yuno.webp"
@@ -458,6 +508,7 @@
     "band": "millsage",
     "part": "Key. & Vo.",
     "id": "shiomi-hotaru",
+    "birthday": "03-12",
     "japanese": "汐見 蛍",
     "color": "#99FF99",
     "image": "hotaru.webp"
@@ -467,6 +518,7 @@
     "band": "millsage",
     "part": "Gt.",
     "id": "izawa-natsume",
+    "birthday": "03-30",
     "japanese": "伊沢 なつめ",
     "color": "#FF4444",
     "image": "natsume.webp"
@@ -476,6 +528,7 @@
     "band": "millsage",
     "part": "Gt.",
     "id": "kotohira-nagi",
+    "birthday": "12-10",
     "japanese": "琴平 凪",
     "color": "#5555FF",
     "image": "nagi.webp"
@@ -485,6 +538,7 @@
     "band": "millsage",
     "part": "Ba.",
     "id": "hamasaki-mahoro",
+    "birthday": "07-16",
     "japanese": "浜崎 まほろ",
     "color": "#77FFFF",
     "image": "mahoro.webp"
@@ -494,6 +548,7 @@
     "band": "millsage",
     "part": "Dr.",
     "id": "izumi-houka",
+    "birthday": "10-24",
     "japanese": "和泉 朋花",
     "color": "#EE99EE",
     "image": "houka.webp"
@@ -503,6 +558,7 @@
     "band": "ikka-dumbrock",
     "part": "Gt. & Vo.",
     "id": "suga-raika",
+    "birthday": "07-28",
     "japanese": "須賀 蕾叶",
     "color": "#FF7700",
     "image": "raika.webp"
@@ -512,6 +568,7 @@
     "band": "ikka-dumbrock",
     "part": "Gt. & Vo.",
     "id": "mahashi-miku",
+    "birthday": "10-04",
     "japanese": "馬橋 心玖",
     "color": "#22CCFF",
     "image": "miku.webp"
@@ -521,6 +578,7 @@
     "band": "ikka-dumbrock",
     "part": "Ba.",
     "id": "yakura-yomogi",
+    "birthday": "05-06",
     "japanese": "矢倉 蓬咲",
     "color": "#448888",
     "image": "yomogi.webp"
@@ -530,6 +588,7 @@
     "band": "ikka-dumbrock",
     "part": "Dr.",
     "id": "umezato-chieri",
+    "birthday": "04-02",
     "japanese": "梅里 ちえり",
     "color": "#FF55AA",
     "image": "chieri.webp"
@@ -539,6 +598,7 @@
     "band": "ikka-dumbrock",
     "part": "Key.",
     "id": "shinomiya-shizuku",
+    "birthday": "03-05",
     "japanese": "四宮 寧月",
     "color": "#9999FF",
     "image": "shizuku.webp"
@@ -548,6 +608,7 @@
     "band": "others",
     "part": "페어리 부케",
     "id": "viola",
+    "birthday": "00-00",
     "japanese": "ヴィオラ",
     "color": "#DD96F9",
     "image": "viola.webp"
@@ -557,6 +618,7 @@
     "band": "others",
     "part": "페어리 부케",
     "id": "bell",
+    "birthday": "00-00",
     "japanese": "ベル",
     "color": "#DD96F9",
     "image": "bell.webp"
@@ -566,6 +628,7 @@
     "band": "others",
     "part": "페어리 부케",
     "id": "popo",
+    "birthday": "00-00",
     "japanese": "ポポ",
     "color": "#DD96F9",
     "image": "popo.webp"
@@ -575,6 +638,7 @@
     "band": "others",
     "part": "Glitter*Green",
     "id": "ushugome-yuri",
+    "birthday": "00-00",
     "japanese": "牛込 ゆり",
     "color": "#ffb6c1",
     "image": "yuri.webp"
@@ -584,6 +648,7 @@
     "band": "others",
     "part": "카스미 동생",
     "id": "toyama-asuka",
+    "birthday": "05-15",
     "japanese": "戸山 明日香",
     "color": "#ff9ea9",
     "image": "asuka.webp"
@@ -593,6 +658,7 @@
     "band": "millsage",
     "part": "Key. & Vo.",
     "id": "sawami-kanata",
+    "birthday": "00-00",
     "japanese": "沢海 奏多",
     "color": "#FFFF6C",
     "image": "kanata.webp"
@@ -602,8 +668,19 @@
     "band": "others",
     "part": "sumimi",
     "id": "sumita-mana",
+    "birthday": "10-02",
     "japanese": "純田 まな",
     "color": "#bbff77",
     "image": "mana.webp"
+  },
+  {
+    "name": "츠키시마 마리나",
+    "band": "others",
+    "part": "CiRCLE",
+    "id": "tsukishima-marina",
+    "birthday": "00-00",
+    "japanese": "月島 まりな",
+    "color": "#ff3b72",
+    "image": "marina.webp"
   }
 ]

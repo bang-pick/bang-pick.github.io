@@ -1,7 +1,6 @@
-import { bands, characters } from './data/index.js';
+import { bands, characters } from './data/index.js?v=20261005-1';
 import {
   bandById,
-  bandBigLogo,
   bandLogo,
   characterById,
   characterForm,
@@ -12,7 +11,7 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261004-3';
+} from './poster.js?v=20261005-4';
 
 const bestNineLimit = 9;
 const storageKey = 'bandori-pick-v1';
@@ -37,6 +36,8 @@ let nickname = typeof saved.nickname === 'string' ? saved.nickname : '';
 let pendingCouple = null;
 
 const $ = (selector) => document.querySelector(selector);
+const characterCardTemplate = $('#character-card-template').content.firstElementChild;
+const scopeTabs = document.querySelectorAll('.scope-tab');
 const persist = () => localStorage.setItem(storageKey, JSON.stringify({
   all: [...picks.all],
   bands: Object.fromEntries(bands.map(({ id }) => [id, [...picks.bands[id]]])),
@@ -44,19 +45,33 @@ const persist = () => localStorage.setItem(storageKey, JSON.stringify({
   alternateForms: [...alternateForms],
   nickname,
 }));
-const selectedSet = (character) => scope === 'all'
-  ? picks.all
-  : scope === 'couples'
-    ? new Set([...couples.flat(), pendingCouple].filter(Boolean))
-    : picks.bands[activeBand === 'all' ? character.band : activeBand];
+const selectedSet = (character) => scope === 'all' ? picks.all : picks.bands[character.band];
 const hasPicks = () => picks.all.size > 0 || couples.length > 0 || pendingCouple || Object.values(picks.bands).some((set) => set.size > 0);
 const ranksById = () => new Map([...picks.all].map((id, index) => [id, index + 1]));
+const birthdays = characters.filter(({ birthday }) => birthday && birthday !== '00-00')
+  .sort((a, b) => a.birthday.localeCompare(b.birthday));
+
+function renderBirthdayNotice() {
+  const today = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Seoul', month: '2-digit', day: '2-digit',
+  }).format(new Date()).replace('/', '-');
+  const next = birthdays.find(({ birthday }) => birthday >= today) || birthdays[0];
+  if (!next) return;
+  const names = birthdays.filter(({ birthday }) => birthday === next.birthday).map(({ name }) => name).join(' · ');
+  const [month, day] = next.birthday.split('-').map(Number);
+  $('#birthday-notice-text').textContent = next.birthday === today
+    ? `오늘은 ${names}의 생일이에요!`
+    : `${month}월 ${day}일은 ${names}의 생일입니다!`;
+}
 
 function updateCardSelection(card, ranks) {
   const id = card.dataset.characterId;
   const character = characterById[id];
   const rank = scope === 'all' ? ranks.get(id) || 0 : 0;
-  const chosen = scope === 'all' ? Boolean(rank) : selectedSet(character).has(id);
+  let chosen;
+  if (scope === 'all') chosen = Boolean(rank);
+  else if (scope === 'couples') chosen = id === pendingCouple || couples.some((pair) => pair.includes(id));
+  else chosen = selectedSet(character).has(id);
   card.classList.toggle('chosen', chosen);
   card.querySelector('.picked-mark').textContent = scope === 'all' ? `${rank}위` : '✓';
   card.setAttribute('aria-pressed', String(chosen));
@@ -70,6 +85,50 @@ function renderBands() {
     select.add(new Option(band.name, band.id));
   }
   select.value = activeBand;
+}
+
+function createCharacterCard(character, ranks) {
+  const id = character.id;
+  const display = characterForm(id, picks);
+  const band = bandById[character.band];
+  const card = characterCardTemplate.cloneNode(true);
+  const portrait = card.querySelector('.portrait');
+  card.dataset.characterId = id;
+  card.style.setProperty('--band-color', band.color);
+  card.style.setProperty('--character-color', display.color || band.color);
+  card.querySelector('.portrait-initial').textContent = initials(display.name);
+  card.querySelector('.character-name').textContent = display.name;
+  card.querySelector('.character-japanese').textContent = display.japanese;
+  card.querySelector('.character-part').textContent = character.part;
+
+  const sprite = characterImage(display);
+  const image = portrait.querySelector('img');
+  if (sprite) {
+    image.addEventListener('load', () => card.classList.add('has-image'), { once: true });
+    image.addEventListener('error', () => {
+      if (alternateForms.has(id) && character.alternateImage && !image.dataset.fallback) {
+        image.dataset.fallback = 'true';
+        image.src = characterImage(character);
+      } else image.remove();
+    });
+    image.src = sprite;
+  } else image.remove();
+
+  const bandLine = card.querySelector('.character-band');
+  const logo = bandLogo(band);
+  const logoImage = bandLine.querySelector('img');
+  if (logo) {
+    logoImage.addEventListener('error', () => { bandLine.textContent = band.name; }, { once: true });
+    logoImage.src = logo;
+  } else bandLine.textContent = band.name;
+
+  const switcher = portrait.querySelector('.character-form-switch');
+  if (character.alternateName) {
+    switcher.dataset.formId = id;
+    switcher.textContent = alternateForms.has(id) ? '미셸' : '미사키';
+  } else switcher.remove();
+  updateCardSelection(card, ranks);
+  return card;
 }
 
 function renderCharacters() {
@@ -102,50 +161,25 @@ function renderCharacters() {
     } else {
       list.append(grid);
     }
-    for (const character of group.characters) {
-      const id = character.id;
-      const display = characterForm(id, picks);
-      const characterBand = bandById[character.band];
-      const card = document.createElement('div');
-      card.className = 'character-card';
-      card.setAttribute('role', 'button');
-      card.tabIndex = 0;
-      card.dataset.characterId = id;
-      card.style.setProperty('--band-color', characterBand.color);
-      card.style.setProperty('--character-color', display.color || characterBand.color);
-      const sprite = characterImage(display);
-      const logo = bandBigLogo(characterBand) || bandLogo(characterBand);
-      card.innerHTML = `<span class="portrait"><span class="portrait-initial">${initials(display.name)}</span>${sprite ? `<img src="${sprite}" alt="" loading="lazy" />` : ''}<span class="picked-mark" aria-hidden="true"></span></span><span class="character-info"><span class="character-band">${logo ? `<img src="${logo}" alt="" loading="lazy" />` : characterBand.name}</span><span class="character-name">${display.name}</span><span class="character-sub">${display.japanese} <i>·</i> ${character.part}</span></span>`;
-      const image = card.querySelector('.portrait > img');
-      if (image) {
-        image.addEventListener('load', () => card.classList.add('has-image'), { once: true });
-        image.addEventListener('error', () => {
-          if (alternateForms.has(id) && character.alternateImage && !image.dataset.fallback) {
-            image.dataset.fallback = 'true';
-            image.src = characterImage(character);
-          } else image.remove();
-        });
-      }
-      const logoImage = card.querySelector('.character-band img');
-      if (logoImage) logoImage.addEventListener('error', () => { logoImage.parentElement.textContent = characterBand.name; }, { once: true });
-      if (character.alternateName) {
-        const switcher = document.createElement('button');
-        switcher.type = 'button';
-        switcher.className = 'character-form-switch';
-        switcher.dataset.formId = id;
-        switcher.textContent = alternateForms.has(id) ? '미셸' : '미사키';
-        card.querySelector('.portrait').append(switcher);
-      }
-      updateCardSelection(card, ranks);
-      grid.append(card);
-    }
+    for (const character of group.characters) grid.append(createCharacterCard(character, ranks));
   }
   $('#empty-state').hidden = visible.length !== 0;
   $('#roster-title').textContent = activeBand === 'all' ? '전체' : band.name;
-  $('#roster-subtitle').textContent = scope === 'all' ? `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)` : scope === 'couples' ? `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/4쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}` : '선택한 밴드 안에서 최애를 골라보세요.';
-  const pairList = $('#couple-selection');
-  pairList.hidden = scope !== 'couples';
+  updateRosterSubtitle();
+}
+
+function updateRosterSubtitle() {
+  let subtitle = '선택한 밴드 안에서 최애를 골라보세요.';
+  if (scope === 'all') subtitle = `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)`;
+  if (scope === 'couples') subtitle = `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/4쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}`;
+  $('#roster-subtitle').textContent = subtitle;
+}
+
+function renderCouples() {
+  const pairList = $('#couple-selection-list');
+  $('#couple-selection').hidden = scope !== 'couples';
   pairList.replaceChildren();
+  if (scope !== 'couples') return;
   couples.forEach(([firstId, secondId], index) => {
     const pair = document.createElement('div');
     pair.className = 'couple-selection-item';
@@ -165,9 +199,13 @@ function toggleCharacter(id) {
     if (pendingCouple) {
       if (pendingCouple !== id) couples.push([pendingCouple, id]);
       pendingCouple = null;
-    } else if (couples.length < 4) pendingCouple = id;
+    } else {
+      if (couples.length >= 4) return;
+      pendingCouple = id;
+    }
     persist();
-    renderCharacters();
+    updateCharacterCards();
+    updateRosterSubtitle();
     renderPicks();
     return;
   }
@@ -182,9 +220,7 @@ function toggleCharacter(id) {
     selected.add(id);
   }
   persist();
-  if (scope === 'all') {
-    $('#roster-subtitle').textContent = `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)`;
-  }
+  updateRosterSubtitle();
   updateCharacterCards();
   renderPicks();
 }
@@ -192,6 +228,7 @@ function toggleCharacter(id) {
 function renderPicks() {
   const entries = pickedEntries(picks, scope);
   $('#save-image').disabled = entries.length === 0;
+  renderCouples();
   renderRankEditor();
   renderPosterPreview(scope, nickname, picks);
 }
@@ -205,17 +242,9 @@ function renderRankEditor() {
   const editor = $('#rank-editor');
   const ids = [...picks.all];
   editor.hidden = scope !== 'all' || ids.length === 0;
-  editor.replaceChildren();
+  const list = $('#rank-editor-list');
+  list.replaceChildren();
   if (editor.hidden) return;
-  const heading = document.createElement('div');
-  heading.className = 'rank-editor-heading';
-  const label = document.createElement('span');
-  label.textContent = '순위 조정';
-  heading.append(label);
-  editor.append(heading);
-  const list = document.createElement('div');
-  list.className = 'rank-editor-list';
-  editor.append(list);
   ids.forEach((id, index) => {
     const character = characterById[id];
     const row = document.createElement('label');
@@ -245,10 +274,10 @@ function render() {
   renderBands();
   renderCharacters();
   renderPicks();
-  document.querySelectorAll('.scope-tab').forEach((button) => {
+  scopeTabs.forEach((button) => {
     const selected = button.dataset.scope === scope;
     button.classList.toggle('selected', selected);
-    button.setAttribute('aria-selected', String(selected));
+    button.setAttribute('aria-pressed', String(selected));
   });
 }
 
@@ -277,9 +306,11 @@ $('#couple-selection').addEventListener('click', (event) => {
   if (!remove) return;
   couples.splice(Number(remove.dataset.removeCouple), 1);
   persist();
-  render();
+  updateCharacterCards();
+  updateRosterSubtitle();
+  renderPicks();
 });
-document.querySelectorAll('.scope-tab').forEach((button) => button.addEventListener('click', () => {
+scopeTabs.forEach((button) => button.addEventListener('click', () => {
   scope = button.dataset.scope;
   activeBand = 'all';
   pendingCouple = null;
@@ -287,13 +318,14 @@ document.querySelectorAll('.scope-tab').forEach((button) => button.addEventListe
 }));
 $('#band-filter').addEventListener('change', (event) => {
   activeBand = event.currentTarget.value;
-  render();
+  renderCharacters();
 });
 $('#nickname').value = nickname;
 $('#nickname').addEventListener('input', (event) => {
   nickname = event.currentTarget.value;
   persist();
-  renderPosterPreview(scope, nickname, picks);
+  const owner = $('#poster-preview .print-poster-owner');
+  if (owner) owner.textContent = nickname.trim() || '나';
 });
 $('#search').addEventListener('input', (event) => { query = event.target.value.trim(); renderCharacters(); });
 $('#clear-picks').addEventListener('click', () => {
@@ -318,10 +350,14 @@ $('#save-image').addEventListener('click', async () => {
   }
 });
 document.addEventListener('keydown', (event) => {
-  if (event.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+  if (event.key === '/' && !document.activeElement.matches('input, textarea, select, [contenteditable]')) {
     event.preventDefault();
     $('#search').focus();
   }
 });
 
 render();
+renderBirthdayNotice();
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) renderBirthdayNotice();
+});

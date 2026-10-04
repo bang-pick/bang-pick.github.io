@@ -1,20 +1,24 @@
-import { bands, characters } from './data/index.js';
+import { bands, characters } from './data/index.js?v=20261005-1';
 
 const asset = (folder, name) => name ? new URL(`./assets/images/${folder}/${name}`, import.meta.url).href : null;
-const exclamationImage = new URL('./assets/exclamation.svg', import.meta.url).href;
+const posterTitles = { all: '베스트 9', band: '밴드별 최애', couples: '최애커플' };
 export const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));
 export const characterById = Object.fromEntries(characters.map((character) => [character.id, character]));
 
 export const characterImage = (character) => asset('characters', character.image);
-export const bandLogo = (band) => asset('bands', band.logo);
-export const bandBigLogo = (band) => asset('bands_big', band.bigLogo || band.logo);
+export const bandLogo = (band) => asset('bands_big', band.logo);
 export const initials = (name) => name.replace(/\s/g, '').slice(0, 2);
-export const pickedEntries = (picks, outputScope) => (outputScope === 'all'
-  ? [...picks.all].map((id) => ({ id, bandId: characterById[id]?.band }))
-  : outputScope === 'couples'
-    ? (picks.couples || []).flatMap((pair) => pair.map((id) => ({ id, bandId: characterById[id]?.band })))
-    : Object.entries(picks.bands).flatMap(([bandId, set]) => [...set].map((id) => ({ id, bandId }))))
-  .filter((entry) => entry.bandId && (outputScope !== 'band' || entry.bandId !== 'others'));
+export function pickedEntries(picks, outputScope) {
+  let entries;
+  if (outputScope === 'all') {
+    entries = [...picks.all].map((id) => ({ id, bandId: characterById[id]?.band }));
+  } else if (outputScope === 'couples') {
+    entries = (picks.couples || []).flatMap((pair) => pair.map((id) => ({ id, bandId: characterById[id]?.band })));
+  } else {
+    entries = Object.entries(picks.bands).flatMap(([bandId, set]) => [...set].map((id) => ({ id, bandId })));
+  }
+  return entries.filter((entry) => entry.bandId && (outputScope !== 'band' || entry.bandId !== 'others'));
+}
 
 export const characterForm = (id, picks) => {
   const character = characterById[id];
@@ -29,22 +33,10 @@ export const couplingName = (firstId, secondId, picks) =>
 function createPoster(outputScope, nickname, picks) {
   const entries = pickedEntries(picks, outputScope);
   if (!entries.length) return null;
-  const poster = document.createElement('article');
-  poster.className = 'print-poster';
-  const header = document.createElement('header');
-  header.className = 'print-poster-header';
-  const heading = document.createElement('h2');
-  const owner = document.createElement('span');
-  owner.className = 'print-poster-owner';
-  owner.textContent = nickname.trim() || '나';
-  const title = document.createElement('span');
-  title.textContent = `의 ${outputScope === 'all' ? '베스트 9' : outputScope === 'couples' ? '최애커플' : '밴드별 최애'}`;
-  const logo = document.createElement('img');
-  logo.src = exclamationImage;
-  logo.alt = '';
-  heading.append(owner, title, logo);
-  header.append(heading);
-  poster.append(header);
+  const poster = document.querySelector('#poster-template').content.firstElementChild.cloneNode(true);
+  poster.querySelector('.print-poster-owner').textContent = nickname.trim() || '나';
+  poster.querySelector('.print-poster-title').textContent = `의 ${posterTitles[outputScope] || posterTitles.band}`;
+  const content = poster.querySelector('.print-poster-content');
 
   const createCard = (entry, rank = null) => {
     const character = characterForm(entry.id, picks);
@@ -56,7 +48,7 @@ function createPoster(outputScope, nickname, picks) {
       const logo = document.createElement('div');
       logo.className = 'print-poster-featured-logo';
       const image = document.createElement('img');
-      image.src = bandBigLogo(band) || bandLogo(band);
+      image.src = bandLogo(band);
       image.alt = `${band.name} 로고`;
       logo.append(image);
       card.append(logo);
@@ -90,7 +82,7 @@ function createPoster(outputScope, nickname, picks) {
     if (outputScope === 'all' || outputScope === 'couples') {
       const bandLine = document.createElement('div');
       bandLine.className = 'print-poster-band';
-      const logo = bandBigLogo(band) || bandLogo(band);
+      const logo = bandLogo(band);
       if (logo) {
         const image = document.createElement('img');
         image.src = logo;
@@ -102,9 +94,12 @@ function createPoster(outputScope, nickname, picks) {
       info.append(bandLine);
     }
     const name = document.createElement('span');
-    name.style.fontFamily = "'Godo'";
+    name.className = 'print-poster-name';
     name.textContent = character.name;
-    info.append(name);
+    const details = document.createElement('small');
+    details.className = 'print-poster-sub';
+    details.textContent = `${character.japanese} · ${character.part}`;
+    info.append(name, details);
     card.append(portrait, info);
     return card;
   };
@@ -128,7 +123,7 @@ function createPoster(outputScope, nickname, picks) {
       pair.append(cards);
       list.append(pair);
     }
-    poster.append(list);
+    content.append(list);
   } else if (outputScope === 'all') {
     const podium = document.createElement('div');
     podium.className = 'print-poster-podium';
@@ -141,27 +136,19 @@ function createPoster(outputScope, nickname, picks) {
         podium.append(placeholder);
       }
     }
-    poster.append(podium);
+    content.append(podium);
     if (entries.length > 3) {
       const grid = document.createElement('div');
       grid.className = 'print-poster-grid print-poster-lower-grid';
       entries.slice(3).forEach((entry, index) => grid.append(createCard(entry, index + 4)));
-      poster.append(grid);
+      content.append(grid);
     }
   } else {
     const grid = document.createElement('div');
     grid.className = 'print-poster-grid print-poster-band-grid';
     entries.forEach((entry) => grid.append(createCard(entry)));
-    poster.append(grid);
+    content.append(grid);
   }
-  const footer = document.createElement('footer');
-  footer.className = 'print-poster-footer';
-  const copyright = document.createElement('span');
-  copyright.textContent = '©BanG Dream! Project, Bushiroad All Rights Reserved.';
-  const attribution = document.createElement('span');
-  attribution.textContent = '비공식 팬사이트 방픽!에서 생성되었습니다.';
-  footer.append(copyright, attribution);
-  poster.append(footer);
   return poster;
 }
 

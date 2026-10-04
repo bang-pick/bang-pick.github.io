@@ -1,6 +1,12 @@
 /* Responsive layout */
+.back-to-top {
+  display: none;
+}
+
 @media (max-width: 1050px) {
-  .workspace, .picked-section {
+  .workspace,
+  .picked-section,
+  .birthday-notice {
     padding-right: 5vw;
     padding-left: 5vw;
   }
@@ -15,8 +21,12 @@
     grid-template-columns: minmax(0, 1fr) 400px;
     align-items: start;
   }
-  .workspace { grid-area: workspace; }
-  .picked-section { grid-area: picked; }
+  .workspace {
+    grid-area: workspace;
+  }
+  .picked-section {
+    grid-area: picked;
+  }
   .picked-section {
     position: sticky;
     top: 18px;
@@ -26,6 +36,29 @@
 }
 
 @media (max-width: 760px) {
+  .back-to-top {
+    position: fixed;
+    right: calc(16px + env(safe-area-inset-right));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    z-index: 10;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 3px 14px rgba(32, 38, 46, .12);
+    color: var(--accent);
+    font-size: 20px;
+    text-decoration: none;
+  }
+
+  .back-to-top:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+
   .topbar {
     height: 62px;
     padding: 0 18px;
@@ -41,7 +74,6 @@
   }
   .selection-layout {
     gap: 12px;
-    margin-top: 12px;
   }
   .intro {
     padding: 34px 24px 215px;
@@ -67,30 +99,20 @@
   }
   .filters {
     grid-template-columns: minmax(0, 1fr);
-    overflow: hidden;
+    margin-bottom: 18px;
   }
   .scope-tabs {
     gap: 6px;
+    padding-bottom: 18px;
     margin-bottom: 18px;
   }
   .scope-tab {
-    align-items: center;
-    min-height: 50px;
     padding: 8px 4px;
-    text-align: center;
-  }
-  .scope-tab strong {
     font-size: 13px;
-  }
-  .scope-tab span {
-    display: none;
   }
   .roster-title {
     display: block;
     padding: 19px 0 14px;
-  }
-  .roster-title h3 {
-    font-size: 20px;
   }
   .roster-title span {
     display: block;
@@ -101,7 +123,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 19px 12px;
   }
-  .character-band img{
+  .character-band img {
     height: 24px;
   }
   .portrait-initial {
@@ -122,13 +144,10 @@
     font-size: 12px;
   }
   body > footer {
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 0 20px 18px;
-    padding: 18px 0;
+    display: block;
   }
-  body > footer > span:last-child {
-    order: 1;
-    width: 100%;
+  body > footer a {
+    display: inline-block;
+    margin-top: 12px;
   }
 }

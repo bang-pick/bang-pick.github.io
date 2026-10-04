@@ -6,7 +6,7 @@
 }
 
 .picked-heading {
-  margin: 0 0 26px;
+  margin: 0 0 28px;
 }
 
 .text-button {
@@ -55,19 +55,43 @@
   font-size: 14px;
 }
 
-.rank-editor {
+.rank-editor, .couple-selection {
   background: #fff;
   border-bottom: 1px solid var(--line);
   padding: 14px;
 }
 
-.rank-editor-heading {
+.couple-selection-list {
+  display: grid;
+  gap: 6px;
+}
+
+.couple-selection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.couple-selection-item button {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.picked-list-heading {
   margin-bottom: 14px;
 }
 
-.rank-editor-heading span,
+.picked-list-heading,
 .nickname-field span {
-  margin: 0;
   color: var(--muted);
   font-size: 12px;
   font-weight: 600;
@@ -77,10 +101,6 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-}
-
-.rank-editor[hidden] {
-  display: none;
 }
 
 .rank-editor-row {
@@ -128,7 +148,7 @@
   background: var(--paper);
 }
 
-#poster-preview[hidden], .poster-empty[hidden] {
+.poster-empty[hidden] {
   display: none;
 }
 
@@ -154,7 +174,6 @@
 
 .print-poster-header h2 {
   display: flex;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -168,7 +187,6 @@
 
 .print-poster-header h2 > span {
   flex: 0 0 auto;
-  white-space: nowrap;
 }
 
 .print-poster-header h2 img {
@@ -177,7 +195,6 @@
   height: 48px;
   object-fit: contain;
   margin-left: 12px;
-  white-space: nowrap;
 }
 
 .print-poster-owner {
@@ -185,8 +202,9 @@
 }
 
 .print-poster-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
   margin-top: 28px;
 }
@@ -229,21 +247,27 @@
 
 .print-poster-lower-grid {
   margin-top: 22px;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
-.print-poster-band-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.print-poster-lower-grid > .print-poster-card {
+  flex: 0 0 calc((100% - 90px) / 6);
+}
+
+.print-poster-band-grid > .print-poster-card {
+  flex: 0 0 calc((100% - 54px) / 4);
 }
 
 .print-couples {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
   margin-top: 28px;
 }
 
 .print-couple {
+  flex: 0 0 calc((100% - 18px) / 2);
+  min-width: 0;
   padding: 18px;
   border: 1px solid #e4e2dc;
   border-radius: 10px;
@@ -354,14 +378,16 @@
   justify-content: center;
   text-align: center;
   gap: 6px;
-  min-height: 90px;
   padding: 16px;
   background: #fff;
 }
 
+.print-poster-card:not(.print-poster-card-band) .print-poster-info {
+  padding-top: 12px;
+}
+
 .print-poster-band {
   display: flex;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   min-height: 30px;
@@ -380,25 +406,39 @@
   object-fit: contain;
 }
 
-.print-poster-info span {
+.print-poster-info .print-poster-name {
   min-width: 0;
   width: 100%;
   overflow: hidden;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   font-family: 'Godo';
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
-.print-poster-card-band .print-poster-info {
-  text-align: center;
-  min-height: 60px;
+.print-poster-sub {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  color: #777870;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.print-poster-lower-grid .print-poster-info {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.print-poster-lower-grid .print-poster-sub {
+  font-size: 11px;
 }
 
 .print-poster-footer {
   display: flex;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -459,18 +499,3 @@
   color: #8a8b83;
   cursor: not-allowed;
 }
-
-/* Footer */
-body > footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 32px max(24px, calc((100vw - 1400px) / 2));
-  margin: 0 auto;
-  border-top: 1px solid #dfe1e4;
-  background: #fff;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.6;
-}
-

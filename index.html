@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#f31864" />
     <meta name="description" content="BanG Dream! 최애캐를 기록하고 공유해보세요!" />
     <title>방픽!</title>
-    <link rel="stylesheet" href="./styles/base.css?v=20261004-4" />
-    <link rel="stylesheet" href="./styles/picker.css?v=20261004-4" />
-    <link rel="stylesheet" href="./styles/poster.css?v=20261004-4" />
-    <link rel="stylesheet" href="./styles/responsive.css?v=20261004-4" />
+    <link rel="stylesheet" href="./styles/base.css?v=20261005-4" />
+    <link rel="stylesheet" href="./styles/picker.css?v=20261005-4" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261005-4" />
+    <link rel="stylesheet" href="./styles/responsive.css?v=20261005-4" />
     <link rel="icon" href="./assets/favicon.ico" />
 
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://bang-pick.github.io/" />
     <meta property="og:site_name" content="방픽!" />
 
-    <script src="./app.js?v=20261004-4" type="module"></script>
+    <script src="./app.js?v=20261005-4" type="module"></script>
   </head>
   <body>
     <header class="topbar">
@@ -29,7 +29,7 @@
       <nav aria-label="주 메뉴">
         <a class="nav-link active" href="#pick">최애표</a>
         <a class="nav-link" href="#tools">
-           관계도<span class="soon">준비 중</span>
+           유틸<span class="soon">준비 중</span>
         </a>
       </nav>
     </header>
@@ -46,6 +46,11 @@
         </div>
       </section>
 
+      <div class="birthday-notice" role="status">
+        <strong>생일</strong>
+        <span id="birthday-notice-text"></span>
+      </div>
+
       <div class="selection-layout">
         <section class="picked-section" id="picked">
           <div class="section-heading picked-heading">
@@ -58,13 +63,19 @@
                 <span>내 닉네임</span>
                 <input id="nickname" type="text" maxlength="24" placeholder="닉네임 입력" autocomplete="nickname" />
               </label>
-              <div class="couple-selection" id="couple-selection" hidden></div>
-              <div class="rank-editor" id="rank-editor" hidden></div>
+              <div class="couple-selection" id="couple-selection" hidden>
+                <div class="picked-list-heading">선택한 커플링</div>
+                <div class="couple-selection-list" id="couple-selection-list"></div>
+              </div>
+              <div class="rank-editor" id="rank-editor" hidden>
+                <div class="picked-list-heading">순위 조정</div>
+                <div class="rank-editor-list" id="rank-editor-list"></div>
+              </div>
               <div id="poster-preview" aria-label="선택한 캐릭터 최애표 미리보기" hidden></div>
               <div class="poster-empty" id="poster-empty">캐릭터를 선택하면 최애표가 여기에 표시됩니다.</div>
             </div>
             <button class="image-button" id="save-image" type="button" disabled>이미지 저장 
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download preview-icon"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></button>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></button>
           </div>
         </section>
 
@@ -72,10 +83,10 @@
           <div class="section-heading">
             <h2>최애표 만들기</h2>
           </div>
-          <div class="scope-tabs" role="tablist" aria-label="최애표 종류">
-            <button class="scope-tab selected" data-scope="all" role="tab" aria-selected="true"><strong>베스트 9</strong><span>9명 순위 정하기</span></button>
-            <button class="scope-tab" data-scope="band" role="tab" aria-selected="false"><strong>밴드별 최애</strong><span>밴드당 한 명씩</span></button>
-            <button class="scope-tab" data-scope="couples" role="tab" aria-selected="false"><strong>최애 커플</strong><span>최대 네 쌍 고르기</span></button>
+          <div class="scope-tabs" role="group" aria-label="최애표 종류">
+            <button class="scope-tab selected" data-scope="all" aria-pressed="true">베스트 9</button>
+            <button class="scope-tab" data-scope="band" aria-pressed="false">밴드별 최애</button>
+            <button class="scope-tab" data-scope="couples" aria-pressed="false">최애 커플</button>
           </div>
           <aside class="filters" aria-label="캐릭터 필터">
             <label class="search-box">
@@ -98,9 +109,37 @@
         </section>
       </div>
     </main>
+    <template id="character-card-template">
+      <div class="character-card" role="button" tabindex="0">
+        <span class="portrait">
+          <span class="portrait-initial"></span>
+          <img alt="" loading="lazy" />
+          <span class="picked-mark" aria-hidden="true"></span>
+          <button class="character-form-switch" type="button"></button>
+        </span>
+        <span class="character-info">
+          <span class="character-band"><img alt="" loading="lazy" /></span>
+          <span class="character-name"></span>
+          <span class="character-sub"><span class="character-japanese"></span> <i>·</i> <span class="character-part"></span></span>
+        </span>
+      </div>
+    </template>
+    <template id="poster-template">
+      <article class="print-poster">
+        <header class="print-poster-header">
+          <h2><span class="print-poster-owner"></span><span class="print-poster-title"></span><img src="./assets/exclamation.svg" alt="" /></h2>
+        </header>
+        <div class="print-poster-content"></div>
+        <footer class="print-poster-footer">
+          <span>©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
+          <span>비공식 팬사이트 방픽!에서 생성되었습니다.</span>
+        </footer>
+      </article>
+    </template>
     <footer>
-      <span>본 사이트는 BanG Dream! 공식 사이트와 관련이 없는 <b>비공식・비영리 팬 사이트</b>입니다.<br />本サイトは「BanG Dream!」公式サイトとは関係のない、非公式・非営利のファンサイトです。</span>
+      <span>©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 <b>비공식・비영리 팬 사이트</b>입니다.<br />本サイトは「BanG Dream!」公式とは関係のない、非公式・非営利のファンサイトです。</span>
       <a href="https://bang-dream.com/artist/" target="_blank" rel="noopener noreferrer">이미지 출처</a>
     </footer>
+    <a class="back-to-top" href="#picked" aria-label="내가 고른 최애로 가기">↑</a>
   </body>
 </html>
