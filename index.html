@@ -6,24 +6,24 @@
     <meta name="theme-color" content="#f31864" />
     <meta name="description" content="BanG Dream! 최애캐와 최애곡을 자랑해보세요!" />
     <title>방픽!</title>
-    <link rel="stylesheet" href="./styles/base.css?v=20261005-8" />
-    <link rel="stylesheet" href="./styles/home.css?v=20261005-3" />
+    <link rel="stylesheet" href="./styles/base.css?v=20261005-11" />
+    <link rel="stylesheet" href="./styles/home.css?v=20261005-5" />
     <link rel="icon" href="./assets/favicon.ico" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="방픽!" />
     <meta property="og:description" content="BanG Dream! 최애캐와 최애곡을 골라 나만의 표로 저장해보세요." />
-    <meta property="og:image" content="https://bang-pick.github.io/assets/images/main-1.webp" />
+    <meta property="og:image" content="https://bang-pick.github.io/assets/images/main-2.webp" />
     <meta property="og:url" content="https://bang-pick.github.io/" />
     <meta property="og:site_name" content="방픽!" />
     <script src="./scripts/layout.js?v=20261005-4" type="module"></script>
-    <script src="./scripts/birthday.js?v=20261005-1" type="module"></script>
+    <script src="./scripts/birthday.js?v=20261005-2" type="module"></script>
   </head>
   <body data-page="home">
     <header class="topbar" data-shared="header"></header>
     <main class="home-main">
       <section class="intro">
         <div class="intro-visual" aria-hidden="true">
-          <img src="./assets/images/main-1.webp" alt="" />
+          <img src="./assets/images/main-2.webp" alt="" />
         </div>
         <div class="intro-copy">
           <h2>BanG Dream!</h2>
@@ -32,7 +32,7 @@
         </div>
       </section>
       <div class="birthday-notice" role="status">
-        <strong>생일</strong>
+        <strong id="notice-type">생일</strong>
         <span id="birthday-notice-text"></span>
       </div>
       <div class="home-options">
@@ -45,7 +45,7 @@
         <a class="home-option" href="./songs.html">
           <img class="home-option-art" src="./assets/images/song.webp" alt="" />
           <h2>최애곡</h2>
-          <p>베스트 9곡 · 밴드별 최애곡</p>
+          <p>베스트 9 · 밴드별 최애곡</p>
           <span>최애곡표 만들기 <span aria-hidden="true">→</span></span>
         </a>
       </div>

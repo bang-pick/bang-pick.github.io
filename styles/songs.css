@@ -1,6 +1,6 @@
 .song-layout {
   display: grid;
-  gap: 24px;
+  gap: 16px;
 }
 
 .song-picker,
@@ -39,6 +39,7 @@
   font-size: 15px;
   text-align: left;
   cursor: pointer;
+  transition: background-color .16s ease;
 }
 
 .song-list button:hover,
@@ -239,10 +240,6 @@
 }
 
 @media (max-width: 760px) {
-  .song-layout {
-    gap: 12px;
-  }
-
   .song-picker,
   .song-preview {
     padding: 34px 20px 40px;

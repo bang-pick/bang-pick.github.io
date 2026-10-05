@@ -1,7 +1,7 @@
 /* Character picker */
 .selection-layout {
   display: grid;
-  gap: 24px;
+  gap: 16px;
 }
 
 .workspace {
@@ -43,6 +43,7 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
+  transition: border-color .18s ease, box-shadow .18s ease;
 }
 
 .search-box:focus-within, .band-select:focus-visible {
@@ -93,6 +94,11 @@
   font: inherit;
   font-size: 14px;
   cursor: pointer;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.band-select:hover {
+  border-color: #b9bbc0;
 }
 
 .band-select,
@@ -122,10 +128,12 @@
   cursor: pointer;
   font-size: 16px;
   font-family: 'Godo';
+  transition: border-color .18s ease, background-color .18s ease, color .18s ease, transform .18s ease;
 }
 
 .scope-tab:hover {
   border-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 .scope-tab:focus-visible {
@@ -203,11 +211,13 @@
   font-size: 12px;
   cursor: pointer;
   transform: translateX(-50%);
+  transition: border-color .18s ease, color .18s ease, background-color .18s ease, transform .18s ease;
 }
 
 .character-form-switch:hover {
   border-color: var(--accent);
   color: var(--accent);
+  transform: translate(-50%, -1px);
 }
 
 .portrait {
@@ -218,6 +228,7 @@
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--character-color, #eeede8);
+  transition: outline-color .18s ease, transform .18s ease;
 }
 
 .portrait-initial {
@@ -263,6 +274,7 @@
 .character-card:hover .portrait {
   outline: 2px solid #b7b8b0;
   outline-offset: -2px;
+  transform: translateY(-2px);
 }
 
 .character-card:focus-visible .portrait {

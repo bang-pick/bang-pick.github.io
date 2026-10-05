@@ -1,4 +1,5 @@
 import { bands, characters } from './data.js?v=20261005-1';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261005-1';
 import {
   bandById,
   bandLogo,
@@ -122,7 +123,7 @@ function renderCharacters() {
   const visible = characters.filter((character) => {
     const matchBand = (activeBand === 'all' || character.band === activeBand)
       && (scope !== 'band' || character.band !== 'others');
-    const text = `${character.name} ${character.japanese} ${character.alternateName || ''} ${bandById[character.band].name}`.toLowerCase();
+    const text = `${character.name} ${character.japanese} ${character.alternateName || ''} ${character.alternateJapanese || ''} ${bandById[character.band].name}`.toLowerCase();
     return matchBand && text.includes(search);
   });
   const list = $('#characters');
@@ -225,33 +226,18 @@ function updateCharacterCards() {
 function renderRankEditor() {
   const editor = $('#rank-editor');
   const ids = [...picks.all];
-  editor.hidden = scope !== 'all' || ids.length === 0;
-  const list = $('#rank-editor-list');
-  list.replaceChildren();
-  if (editor.hidden) return;
-  ids.forEach((id, index) => {
-    const character = characterById[id];
-    const row = document.createElement('label');
-    row.className = 'rank-editor-row';
-    const name = document.createElement('span');
-    name.textContent = character.name;
-    const select = document.createElement('select');
-    select.setAttribute('aria-label', `${character.name} 순위`);
-    ids.forEach((_, rank) => select.add(new Option(`${rank + 1}위`, String(rank))));
-    select.value = String(index);
-    select.addEventListener('change', () => {
+  renderRankRows(editor, $('#rank-editor-list'), scope === 'all' ? ids : [],
+    (id) => characterById[id].name,
+    (from, to) => {
       const reordered = [...picks.all];
-      const [moved] = reordered.splice(index, 1);
-      reordered.splice(Number(select.value), 0, moved);
+      const [moved] = reordered.splice(from, 1);
+      reordered.splice(to, 0, moved);
       picks.all.clear();
       reordered.forEach((pickedId) => picks.all.add(pickedId));
       persist();
       updateCharacterCards();
       renderPicks();
     });
-    row.append(name, select);
-    list.append(row);
-  });
 }
 
 function render() {

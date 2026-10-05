@@ -18,6 +18,13 @@
   color: var(--muted);
   font-size: 12px;
   cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background-color .18s ease;
+}
+
+.text-button:hover,
+.couple-selection-item button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .picked-panel {
@@ -84,6 +91,7 @@
   color: var(--muted);
   font-size: 12px;
   cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background-color .18s ease;
 }
 
 .picked-list-heading {
@@ -133,7 +141,7 @@
   background-position: right 8px center;
   background-size: 10px 7px;
   color: var(--ink);
-  font: inherit;
+  transition: border-color .18s ease, box-shadow .18s ease;
 }
 
 .nickname-field input:focus-visible {
@@ -485,6 +493,13 @@
   color: #fff;
   font-size: 13px;
   cursor: pointer;
+  transition: border-color .18s ease, background-color .18s ease, transform .18s ease;
+}
+
+.image-button:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--accent) 88%, #000);
+  background: color-mix(in srgb, var(--accent) 88%, #000);
+  transform: translateY(-1px);
 }
 
 .image-button svg {

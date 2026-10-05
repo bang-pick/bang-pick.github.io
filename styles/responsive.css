@@ -22,8 +22,6 @@
   }
   .picked-section {
     grid-area: picked;
-  }
-  .picked-section {
     position: sticky;
     top: 18px;
     max-height: calc(100vh - 36px);
@@ -32,9 +30,6 @@
 }
 
 @media (max-width: 760px) {
-  .selection-layout {
-    gap: 12px;
-  }
   .workspace {
     padding: 34px 20px 40px;
   }

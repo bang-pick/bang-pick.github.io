@@ -1,4 +1,5 @@
 import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261005-2';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261005-1';
 
 const $ = (selector) => document.querySelector(selector);
 const storageKey = 'bandori-song-pick-v1';
@@ -46,7 +47,7 @@ function renderList() {
   const visible = songs.filter((song) =>
     (scope === 'all' || song.group !== 'others')
     && (band === 'all' || song.group === band)
-    && (songName(song) + ' ' + song.title + ' ' + song.band).toLocaleLowerCase().includes(query)
+    && (songName(song) + ' ' + song.title + ' ' + song.band + ' ' + bandById[song.group].name).toLocaleLowerCase().includes(query)
   );
   const fragment = document.createDocumentFragment();
   let lastGroup = null;
@@ -91,36 +92,21 @@ function renderList() {
     fragment.append(row);
   }
   $('#song-list').replaceChildren(fragment);
-  $('#song-roster-title').textContent = band === 'all' ? '모든 곡' : bandById[band].name;
+  $('#song-roster-title').textContent = band === 'all' ? '전체' : bandById[band].name;
   $('#song-count').textContent = visible.length + '곡';
   $('#song-empty').hidden = visible.length > 0;
 }
 
 function renderRanks() {
   const editor = $('#song-rank-editor');
-  editor.hidden = scope !== 'all' || bestNine.length === 0;
-  const list = $('#song-rank-list');
-  list.replaceChildren();
-  if (editor.hidden) return;
-  bestNine.forEach((key, index) => {
-    const song = songByKey.get(key);
-    const row = document.createElement('label');
-    const name = document.createElement('span');
-    const select = document.createElement('select');
-    row.className = 'rank-editor-row';
-    name.textContent = songName(song);
-    select.setAttribute('aria-label', songName(song) + ' 순위');
-    bestNine.forEach((_, rank) => select.add(new Option(rank + 1 + '위', String(rank))));
-    select.value = String(index);
-    select.addEventListener('change', () => {
-      const [moved] = bestNine.splice(index, 1);
-      bestNine.splice(Number(select.value), 0, moved);
+  renderRankRows(editor, $('#song-rank-list'), scope === 'all' ? bestNine : [],
+    (key) => songName(songByKey.get(key)),
+    (from, to) => {
+      const [moved] = bestNine.splice(from, 1);
+      bestNine.splice(to, 0, moved);
       persist();
       render();
     });
-    row.append(name, select);
-    list.append(row);
-  });
 }
 
 function createCard(song, band, rank = null) {
