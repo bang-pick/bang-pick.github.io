@@ -4,6 +4,6 @@ const load = (file) => fetch(new URL(`${file}?v=20261005-1`, import.meta.url)).t
 });
 
 export const [bands, characters] = await Promise.all([
-  load('./bands.json'),
-  load('./characters.json'),
+  load('../data/bands.json'),
+  load('../data/characters.json'),
 ]);

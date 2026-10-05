@@ -2,7 +2,6 @@
 .selection-layout {
   display: grid;
   gap: 24px;
-  margin-top: 24px;
 }
 
 .workspace {

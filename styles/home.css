@@ -1,0 +1,103 @@
+body[data-page="home"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-main {
+  flex: 1;
+}
+
+body[data-page="home"] > footer {
+  width: 100%;
+}
+
+.home-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.home-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.home-option-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.home-option > :not(.home-option-art) {
+  position: relative;
+  max-width: 59%;
+}
+
+.home-option:hover,
+.home-option:focus-visible {
+  border-color: var(--accent);
+}
+
+.home-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.home-option h2 {
+  margin: 0;
+  font-family: 'Godo';
+  font-size: 38px;
+}
+
+.home-option p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.home-option > span {
+  margin-top: auto;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .home-options {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .home-option {
+    min-height: 210px;
+    padding: 26px;
+  }
+
+  .home-option-art {
+    right: -12px;
+    width: 52%;
+  }
+
+  .home-option h2 {
+    font-size: 30px;
+  }
+
+  .home-option p {
+    font-size: 14px;
+  }
+}

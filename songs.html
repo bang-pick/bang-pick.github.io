@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f31864" />
+    <meta name="description" content="BanG Dream! 최애곡을 자랑해보세요!" />
+    <title>최애곡 | 방픽!</title>
+    <link rel="stylesheet" href="./styles/base.css?v=20261005-8" />
+    <link rel="stylesheet" href="./styles/picker.css?v=20261005-4" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261005-4" />
+    <link rel="stylesheet" href="./styles/songs.css?v=20261005-16" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <script src="./scripts/layout.js?v=20261005-4" type="module"></script>
+    <script src="./scripts/songs.js?v=20261005-14" type="module"></script>
+  </head>
+  <body data-page="songs">
+    <header class="topbar" data-shared="header"></header>
+    <main>
+      <div class="song-layout">
+        <section class="song-preview picked-section">
+          <div class="section-heading picked-heading">
+            <h2>내가 고른 곡</h2>
+            <button class="text-button" id="clear-songs" type="button">전체 삭제</button>
+          </div>
+          <div class="picked-panel">
+            <div class="poster-preview-wrap">
+              <label class="nickname-field" for="song-nickname">
+                <span>내 닉네임</span>
+                <input id="song-nickname" type="text" maxlength="24" placeholder="닉네임 입력" autocomplete="nickname" />
+              </label>
+              <div class="rank-editor" id="song-rank-editor" hidden>
+                <div class="picked-list-heading">순위 조정</div>
+                <div class="rank-editor-list" id="song-rank-list"></div>
+              </div>
+              <div id="poster-preview" aria-label="선택한 최애곡표 미리보기" hidden></div>
+              <div class="poster-empty" id="poster-empty">곡을 선택하면 최애곡표가 여기에 표시됩니다.</div>
+            </div>
+            <button class="image-button" id="save-songs" type="button" disabled>이미지 저장
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="workspace song-picker" id="song-picker">
+          <div class="section-heading">
+            <h2>최애곡 고르기</h2>
+          </div>
+          <div class="scope-tabs" role="group" aria-label="최애곡표 종류">
+            <button class="scope-tab selected" data-scope="all" type="button" aria-pressed="true">베스트 9</button>
+            <button class="scope-tab" data-scope="band" type="button" aria-pressed="false">밴드별 최애곡</button>
+          </div>
+          <aside class="filters" aria-label="곡 필터">
+            <label class="search-box">
+              <span class="search-symbol" aria-hidden="true"></span>
+              <input id="song-search" type="search" placeholder="곡 제목 또는 밴드 검색" aria-label="곡 제목 또는 밴드 검색" autocomplete="off" />
+            </label>
+            <select id="song-band" class="band-select" aria-label="밴드 필터">
+              <option value="all">전체 밴드</option>
+            </select>
+          </aside>
+          <div class="roster">
+            <div class="roster-title">
+              <h3 id="song-roster-title">모든 곡</h3>
+              <span id="song-count" aria-live="polite"></span>
+            </div>
+            <ul id="song-list" class="song-list"></ul>
+            <p id="song-empty" class="song-empty" hidden>검색 결과가 없습니다.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <template id="song-poster-template">
+      <article class="print-poster song-poster">
+        <header class="print-poster-header">
+          <h2><span class="print-poster-owner"></span><span class="print-poster-title"></span><img src="./assets/exclamation.svg" alt="" /></h2>
+        </header>
+        <div class="print-poster-content"></div>
+        <footer class="print-poster-footer">
+          <span>©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
+          <span>비공식 팬사이트 방픽!에서 생성되었습니다.</span>
+        </footer>
+      </article>
+    </template>
+    <template id="song-card-template">
+      <article class="song-poster-card">
+        <span class="song-poster-rank"></span>
+        <div class="song-poster-titles">
+          <div class="song-poster-title-line">
+            <span class="song-poster-name"></span>
+            <span class="song-poster-original"></span>
+          </div>
+          <small class="song-poster-artist"></small>
+        </div>
+        <span class="song-poster-band"></span>
+      </article>
+    </template>
+    <footer data-shared="footer"></footer>
+    <a class="back-to-top" href="#" aria-label="맨 위로 가기">↑</a>
+  </body>
+</html>
