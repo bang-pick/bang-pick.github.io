@@ -150,6 +150,7 @@
   color: var(--song-color);
   font-size: 24px;
   font-variant-numeric: tabular-nums;
+  font-weight: 600;
   text-align: center;
 }
 
