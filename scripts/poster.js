@@ -1,6 +1,6 @@
 import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-8';
-import { bands, characters } from './data.js?v=20261006-3';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-4';
+import { bands, characters } from './data.js?v=20261006-4';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-5';
 
 const asset = (folder, name) => name ? new URL(`../assets/images/${folder}/${name}`, import.meta.url).href : null;
 export const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));
@@ -37,6 +37,7 @@ export const couplingName = (firstId, secondId, picks) =>
 
 function createPoster(outputScope, nickname, picks) {
   const entries = pickedEntries(picks, outputScope);
+  if (!entries.length && outputScope !== 'band') return null;
   const poster = document.querySelector('#poster-template').content.firstElementChild.cloneNode(true);
   poster.querySelector('.print-poster-owner').textContent = nickname.trim() || t('poster.defaultOwner');
   poster.querySelector('.print-poster-title').textContent = t(`poster.${outputScope === 'couples' ? 'couple' : outputScope}Title`);
@@ -112,38 +113,43 @@ function createPoster(outputScope, nickname, picks) {
   };
 
   if (outputScope === 'couples') {
-    const list = document.createElement('div');
-    list.className = 'print-couples';
     const pairs = picks.couples || [];
-    for (let index = 0; index < coupleLimit; index++) {
-      const [firstId, secondId] = pairs[index] || [];
-      const pair = document.createElement('div');
-      pair.className = `print-couple${firstId && secondId ? '' : ' is-empty'}`;
-      const cards = document.createElement('div');
-      cards.className = 'print-couple-cards';
-      const direction = document.createElement('div');
-      direction.className = 'print-couple-direction';
-      if (firstId && secondId && getLanguage() !== 'ja') {
-        const name = document.createElement('span');
-        name.className = 'print-couple-name';
-        name.textContent = couplingName(firstId, secondId, picks);
-        direction.append(name);
+    if (pairs.length) {
+      const list = document.createElement('div');
+      list.className = 'print-couples';
+      for (const [firstId, secondId] of pairs) {
+        const pair = document.createElement('div');
+        pair.className = 'print-couple';
+        const cards = document.createElement('div');
+        cards.className = 'print-couple-cards';
+        const direction = document.createElement('div');
+        direction.className = 'print-couple-direction';
+        if (getLanguage() !== 'ja') {
+          const name = document.createElement('span');
+          name.className = 'print-couple-name';
+          name.textContent = couplingName(firstId, secondId, picks);
+          direction.append(name);
+        }
+        direction.append(Object.assign(document.createElement('span'), { className: 'print-couple-arrow', textContent: '→' }));
+        cards.append(createCard({ id: firstId }), direction, createCard({ id: secondId }));
+        pair.append(cards);
+        list.append(pair);
       }
-      direction.append(Object.assign(document.createElement('span'), { className: 'print-couple-arrow', textContent: '→' }));
-      cards.append(createCard(firstId ? { id: firstId } : null), direction, createCard(secondId ? { id: secondId } : null));
-      pair.append(cards);
-      list.append(pair);
+      content.append(list);
     }
-    content.append(list);
   } else if (outputScope === 'all') {
     const podium = document.createElement('div');
     podium.className = 'print-poster-podium';
-    for (const rank of [2, 1, 3]) podium.append(createCard(entries[rank - 1] || null, rank));
-    content.append(podium);
-    const grid = document.createElement('div');
-    grid.className = 'print-poster-grid print-poster-lower-grid';
-    for (let index = 3; index < 9; index++) grid.append(createCard(entries[index] || null, index + 1));
-    content.append(grid);
+    for (const rank of [2, 1, 3]) {
+      if (entries[rank - 1]) podium.append(createCard(entries[rank - 1], rank));
+    }
+    if (podium.childElementCount) content.append(podium);
+    if (entries.length > 3) {
+      const grid = document.createElement('div');
+      grid.className = 'print-poster-grid print-poster-lower-grid';
+      entries.slice(3).forEach((entry, index) => grid.append(createCard(entry, index + 4)));
+      content.append(grid);
+    }
   } else {
     const grid = document.createElement('div');
     grid.className = 'print-poster-grid print-poster-band-grid';
@@ -158,9 +164,17 @@ function createPoster(outputScope, nickname, picks) {
 
 export function renderPosterPreview(scope, nickname, picks) {
   const preview = document.querySelector('#poster-preview');
+  const empty = document.querySelector('#poster-empty');
   const poster = createPoster(scope, nickname, picks);
+  if (!poster) {
+    preview.replaceChildren();
+    preview.hidden = true;
+    empty.hidden = false;
+    return;
+  }
   preview.replaceChildren(poster);
   preview.hidden = false;
+  empty.hidden = true;
   fitPosterPreview();
 }
 

@@ -1,4 +1,4 @@
-import { t } from './language.js?v=20261006-4';
+import { t } from './language.js?v=20261006-5';
 
 const load = (file) => fetch(new URL(`${file}?v=20261006-1`, import.meta.url)).then((response) => {
   if (!response.ok) throw new Error(t('data.loadError', { file }));

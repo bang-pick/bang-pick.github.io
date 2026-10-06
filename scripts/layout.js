@@ -1,4 +1,4 @@
-import { applyLanguage, t } from './language.js?v=20261006-4';
+import { applyLanguage, t } from './language.js?v=20261006-5';
 
 const response = await fetch('./shared-layout.html?v=20261006-2');
 if (!response.ok) throw new Error(t('layout.loadError'));

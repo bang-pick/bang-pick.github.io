@@ -1,6 +1,6 @@
-import { bands, characters } from './data.js?v=20261006-3';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-4';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-3';
+import { bands, characters } from './data.js?v=20261006-4';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-5';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-4';
 import {
   bandById,
   bandLogo,
@@ -14,7 +14,7 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261006-11';
+} from './poster.js?v=20261006-13';
 
 const bestNineLimit = 9;
 const storageKey = 'bandori-pick-v1';
