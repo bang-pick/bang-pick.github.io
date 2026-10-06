@@ -50,10 +50,15 @@ const hasPicks = () => scope === 'all' ? bestNine.length > 0 : Object.values(ban
 
 function renderBands() {
   const select = $('#song-band');
+  const selectedBand = select.value;
+  const availableBands = scope === 'all' ? bands : mainBands;
   select.replaceChildren(new Option(t('filter.allBands'), 'all'));
-  for (const { id } of (scope === 'all' ? bands : mainBands)) {
+  for (const { id } of availableBands) {
     select.add(new Option(id === 'others' ? t('filter.others') : bandName(bandById[id]), id));
   }
+  select.value = selectedBand === 'all' || availableBands.some(({ id }) => id === selectedBand)
+    ? selectedBand
+    : 'all';
 }
 
 function renderList() {
@@ -79,7 +84,7 @@ function renderList() {
     const title = document.createElement('div');
     const primary = document.createElement('strong');
     const performer = document.createElement('div');
-    const bandName = document.createElement('span');
+    const bandLabel = document.createElement('span');
     const mark = document.createElement('span');
     const rank = scope === 'all' ? bestNine.indexOf(song.key) + 1 : 0;
     const selected = scope === 'all' ? rank > 0 : bandPicks[song.group] === song.key;
@@ -98,10 +103,10 @@ function renderList() {
       title.append(original);
     }
     performer.className = 'song-performer';
-    bandName.textContent = artistName(song.band);
+    bandLabel.textContent = artistName(song.band);
     mark.className = 'song-selection-rank';
     mark.textContent = selected ? (rank ? t('pick.rank', { rank }) : '✓') : '+';
-    performer.append(bandName, mark);
+    performer.append(bandLabel, mark);
     button.append(title, performer);
     row.append(button);
     fragment.append(row);
@@ -228,6 +233,7 @@ $('#song-list').addEventListener('click', (event) => {
 document.querySelectorAll('.scope-tab').forEach((button) => button.addEventListener('click', () => {
   scope = button.dataset.scope;
   renderBands();
+  $('#song-band').value = 'all';
   render();
 }));
 $('#song-search').addEventListener('input', renderList);
