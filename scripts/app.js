@@ -1,6 +1,6 @@
-import { bands, characters } from './data.js?v=20261006-2';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-3';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-2';
+import { bands, characters } from './data.js?v=20261006-3';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-4';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-3';
 import {
   bandById,
   bandLogo,
@@ -13,7 +13,7 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261006-6';
+} from './poster.js?v=20261006-7';
 
 const bestNineLimit = 9;
 const coupleLimit = 8;

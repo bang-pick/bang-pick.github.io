@@ -1,4 +1,4 @@
-import { characterName, getLanguage, t } from './language.js?v=20261006-3';
+import { characterName, getLanguage, t } from './language.js?v=20261006-4';
 
 const response = await fetch(new URL('../data/characters.json?v=20261006-1', import.meta.url));
 if (!response.ok) throw new Error(t('birthday.loadError'));

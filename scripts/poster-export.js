@@ -1,4 +1,4 @@
-import { getLanguage, t } from './language.js?v=20261006-3';
+import { getLanguage, t } from './language.js?v=20261006-4';
 
 export function fitPosterPreview() {
   const preview = document.querySelector('#poster-preview');

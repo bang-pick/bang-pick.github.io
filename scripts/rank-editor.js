@@ -1,4 +1,4 @@
-import { t } from './language.js?v=20261006-3';
+import { t } from './language.js?v=20261006-4';
 
 export function renderRankEditor(editor, list, entries, getLabel, onReorder) {
   editor.hidden = entries.length === 0;

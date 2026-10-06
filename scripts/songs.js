@@ -1,7 +1,7 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-4';
-import { bands, characters } from './data.js?v=20261006-2';
-import { bandName, getLanguage, t } from './language.js?v=20261006-3';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-2';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-5';
+import { bands, characters } from './data.js?v=20261006-3';
+import { bandName, getLanguage, t } from './language.js?v=20261006-4';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-3';
 
 const $ = (selector) => document.querySelector(selector);
 const storageKey = 'bandori-song-pick-v1';
