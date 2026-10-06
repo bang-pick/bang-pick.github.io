@@ -379,11 +379,6 @@
 }
 
 @media (max-width: 1050px) {
-  .workspace {
-    padding-right: 5vw;
-    padding-left: 5vw;
-  }
-
   .character-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -403,7 +398,11 @@
 
 @media (max-width: 760px) {
   .workspace {
-    padding: 34px 20px 40px;
+    padding: 5vw;
+  }
+
+  .section-heading h2{
+    font-size: 24px;
   }
 
   .filters {

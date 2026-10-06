@@ -153,10 +153,6 @@
   background: var(--paper);
 }
 
-.poster-empty[hidden] {
-  display: none;
-}
-
 #poster-preview > .print-poster {
   transform-origin: top left;
 }
@@ -237,22 +233,6 @@
   height: 400px;
 }
 
-.print-poster-podium-placeholder {
-  visibility: hidden;
-}
-
-.print-poster-podium-placeholder.rank-1 {
-  height: 522px;
-}
-
-.print-poster-podium-placeholder.rank-2 {
-  height: 482px;
-}
-
-.print-poster-podium-placeholder.rank-3 {
-  height: 462px;
-}
-
 .print-poster-lower-grid {
   margin-top: 22px;
 }
@@ -296,6 +276,10 @@
   align-items: center;
 }
 
+.print-couple-cards .print-poster-portrait {
+  height: 280px;
+}
+
 .print-couple-arrow {
   color: var(--accent);
   font-size: 32px;
@@ -317,6 +301,21 @@
   border: 1px solid #e4e2dc;
   border-radius: 10px;
   background: #fff;
+}
+
+.print-poster-card.is-empty .print-poster-portrait::after {
+  color: rgba(34, 35, 31, .2);
+  content: "+";
+  font-size: 42px;
+  font-weight: 300;
+}
+
+.print-poster-card.is-empty .print-poster-info {
+  min-height: 92px;
+}
+
+.print-poster-card-band.is-empty .print-poster-info {
+  min-height: 68px;
 }
 
 .print-poster-portrait {
@@ -347,7 +346,6 @@
   color: #fff;
   font-size: 16px;
   font-weight: 400;
-  font-family: "Wanted Sans Variable", Pretendard, sans-serif;
   line-height: 1;
   white-space: nowrap;
 }
@@ -466,17 +464,6 @@
   transform: none !important;
 }
 
-.poster-empty {
-  display: grid;
-  place-items: center;
-  min-height: 200px;
-  padding: 28px;
-  background: var(--paper);
-  color: var(--muted);
-  font-size: 13px;
-  text-align: center;
-}
-
 .image-button {
   display: flex;
   align-items: center;
@@ -512,13 +499,6 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 1050px) {
-  .picked-section {
-    padding-right: 5vw;
-    padding-left: 5vw;
-  }
-}
-
 @media (min-width: 1200px) {
   .picked-section {
     grid-area: picked;
@@ -530,6 +510,14 @@
 }
 
 @media (max-width: 760px) {
+  .picked-section {
+    padding: 5vw;
+  }
+
+  .section-heading h2{
+    font-size: 24px;
+  }
+
   .picked-panel {
     gap: 12px;
   }

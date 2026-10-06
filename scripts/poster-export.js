@@ -49,14 +49,14 @@ async function embeddedFontStyles() {
   const importRule = [...document.styleSheets].flatMap((sheet) => {
     try { return [...sheet.cssRules].filter((rule) => rule instanceof CSSImportRule); }
     catch { return []; }
-  }).find((rule) => rule.href.includes('wanted-sans'));
+  }).find((rule) => rule.href.includes('pretendardvariable-jp'));
   if (!importRule) throw new Error(t('export.fontUrlError'));
   const response = await fetch(importRule.href);
   if (!response.ok) throw new Error(t('export.fontLoadError'));
   const css = await response.text();
   const faces = [...css.matchAll(/@font-face\s*\{[^}]+\}/g)]
     .map(([face]) => face)
-    .filter((face) => /font-family:\s*["']?Wanted Sans Variable/i.test(face));
+    .filter((face) => /font-family:\s*["']?Pretendard JP Variable/i.test(face));
   if (!faces.length) throw new Error(t('export.fontFaceError'));
   const localFaces = getLanguage() === 'ja' ? [] : [...document.styleSheets].flatMap((sheet) => {
     try {
@@ -89,7 +89,7 @@ export async function savePosterImage(filename) {
   const width = poster.offsetWidth;
   let canvas;
   try {
-    const fonts = [document.fonts.load('16px "Wanted Sans Variable"')];
+    const fonts = [document.fonts.load('16px "Pretendard JP Variable"')];
     if (getLanguage() !== 'ja') fonts.push(document.fonts.load('700 42px "Godo"'));
     await Promise.all(fonts);
     await embedPosterImages(poster);

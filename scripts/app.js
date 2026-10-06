@@ -7,16 +7,16 @@ import {
   characterById,
   characterForm,
   characterImage,
+  coupleLimit,
   couplingName,
   fitPosterPreview,
   initials,
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261006-7';
+} from './poster.js?v=20261006-9';
 
 const bestNineLimit = 9;
-const coupleLimit = 8;
 const storageKey = 'bandori-pick-v1';
 let saved;
 try { saved = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch { saved = {}; }

@@ -8,7 +8,7 @@
     <title data-i18n="meta.pickTitle">최애캐 | 방픽!</title>
     <link rel="stylesheet" href="./styles/base.css?v=20261006-3" />
     <link rel="stylesheet" href="./styles/picker.css?v=20261006-2" />
-    <link rel="stylesheet" href="./styles/poster.css?v=20261006-7" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261006-9" />
     <link rel="icon" href="./assets/favicon.ico" />
 
     <meta property="og:type" content="website" />
@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="방픽!" />
 
     <script src="./scripts/layout.js?v=20261006-3" type="module"></script>
-    <script src="./scripts/app.js?v=20261006-7" type="module"></script>
+    <script src="./scripts/app.js?v=20261006-9" type="module"></script>
   </head>
   <body data-page="pick">
     <header class="topbar" data-shared="header"></header>
@@ -45,8 +45,7 @@
                 <div class="picked-list-heading" data-i18n="pick.rankHeading">순위 조정</div>
                 <div class="rank-editor-list" id="rank-editor-list"></div>
               </div>
-              <div id="poster-preview" aria-label="선택한 캐릭터 최애표 미리보기" data-i18n-aria="pick.posterLabel" hidden></div>
-              <div class="poster-empty" id="poster-empty" data-i18n="pick.posterEmpty">캐릭터를 선택하면 최애표가 여기에 표시됩니다.</div>
+              <div id="poster-preview" aria-label="선택한 캐릭터 최애표 미리보기" data-i18n-aria="pick.posterLabel"></div>
             </div>
             <button class="image-button" id="save-image" type="button" disabled><span data-i18n="common.saveImage">이미지 저장</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg></button>
