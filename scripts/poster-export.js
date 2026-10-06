@@ -1,4 +1,4 @@
-import { getLanguage, t } from './language.js?v=20261006-4';
+import { getLanguage, t } from './language.js?v=20261006-5';
 
 export function fitPosterPreview() {
   const preview = document.querySelector('#poster-preview');
@@ -56,7 +56,7 @@ async function embeddedFontStyles() {
   const css = await response.text();
   const faces = [...css.matchAll(/@font-face\s*\{[^}]+\}/g)]
     .map(([face]) => face)
-    .filter((face) => /font-family:\s*["']?Pretendard JP Variable/i.test(face));
+    .filter((face) => /font-family:\s*["']?Pretendard JP Variable["']?/i.test(face));
   if (!faces.length) throw new Error(t('export.fontFaceError'));
   const localFaces = getLanguage() === 'ja' ? [] : [...document.styleSheets].flatMap((sheet) => {
     try {

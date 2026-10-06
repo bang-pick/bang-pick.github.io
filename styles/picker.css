@@ -398,7 +398,7 @@
 
 @media (max-width: 760px) {
   .workspace {
-    padding: 5vw;
+    padding: 24px 20px;
   }
 
   .section-heading h2{

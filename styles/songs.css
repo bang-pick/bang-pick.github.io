@@ -240,7 +240,7 @@
 @media (max-width: 760px) {
   .song-picker,
   .song-preview {
-    padding: 34px 20px 40px;
+    padding: 24px 20px;
   }
 
   .filters {
