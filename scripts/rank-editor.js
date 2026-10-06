@@ -1,3 +1,5 @@
+import { t } from './language.js?v=20261006-3';
+
 export function renderRankEditor(editor, list, entries, getLabel, onReorder) {
   editor.hidden = entries.length === 0;
   list.replaceChildren();
@@ -9,8 +11,8 @@ export function renderRankEditor(editor, list, entries, getLabel, onReorder) {
     const select = document.createElement('select');
     row.className = 'rank-editor-row';
     name.textContent = getLabel(entry);
-    select.setAttribute('aria-label', `${name.textContent} 순위`);
-    entries.forEach((_, rank) => select.add(new Option(`${rank + 1}위`, String(rank))));
+    select.setAttribute('aria-label', t('pick.rankLabel', { name: name.textContent }));
+    entries.forEach((_, rank) => select.add(new Option(t('pick.rank', { rank: rank + 1 }), String(rank))));
     select.value = String(index);
     select.addEventListener('change', () => onReorder(index, Number(select.value)));
     row.append(name, select);

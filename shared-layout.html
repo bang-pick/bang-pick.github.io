@@ -1,10 +1,11 @@
 <template id="site-header">
   <header class="topbar">
-    <a class="logo" href="./index.html" aria-label="방픽 홈">방픽<img src="./assets/exclamation.svg" alt="" /></a>
-    <nav aria-label="주 메뉴">
-      <a class="nav-link" data-page="home" href="./index.html">홈</a>
-      <a class="nav-link" data-page="pick" href="./pick.html">최애캐</a>
-      <a class="nav-link" data-page="songs" href="./songs.html">최애곡</a>
+    <a class="logo" href="./index.html" data-i18n-aria="nav.homeLabel">방픽<img src="./assets/exclamation.svg" alt="" /></a>
+    <nav aria-label="주 메뉴" data-i18n-aria="nav.menu">
+      <a class="nav-link" data-page="home" data-i18n="nav.home" href="./index.html">홈</a>
+      <a class="nav-link" data-page="pick" data-i18n="nav.characters" href="./pick.html">최애캐</a>
+      <a class="nav-link" data-page="songs" data-i18n="nav.songs" href="./songs.html">최애곡</a>
+      <button class="language-toggle" id="language-toggle" type="button">日本語</button>
     </nav>
   </header>
 </template>
@@ -12,9 +13,8 @@
 <template id="site-footer">
   <footer>
     <div class="copyright">
-      <span>©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 <b>비공식・비영리 팬 사이트</b>입니다.</span>
-      <span>本サイトは「BanG Dream!」公式とは関係のない、非公式・非営利のファンサイトです。</span>
+      <span data-i18n="footer.copyright">©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 비공식・비영리 팬 사이트입니다.</span>
     </div>
-    <a href="https://bang-dream.com/artist/" target="_blank" rel="noopener noreferrer">이미지 출처</a>
+    <a href="https://bang-dream.com/artist/" target="_blank" rel="noopener noreferrer" data-i18n="footer.source">이미지 출처</a>
   </footer>
 </template>

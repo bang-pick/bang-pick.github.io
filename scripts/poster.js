@@ -1,8 +1,8 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261005-2';
-import { bands, characters } from './data.js?v=20261005-1';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-4';
+import { bands, characters } from './data.js?v=20261006-2';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-3';
 
 const asset = (folder, name) => name ? new URL(`../assets/images/${folder}/${name}`, import.meta.url).href : null;
-const posterTitles = { all: '베스트 9', band: '밴드별 최애', couples: '최애커플' };
 export const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));
 export const characterById = Object.fromEntries(characters.map((character) => [character.id, character]));
 
@@ -29,14 +29,18 @@ export const characterForm = (id, picks) => {
 };
 
 export const couplingName = (firstId, secondId, picks) =>
-  [firstId, secondId].map((id) => characterForm(id, picks).name.split(' ').at(-1).slice(0, 2)).join('');
+  [firstId, secondId].map((id) => {
+    const name = characterName(characterForm(id, picks)).split(' ').at(-1);
+    return id === 'kurata-mashiro' ? name.slice(-2) : name.slice(0, 2);
+  }).join('');
 
 function createPoster(outputScope, nickname, picks) {
   const entries = pickedEntries(picks, outputScope);
   if (!entries.length) return null;
   const poster = document.querySelector('#poster-template').content.firstElementChild.cloneNode(true);
-  poster.querySelector('.print-poster-owner').textContent = nickname.trim() || '나';
-  poster.querySelector('.print-poster-title').textContent = `의 ${posterTitles[outputScope] || posterTitles.band}`;
+  poster.querySelector('.print-poster-owner').textContent = nickname.trim() || t('poster.defaultOwner');
+  poster.querySelector('.print-poster-title').textContent = t(`poster.${outputScope === 'couples' ? 'couple' : outputScope}Title`);
+  poster.querySelector('.print-poster-footer span:last-child').textContent = t('poster.footer');
   const content = poster.querySelector('.print-poster-content');
 
   const createCard = (entry, rank = null) => {
@@ -50,7 +54,7 @@ function createPoster(outputScope, nickname, picks) {
       logo.className = 'print-poster-featured-logo';
       const image = document.createElement('img');
       image.src = bandLogo(band);
-      image.alt = `${band.name} 로고`;
+      image.alt = t('common.bandLogo', { name: bandName(band) });
       logo.append(image);
       card.append(logo);
     }
@@ -70,12 +74,12 @@ function createPoster(outputScope, nickname, picks) {
       image.alt = '';
       portrait.append(image);
     } else {
-      portrait.textContent = initials(character.name);
+      portrait.textContent = initials(characterName(character));
     }
     if (rank) {
       const badge = document.createElement('span');
       badge.className = 'print-poster-rank';
-      badge.textContent = `${rank}위`;
+      badge.textContent = t('poster.rank', { rank });
       portrait.append(badge);
     }
     const info = document.createElement('footer');
@@ -90,16 +94,16 @@ function createPoster(outputScope, nickname, picks) {
         image.alt = '';
         bandLine.append(image);
       } else {
-        bandLine.textContent = band.name;
+        bandLine.textContent = bandName(band);
       }
       info.append(bandLine);
     }
     const name = document.createElement('span');
     name.className = 'print-poster-name';
-    name.textContent = character.name;
+    name.textContent = characterName(character);
     const details = document.createElement('small');
     details.className = 'print-poster-sub';
-    details.textContent = `${character.japanese} · ${character.part}`;
+    details.textContent = [otherCharacterName(character), character.part].filter(Boolean).join(' · ');
     info.append(name, details);
     card.append(portrait, info);
     return card;
@@ -109,17 +113,20 @@ function createPoster(outputScope, nickname, picks) {
     const list = document.createElement('div');
     list.className = 'print-couples';
     const pairs = picks.couples || [];
-    for (const [firstId, secondId] of pairs.slice(0, 4)) {
+    for (const [firstId, secondId] of pairs) {
       const pair = document.createElement('div');
       pair.className = 'print-couple';
-      const name = document.createElement('span');
-      name.className = 'print-couple-name';
-      name.textContent = couplingName(firstId, secondId, picks);
       const cards = document.createElement('div');
       cards.className = 'print-couple-cards';
       const direction = document.createElement('div');
       direction.className = 'print-couple-direction';
-      direction.append(name, Object.assign(document.createElement('span'), { className: 'print-couple-arrow', textContent: '→' }));
+      if (getLanguage() !== 'ja') {
+        const name = document.createElement('span');
+        name.className = 'print-couple-name';
+        name.textContent = couplingName(firstId, secondId, picks);
+        direction.append(name);
+      }
+      direction.append(Object.assign(document.createElement('span'), { className: 'print-couple-arrow', textContent: '→' }));
       cards.append(createCard({ id: firstId }, null), direction, createCard({ id: secondId }, null));
       pair.append(cards);
       list.append(pair);

@@ -2,7 +2,6 @@
 .picked-section {
   min-width: 0;
   padding: 28px;
-  background: #fff;
 }
 
 .picked-heading {
@@ -47,7 +46,6 @@
   gap: 7px;
   padding: 14px;
   border-bottom: 1px solid var(--line);
-  background: #fff;
 }
 
 .nickname-field input {
@@ -63,7 +61,6 @@
 }
 
 .rank-editor, .couple-selection {
-  background: #fff;
   border-bottom: 1px solid var(--line);
   padding: 14px;
 }
@@ -169,7 +166,6 @@
   padding: 64px;
   background: var(--paper);
   color: #22231f;
-  font-family: "Wanted Sans Variable", Pretendard, sans-serif;
   word-break: keep-all;
   overflow-wrap: normal;
 }
@@ -185,12 +181,16 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  font-family: 'Godo';
+  font-family: var(--display-font);
   font-size: 42px;
   font-style: normal;
   font-weight: 700;
   letter-spacing: -.025em;
   white-space: nowrap;
+}
+
+.print-poster.song-poster {
+  width: 960px;
 }
 
 .print-poster-header h2 > span {
@@ -285,8 +285,8 @@
 .print-couple-name {
   display: block;
   color: #22231f;
-  font-family: 'Godo', sans-serif;
   font-size: 16px;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -347,7 +347,7 @@
   color: #fff;
   font-size: 16px;
   font-weight: 400;
-  font-family: 'Godo';
+  font-family: "Wanted Sans Variable", Pretendard, sans-serif;
   line-height: 1;
   white-space: nowrap;
 }
@@ -361,7 +361,6 @@
   place-items: center;
   height: 76px;
   padding: 8px 14px;
-  background: #fff;
 }
 
 .print-poster-featured-logo img {
@@ -385,9 +384,8 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  gap: 6px;
+  gap: 4px;
   padding: 16px;
-  background: #fff;
 }
 
 .print-poster-card:not(.print-poster-card-band) .print-poster-info {
@@ -419,8 +417,7 @@
   width: 100%;
   overflow: hidden;
   font-size: 20px;
-  font-weight: 400;
-  font-family: 'Godo';
+  font-weight: 650;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
@@ -433,7 +430,7 @@
   font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .print-poster-lower-grid .print-poster-info {
@@ -513,4 +510,33 @@
   background: #e8e7e1;
   color: #8a8b83;
   cursor: not-allowed;
+}
+
+@media (max-width: 1050px) {
+  .picked-section {
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .picked-section {
+    grid-area: picked;
+    position: sticky;
+    top: 18px;
+    max-height: calc(100vh - 36px);
+    overflow: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .picked-panel {
+    gap: 12px;
+  }
+
+  .image-button {
+    min-height: 40px;
+    padding: 0 9px;
+    font-size: 12px;
+  }
 }

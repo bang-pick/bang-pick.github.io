@@ -26,6 +26,7 @@
   --paper: #faf9f6;
   --accent: #f31864;
   --accent-light: #fff1f5;
+  --display-font: 'Godo', 'Wanted Sans Variable', sans-serif;
   --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%23777870' stroke-width='1.5'/%3E%3C/svg%3E");
 }
 
@@ -35,6 +36,11 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+html[lang="ja"] {
+  --display-font: "Wanted Sans Variable", sans-serif;
 }
 
 body {
@@ -57,7 +63,7 @@ button {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 72px;
+  height: 64px;
   padding: 0 max(24px, calc((100vw - 1400px) / 2));
   border-bottom: 1px solid #e2e4e7;
   background: #fff;
@@ -70,7 +76,7 @@ button {
   background: linear-gradient(90deg, #f31864, #ff9bbe);
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-family: 'Godo';
+  font-family: 'Godo', sans-serif;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: -.055em;
@@ -111,6 +117,27 @@ button {
   font-weight: 600;
 }
 
+.language-toggle {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color .18s ease, background-color .18s ease;
+}
+
+.language-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.language-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .soon {
   padding: 3px 7px;
   border: 1px solid var(--line);
@@ -118,7 +145,7 @@ button {
   font-size: 11px;
 }
 
-/* Page frame and intro */
+/* Shared page frame */
 main {
   width: calc(100% - 48px);
   max-width: 1400px;
@@ -133,121 +160,6 @@ main {
   box-shadow: 0 2px 8px rgba(32,38,46,.025);
 }
 
-.intro {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 36px;
-  min-height: 360px;
-  padding: 72px;
-  overflow: hidden;
-  isolation: isolate;
-  background: #f1f0eb;
-}
-
-.birthday-notice {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 16px;
-  padding: 16px 36px;
-  font-size: 14px;
-}
-
-.birthday-notice strong {
-  flex: 0 0 auto;
-  color: var(--accent);
-  font-size: 13px;
-}
-
-.birthday-notice span {
-  min-width: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.birthday-notice strong,
-.birthday-notice span {
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-.birthday-notice.is-changing strong,
-.birthday-notice.is-changing span {
-  opacity: 0;
-  transform: translateY(3px);
-}
-
-.intro::before {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,.95) 40%, rgba(255,255,255,.75) 50%, rgba(255,255,255,.25) 60%, transparent 70%);
-  content: "";
-  pointer-events: none;
-}
-
-.intro-visual {
-  position: absolute;
-  z-index: 0;
-  inset: 0 0 0 auto;
-  width: 68%;
-  overflow: hidden;
-  background: #f1f0eb;
-}
-
-.intro-visual img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-}
-
-.intro-copy {
-  position: relative;
-  z-index: 2;
-  max-width: 780px;
-}
-
-.intro h1, .intro h2 {
-  margin: 0;
-  font-family: Montserrat, sans-serif;
-  font-style: italic;
-  font-weight: 800;
-  letter-spacing: -.055em;
-}
-
-.intro h2 {
-  font-size: clamp(24px, 5.2vw, 42px);
-}
-
-.intro h1 {
-  display: inline-block;
-  padding-right: .12em;
-  background: linear-gradient(90deg, #f31864, #ff9bbe);
-  background-clip: text;
-  font-size: clamp(48px, 6.2vw, 82px);
-  line-height: 1.2;
-  -webkit-text-fill-color: transparent;
-}
-
-.intro h1 img {
-  width: auto;
-  height: 1.2em;
-  margin-left: .1em;
-  vertical-align: -.16em;
-}
-
-.intro-description {
-  margin: 22px 0 0;
-  color: #666860;
-  font-size: 16px;
-  line-height: 1.8;
-}
-
 body > footer {
   display: flex;
   align-items: center;
@@ -259,6 +171,7 @@ body > footer {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.6;
+  word-break: keep-all;
 }
 
 body > footer a {
@@ -315,46 +228,22 @@ body > footer a:hover {
 }
 
 @media (max-width: 760px) {
-  .birthday-notice {
-    padding-right: 5vw;
-    padding-left: 5vw;
-  }
-
-  .intro {
-    padding: 34px 24px 215px;
-    gap: 24px;
-  }
-
-  .intro::before {
-    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,.95) 45%, rgba(255,255,255,.75) 50%, rgba(255,255,255,.25) 60%, transparent 70%);
-  }
-
-  .intro-visual {
-    inset: auto 0 0;
-    width: 100%;
-    height: 62%;
-  }
-
-  .intro h1 {
-    font-size: 48px;
-  }
-
-  .intro-description {
-    margin: 17px 0 22px;
-    font-size: 14px;
-  }
-
   .topbar {
-    height: 62px;
+    height: 52px;
     padding: 0 18px;
   }
 
   .topbar nav {
-    gap: 14px;
+    gap: 16px;
   }
 
   .nav-link {
     font-size: 12px;
+  }
+
+  .language-toggle {
+    padding: 6px 8px;
+    font-size: 11px;
   }
 
   main {

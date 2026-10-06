@@ -2,78 +2,91 @@
   {
     "id": "poppin-party",
     "name": "Poppin'Party",
+    "nameJa": "Poppin'Party",
     "color": "#ff3377",
     "logo": "poppipa.webp"
   },
   {
     "id": "afterglow",
     "name": "Afterglow",
+    "nameJa": "Afterglow",
     "color": "#ee3344",
     "logo": "afterglow.webp"
   },
   {
     "id": "pastel-palettes",
     "name": "Pastel＊Palettes",
+    "nameJa": "Pastel＊Palettes",
     "color": "#33ddaa",
     "logo": "pasupare.webp"
   },
   {
     "id": "roselia",
     "name": "Roselia",
+    "nameJa": "Roselia",
     "color": "#3344aa",
     "logo": "roselia.webp"
   },
   {
     "id": "hello-happy-world",
     "name": "헬로, 해피 월드!",
+    "nameJa": "ハロー、ハッピーワールド！",
     "color": "#ffdd00",
     "logo": "hellohappy.webp"
   },
   {
     "id": "morfonica",
     "name": "Morfonica",
+    "nameJa": "Morfonica",
     "color": "#33aaff",
     "logo": "morfonica.webp"
   },
   {
     "id": "raise-a-suilen",
     "name": "RAISE A SUILEN",
+    "nameJa": "RAISE A SUILEN",
     "color": "#33cccc",
     "logo": "ras.webp"
   },
   {
     "id": "mygo",
     "name": "MyGO!!!!!",
+    "nameJa": "MyGO!!!!!",
     "color": "#0088bb",
     "logo": "mygo.webp"
   },
   {
     "id": "ave-mujica",
     "name": "Ave Mujica",
+    "nameJa": "Ave Mujica",
     "color": "#881144",
     "logo": "avemujica.webp"
   },
   {
     "id": "yumemita",
     "name": "무겐다이 뮤타입",
+    "nameJa": "夢限大みゅーたいぷ",
     "color": "#ff7788",
     "logo": "yumemita.webp"
   },
   {
     "id": "millsage",
     "name": "millsage",
+    "nameJa": "millsage",
     "color": "#AA22EE",
     "logo": "millsage.webp"
   },
   {
     "id": "ikka-dumbrock",
     "name": "일가 Dumb Rock!",
+    "nameJa": "一家Dumb Rock!",
     "color": "#FFAA33",
     "logo": "dumbrock.webp"
   },
   {
     "id": "others",
     "name": "기타",
+    "nameJa": "その他",
     "color": "#CCCCCC",
     "logo": "others.webp"
   }

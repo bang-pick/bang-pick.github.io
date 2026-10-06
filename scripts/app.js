@@ -1,5 +1,6 @@
-import { bands, characters } from './data.js?v=20261005-1';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261005-1';
+import { bands, characters } from './data.js?v=20261006-2';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-3';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-2';
 import {
   bandById,
   bandLogo,
@@ -12,9 +13,10 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261005-5';
+} from './poster.js?v=20261006-6';
 
 const bestNineLimit = 9;
+const coupleLimit = 8;
 const storageKey = 'bandori-pick-v1';
 let saved;
 try { saved = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch { saved = {}; }
@@ -26,7 +28,7 @@ const picks = {
     new Set((saved.bands?.[band.id] || []).filter((id) => characterById[id]).slice(-1)),
   ])),
 };
-const couples = (saved.couples || []).map((pair) => pair.filter((id) => characterById[id])).filter((pair) => pair.length === 2).slice(0, 4);
+const couples = (saved.couples || []).map((pair) => pair.filter((id) => characterById[id])).filter((pair) => pair.length === 2).slice(0, coupleLimit);
 const alternateForms = new Set(saved.alternateForms || []);
 picks.couples = couples;
 picks.alternateForms = alternateForms;
@@ -58,16 +60,17 @@ function updateCardSelection(card, ranks) {
   else if (scope === 'couples') chosen = id === pendingCouple || couples.some((pair) => pair.includes(id));
   else chosen = selectedSet(character).has(id);
   card.classList.toggle('chosen', chosen);
-  card.querySelector('.picked-mark').textContent = scope === 'all' ? `${rank}위` : '✓';
+  card.querySelector('.picked-mark').textContent = scope === 'all' ? (rank ? t('pick.rank', { rank }) : '') : '✓';
   card.setAttribute('aria-pressed', String(chosen));
-  card.setAttribute('aria-label', `${characterForm(id, picks).name}, ${bandById[character.band].name}${chosen ? (rank ? `, ${rank}위 선택됨` : ', 선택됨') : ', 선택'}`);
+  const state = chosen ? (rank ? t('pick.rank', { rank }) : t('pick.selected')) : t('pick.selection');
+  card.setAttribute('aria-label', `${characterName(characterForm(id, picks))}, ${bandName(bandById[character.band])}, ${state}`);
 }
 
 function renderBands() {
   const select = $('#band-filter');
-  select.replaceChildren(new Option('전체 밴드', 'all'));
+  select.replaceChildren(new Option(t('filter.allBands'), 'all'));
   for (const band of bands.filter(({ id }) => scope !== 'band' || id !== 'others')) {
-    select.add(new Option(band.name, band.id));
+    select.add(new Option(bandName(band), band.id));
   }
   select.value = activeBand;
 }
@@ -81,9 +84,11 @@ function createCharacterCard(character, ranks) {
   card.dataset.characterId = id;
   card.style.setProperty('--band-color', band.color);
   card.style.setProperty('--character-color', display.color || band.color);
-  card.querySelector('.portrait-initial').textContent = initials(display.name);
-  card.querySelector('.character-name').textContent = display.name;
-  card.querySelector('.character-japanese').textContent = display.japanese;
+  card.querySelector('.portrait-initial').textContent = initials(characterName(display));
+  card.querySelector('.character-name').textContent = characterName(display);
+  const secondaryName = otherCharacterName(display);
+  card.querySelector('.character-japanese').textContent = secondaryName;
+  card.querySelector('.character-sub i').hidden = !secondaryName;
   card.querySelector('.character-part').textContent = character.part;
 
   const sprite = characterImage(display);
@@ -103,14 +108,17 @@ function createCharacterCard(character, ranks) {
   const logo = bandLogo(band);
   const logoImage = bandLine.querySelector('img');
   if (logo) {
-    logoImage.addEventListener('error', () => { bandLine.textContent = band.name; }, { once: true });
+    logoImage.alt = t('common.bandLogo', { name: bandName(band) });
+    logoImage.addEventListener('error', () => { bandLine.textContent = bandName(band); }, { once: true });
     logoImage.src = logo;
-  } else bandLine.textContent = band.name;
+  } else bandLine.textContent = bandName(band);
 
   const switcher = portrait.querySelector('.character-form-switch');
   if (character.alternateName) {
     switcher.dataset.formId = id;
-    switcher.textContent = alternateForms.has(id) ? '미셸' : '미사키';
+    switcher.textContent = alternateForms.has(id)
+      ? (getLanguage() === 'ja' ? character.japanese : character.name)
+      : (getLanguage() === 'ja' ? character.alternateJapanese : character.alternateName);
   } else switcher.remove();
   updateCardSelection(card, ranks);
   return card;
@@ -123,7 +131,7 @@ function renderCharacters() {
   const visible = characters.filter((character) => {
     const matchBand = (activeBand === 'all' || character.band === activeBand)
       && (scope !== 'band' || character.band !== 'others');
-    const text = `${character.name} ${character.japanese} ${character.alternateName || ''} ${character.alternateJapanese || ''} ${bandById[character.band].name}`.toLowerCase();
+    const text = `${character.name} ${character.japanese} ${character.alternateName || ''} ${character.alternateJapanese || ''} ${bandById[character.band].name} ${bandById[character.band].nameJa || ''}`.toLowerCase();
     return matchBand && text.includes(search);
   });
   const list = $('#characters');
@@ -140,7 +148,7 @@ function renderCharacters() {
       section.className = 'band-group';
       const heading = document.createElement('h4');
       heading.className = 'band-group-title';
-      heading.textContent = group.band.name;
+      heading.textContent = bandName(group.band);
       section.append(heading, grid);
       list.append(section);
     } else {
@@ -149,14 +157,18 @@ function renderCharacters() {
     for (const character of group.characters) grid.append(createCharacterCard(character, ranks));
   }
   $('#empty-state').hidden = visible.length !== 0;
-  $('#roster-title').textContent = activeBand === 'all' ? '전체' : band.name;
+  $('#roster-title').textContent = activeBand === 'all' ? t('pick.rosterAll') : bandName(band);
   updateRosterSubtitle();
 }
 
 function updateRosterSubtitle() {
-  let subtitle = '선택한 밴드 안에서 최애를 골라보세요.';
-  if (scope === 'all') subtitle = `최애 9명을 골라보세요. (현재 ${picks.all.size}/${bestNineLimit}명 선택됨)`;
-  if (scope === 'couples') subtitle = `두 캐릭터를 순서대로 선택하세요. (현재 ${couples.length}/4쌍 선택됨)${pendingCouple ? ' · 한 명 선택됨' : ''}`;
+  let subtitle = t('pick.bandSubtitle');
+  if (scope === 'all') subtitle = t('pick.bestSubtitle', { count: picks.all.size });
+  if (scope === 'couples') subtitle = t('pick.coupleSubtitle', {
+    count: couples.length,
+    limit: coupleLimit,
+    pending: pendingCouple ? t('pick.pending') : '',
+  });
   $('#roster-subtitle').textContent = subtitle;
 }
 
@@ -169,11 +181,13 @@ function renderCouples() {
     const pair = document.createElement('div');
     pair.className = 'couple-selection-item';
     const label = document.createElement('span');
-    label.textContent = `${index + 1}. ${couplingName(firstId, secondId, picks)}`;
+    label.textContent = getLanguage() === 'ja'
+      ? `${characterName(characterForm(firstId, picks))} → ${characterName(characterForm(secondId, picks))}`
+      : `${index + 1}. ${couplingName(firstId, secondId, picks)}`;
     const remove = document.createElement('button');
     remove.type = 'button';
     remove.dataset.removeCouple = index;
-    remove.textContent = '삭제';
+    remove.textContent = t('pick.coupleRemove');
     pair.append(label, remove);
     pairList.append(pair);
   });
@@ -185,7 +199,7 @@ function toggleCharacter(id) {
       if (pendingCouple !== id) couples.push([pendingCouple, id]);
       pendingCouple = null;
     } else {
-      if (couples.length >= 4) return;
+      if (couples.length >= coupleLimit) return;
       pendingCouple = id;
     }
     persist();
@@ -198,7 +212,7 @@ function toggleCharacter(id) {
   const selected = selectedSet(character);
   if (selected.has(id)) selected.delete(id);
   else if (scope === 'all' && selected.size >= bestNineLimit) {
-    window.alert('베스트 9은 최대 9명까지 선택할 수 있어요.');
+    window.alert(t('pick.bestLimit'));
     return;
   } else {
     if (scope === 'band') selected.clear();
@@ -227,7 +241,7 @@ function renderRankEditor() {
   const editor = $('#rank-editor');
   const ids = [...picks.all];
   renderRankRows(editor, $('#rank-editor-list'), scope === 'all' ? ids : [],
-    (id) => characterById[id].name,
+    (id) => characterName(characterById[id]),
     (from, to) => {
       const reordered = [...picks.all];
       const [moved] = reordered.splice(from, 1);
@@ -251,7 +265,7 @@ function render() {
   });
 }
 
-new ResizeObserver(fitPosterPreview).observe($('#poster-preview'));
+window.addEventListener('resize', fitPosterPreview);
 $('#characters').addEventListener('click', (event) => {
   const switcher = event.target.closest('.character-form-switch');
   if (switcher) {
@@ -295,12 +309,12 @@ $('#nickname').addEventListener('input', (event) => {
   nickname = event.currentTarget.value;
   persist();
   const owner = $('#poster-preview .print-poster-owner');
-  if (owner) owner.textContent = nickname.trim() || '나';
+  if (owner) owner.textContent = nickname.trim() || t('poster.defaultOwner');
 });
 $('#search').addEventListener('input', (event) => { query = event.target.value.trim(); renderCharacters(); });
 $('#clear-picks').addEventListener('click', () => {
   if (!hasPicks()) return;
-  if (!window.confirm('선택한 최애를 모두 지울까요?')) return;
+  if (!window.confirm(t('pick.deleteConfirm'))) return;
   picks.all.clear();
   for (const set of Object.values(picks.bands)) set.clear();
   couples.splice(0);
@@ -314,7 +328,7 @@ $('#save-image').addEventListener('click', async () => {
   try {
     await saveFavoritesImage(scope);
   } catch (error) {
-    window.alert(error.message || '이미지를 저장하지 못했습니다.');
+    window.alert(error.message || t('pick.saveError'));
   } finally {
     button.disabled = pickedEntries(picks, scope).length === 0;
   }
@@ -326,4 +340,6 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+document.addEventListener('app-language-change', render);
+document.fonts.ready.then(fitPosterPreview);
 render();

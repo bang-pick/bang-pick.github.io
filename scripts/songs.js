@@ -1,10 +1,11 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261005-2';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261005-1';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-4';
+import { bands, characters } from './data.js?v=20261006-2';
+import { bandName, getLanguage, t } from './language.js?v=20261006-3';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-2';
 
 const $ = (selector) => document.querySelector(selector);
 const storageKey = 'bandori-song-pick-v1';
 const limit = 9;
-const bands = await fetch('./data/bands.json?v=20261005-1').then((response) => response.json());
 const mainBands = bands.filter(({ id }) => id !== 'others');
 const songs = (await Promise.all(bands.map(async ({ id }) => {
   const response = await fetch('./data/songs/' + id + '.json?v=20261005-7');
@@ -29,15 +30,29 @@ let nickname = typeof saved.nickname === 'string' ? saved.nickname : '';
 let scope = 'all';
 
 $('#song-nickname').value = nickname;
-const songName = (song) => song.koTitle || song.title;
+const songName = (song) => getLanguage() === 'ja' ? song.title : song.koTitle || song.title;
+const artistReplacements = [
+  ...characters.flatMap(({ name, japanese }) => [
+    [name, japanese],
+    [name.split(' ').at(-1), japanese.split(' ').at(-1)],
+  ]),
+  ...bands.filter(({ nameJa }) => nameJa).map(({ name, nameJa }) => [name, nameJa]),
+  ['사아야', '沙綾'],
+  ['야마부키 사아야', '山吹 沙綾'],
+  ['별 내리는 티파티', '星降るティーパーティー'],
+  ['스페셜밴드', 'スペシャルバンド'],
+].sort(([a], [b]) => b.length - a.length);
+const artistName = (name) => getLanguage() === 'ja'
+  ? artistReplacements.reduce((localized, [korean, japanese]) => localized.replaceAll(korean, japanese), name)
+  : name;
 const persist = () => localStorage.setItem(storageKey, JSON.stringify({ bestNine, bands: bandPicks, nickname }));
 const hasPicks = () => scope === 'all' ? bestNine.length > 0 : Object.values(bandPicks).some(Boolean);
 
 function renderBands() {
   const select = $('#song-band');
-  select.replaceChildren(new Option('전체 밴드', 'all'));
-  for (const { id, name } of (scope === 'all' ? bands : mainBands)) {
-    select.add(new Option(id === 'others' ? '그 외' : name, id));
+  select.replaceChildren(new Option(t('filter.allBands'), 'all'));
+  for (const { id } of (scope === 'all' ? bands : mainBands)) {
+    select.add(new Option(id === 'others' ? t('filter.others') : bandName(bandById[id]), id));
   }
 }
 
@@ -47,7 +62,7 @@ function renderList() {
   const visible = songs.filter((song) =>
     (scope === 'all' || song.group !== 'others')
     && (band === 'all' || song.group === band)
-    && (songName(song) + ' ' + song.title + ' ' + song.band + ' ' + bandById[song.group].name).toLocaleLowerCase().includes(query)
+    && (songName(song) + ' ' + song.title + ' ' + (song.koTitle || '') + ' ' + song.band + ' ' + artistName(song.band) + ' ' + bandById[song.group].name + ' ' + bandById[song.group].nameJa).toLocaleLowerCase().includes(query)
   );
   const fragment = document.createDocumentFragment();
   let lastGroup = null;
@@ -55,7 +70,7 @@ function renderList() {
     if (scope === 'band' && song.group !== lastGroup) {
       const heading = document.createElement('li');
       heading.className = 'song-group-heading';
-      heading.textContent = bandById[song.group].name;
+      heading.textContent = bandName(bandById[song.group]);
       fragment.append(heading);
       lastGroup = song.group;
     }
@@ -72,28 +87,28 @@ function renderList() {
     button.type = 'button';
     button.dataset.songKey = song.key;
     button.setAttribute('aria-pressed', String(selected));
-    button.setAttribute('aria-label', songName(song) + ', ' + song.band
-      + (selected ? (rank ? ', ' + rank + '위 선택됨' : ', 선택됨') : ', 선택'));
+    button.setAttribute('aria-label', `${songName(song)}, ${artistName(song.band)}, ${selected ? (rank ? t('pick.rank', { rank }) : t('pick.selected')) : t('pick.selection')}`);
     title.className = 'song-title';
     primary.textContent = songName(song);
     title.append(primary);
-    if (song.koTitle && song.koTitle !== song.title) {
+    const secondaryTitle = getLanguage() === 'ja' ? song.koTitle : song.title;
+    if (secondaryTitle && secondaryTitle !== songName(song)) {
       const original = document.createElement('small');
-      original.textContent = song.title;
+      original.textContent = secondaryTitle;
       title.append(original);
     }
     performer.className = 'song-performer';
-    bandName.textContent = song.band;
+    bandName.textContent = artistName(song.band);
     mark.className = 'song-selection-rank';
-    mark.textContent = selected ? (rank ? rank + '위' : '✓') : '+';
+    mark.textContent = selected ? (rank ? t('pick.rank', { rank }) : '✓') : '+';
     performer.append(bandName, mark);
     button.append(title, performer);
     row.append(button);
     fragment.append(row);
   }
   $('#song-list').replaceChildren(fragment);
-  $('#song-roster-title').textContent = band === 'all' ? '전체' : bandById[band].name;
-  $('#song-count').textContent = visible.length + '곡';
+  $('#song-roster-title').textContent = band === 'all' ? t('songs.rosterAll') : bandName(bandById[band]);
+  $('#song-count').textContent = t('songs.count', { count: visible.length });
   $('#song-empty').hidden = visible.length > 0;
 }
 
@@ -116,13 +131,13 @@ function createCard(song, band, rank = null) {
   card.style.setProperty('--song-color', band.color || '#ccc');
   rankLabel.textContent = rank ? String(rank).padStart(2, '0') : '';
 
-  const displayBand = song && song.band !== band.name ? song.band : band.name;
+  const displayBand = song && song.band !== band.name ? artistName(song.band) : bandName(band);
   if (band.logo) {
     const logo = document.createElement('img');
     logo.src = './assets/images/bands_big/' + band.logo;
-    logo.alt = band.name;
-    logo.dataset.fallbackText = band.name;
-    logo.addEventListener('error', () => { bandLine.textContent = band.name; }, { once: true });
+    logo.alt = bandName(band);
+    logo.dataset.fallbackText = bandName(band);
+    logo.addEventListener('error', () => { bandLine.textContent = bandName(band); }, { once: true });
     bandLine.append(logo);
   } else {
     bandLine.textContent = displayBand;
@@ -131,14 +146,15 @@ function createCard(song, band, rank = null) {
   if (song) {
     card.querySelector('.song-poster-name').textContent = songName(song);
     const original = card.querySelector('.song-poster-original');
-    if (song.koTitle && song.koTitle !== song.title) original.textContent = song.title;
+    const secondaryTitle = getLanguage() === 'ja' ? song.koTitle : song.title;
+    if (secondaryTitle && secondaryTitle !== songName(song)) original.textContent = secondaryTitle;
     else original.remove();
-    card.querySelector('.song-poster-artist').textContent = song.band;
+    card.querySelector('.song-poster-artist').textContent = artistName(song.band);
   } else {
     card.classList.add('is-empty');
-    card.querySelector('.song-poster-name').textContent = '미선택';
+    card.querySelector('.song-poster-name').textContent = t('songs.empty');
     card.querySelector('.song-poster-original').remove();
-    card.querySelector('.song-poster-artist').textContent = band.name;
+    card.querySelector('.song-poster-artist').textContent = bandName(band);
   }
   return card;
 }
@@ -154,9 +170,9 @@ function renderPoster() {
   }
 
   const poster = $('#song-poster-template').content.firstElementChild.cloneNode(true);
-  poster.querySelector('.print-poster-owner').textContent = nickname.trim() || '나';
-  poster.querySelector('.print-poster-title').textContent =
-    scope === 'all' ? '의 최애곡 베스트 9' : '의 밴드별 최애곡';
+  poster.querySelector('.print-poster-owner').textContent = nickname.trim() || t('poster.defaultOwner');
+  poster.querySelector('.print-poster-title').textContent = t(scope === 'all' ? 'songs.bestTitle' : 'songs.bandTitle');
+  poster.querySelector('.print-poster-footer span:last-child').textContent = t('poster.footer');
   const content = poster.querySelector('.print-poster-content');
   const grid = document.createElement('div');
   grid.className = scope === 'all' ? 'song-poster-best' : 'song-poster-bands';
@@ -200,7 +216,7 @@ $('#song-list').addEventListener('click', (event) => {
     if (index >= 0) bestNine.splice(index, 1);
     else if (bestNine.length < limit) bestNine.push(song.key);
     else {
-      window.alert('최애곡은 최대 9곡까지 선택할 수 있어요.');
+      window.alert(t('songs.bestLimit'));
       return;
     }
   } else {
@@ -220,11 +236,11 @@ $('#song-nickname').addEventListener('input', (event) => {
   nickname = event.target.value;
   persist();
   const owner = $('#poster-preview .print-poster-owner');
-  if (owner) owner.textContent = nickname.trim() || '나';
+  if (owner) owner.textContent = nickname.trim() || t('poster.defaultOwner');
 });
 $('#clear-songs').addEventListener('click', () => {
   if (!bestNine.length && !Object.values(bandPicks).some(Boolean)) return;
-  if (!window.confirm('선택한 최애곡을 모두 지울까요?')) return;
+  if (!window.confirm(t('songs.deleteConfirm'))) return;
   bestNine.length = 0;
   for (const band of mainBands) bandPicks[band.id] = null;
   persist();
@@ -236,13 +252,17 @@ $('#save-songs').addEventListener('click', async () => {
   try {
     await savePosterImage(scope === 'all' ? 'bandori-best-songs.png' : 'bandori-band-songs.png');
   } catch (error) {
-    window.alert(error.message || '이미지를 저장하지 못했습니다.');
+    window.alert(error.message || t('songs.saveError'));
   } finally {
     button.disabled = !hasPicks();
   }
 });
 
-new ResizeObserver(fitPosterPreview).observe($('#poster-preview'));
+window.addEventListener('resize', fitPosterPreview);
 document.fonts.ready.then(fitPosterPreview);
+document.addEventListener('app-language-change', () => {
+  renderBands();
+  render();
+});
 renderBands();
 render();

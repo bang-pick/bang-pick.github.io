@@ -1,5 +1,7 @@
-const response = await fetch(new URL('../data/characters.json?v=20261005-1', import.meta.url));
-if (!response.ok) throw new Error('캐릭터 데이터를 불러오지 못했습니다.');
+import { characterName, getLanguage, t } from './language.js?v=20261006-3';
+
+const response = await fetch(new URL('../data/characters.json?v=20261006-1', import.meta.url));
+if (!response.ok) throw new Error(t('birthday.loadError'));
 
 const birthdays = (await response.json())
   .filter(({ birthday }) => birthday && birthday !== '00-00')
@@ -18,19 +20,17 @@ function updateBirthdayMessage() {
   const next = birthdays.find(({ birthday }) => birthday >= today) || birthdays[0];
   if (!next) return;
 
-  const names = birthdays.filter(({ birthday }) => birthday === next.birthday).map(({ name }) => name).join(' · ');
+  const names = birthdays.filter(({ birthday }) => birthday === next.birthday).map(characterName).join(getLanguage() === 'ja' ? '・' : ' · ');
   const [month, day] = next.birthday.split('-').map(Number);
-  birthdayMessage = next.birthday === today
-    ? `오늘은 ${names}의 생일이에요!`
-    : `${month}월 ${day}일은 ${names}의 생일입니다!`;
+  birthdayMessage = t(next.birthday === today ? 'birthday.today' : 'birthday.next', { names, month, day });
 }
 
 function renderBanner(animate = false) {
   const update = () => {
-    label.textContent = showingBirthday ? '생일' : '공지';
+    label.textContent = t(showingBirthday ? 'birthday.label' : 'notice.label');
     text.textContent = showingBirthday
       ? birthdayMessage
-      : '26.10.05. 최애곡 기능이 업데이트 되었습니다!';
+      : t('notice.songUpdate');
     banner.classList.remove('is-changing');
   };
 
@@ -51,6 +51,11 @@ window.setInterval(() => {
 
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) return;
+  updateBirthdayMessage();
+  renderBanner();
+});
+
+document.addEventListener('app-language-change', () => {
   updateBirthdayMessage();
   renderBanner();
 });
