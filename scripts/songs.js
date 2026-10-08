@@ -98,7 +98,7 @@ function renderList() {
     title.append(primary);
     const secondaryTitle = getLanguage() === 'ja' ? song.koTitle : song.title;
     if (secondaryTitle && secondaryTitle !== songName(song)) {
-      const original = document.createElement('small');
+      const original = document.createElement('span');
       original.textContent = secondaryTitle;
       title.append(original);
     }

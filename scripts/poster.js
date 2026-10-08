@@ -104,7 +104,7 @@ function createPoster(outputScope, nickname, picks) {
     const name = document.createElement('span');
     name.className = 'print-poster-name';
     name.textContent = character ? characterName(character) : '';
-    const details = document.createElement('small');
+    const details = document.createElement('span');
     details.className = 'print-poster-sub';
     details.textContent = character ? [otherCharacterName(character), character.part].filter(Boolean).join(' · ') : '';
     info.append(name, details);
