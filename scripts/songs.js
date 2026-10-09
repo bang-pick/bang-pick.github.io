@@ -82,7 +82,7 @@ function renderList() {
     const row = document.createElement('li');
     const button = document.createElement('button');
     const title = document.createElement('div');
-    const primary = document.createElement('strong');
+    const primary = document.createElement('span');
     const performer = document.createElement('div');
     const bandLabel = document.createElement('span');
     const mark = document.createElement('span');
@@ -95,11 +95,13 @@ function renderList() {
     button.setAttribute('aria-label', `${songName(song)}, ${artistName(song.band)}, ${selected ? (rank ? t('pick.rank', { rank }) : t('pick.selected')) : t('pick.selection')}`);
     title.className = 'song-title';
     primary.textContent = songName(song);
+    primary.className = 'song-title-main';
     title.append(primary);
     const secondaryTitle = getLanguage() === 'ja' ? song.koTitle : song.title;
     if (secondaryTitle && secondaryTitle !== songName(song)) {
       const original = document.createElement('span');
       original.textContent = secondaryTitle;
+      original.className = 'song-title-sub';
       title.append(original);
     }
     performer.className = 'song-performer';

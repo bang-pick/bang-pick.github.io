@@ -29,11 +29,20 @@ export const characterForm = (id, picks) => {
     : character;
 };
 
-export const couplingName = (firstId, secondId, picks) =>
-  [firstId, secondId].map((id) => {
-    const name = characterName(characterForm(id, picks)).split(' ').at(-1);
-    return id === 'kurata-mashiro' ? name.slice(-2) : name.slice(0, 2);
-  }).join('');
+const couplingPart = (id, partnerId, picks) => {
+  const name = characterName(characterForm(id, picks)).split(' ').at(-1);
+
+  if (id === 'kurata-mashiro') return name.slice(-2);
+  if (id === 'yamabuki-saya') return '사야';
+  if (id === 'shirokane-rinko' && partnerId === 'udagawa-ako') return '린';
+
+  return name.slice(0, 2);
+};
+
+export const couplingName = (firstId, secondId, picks) => {
+  const ids = [firstId, secondId];
+  return ids.map((id, index) => couplingPart(id, ids[1 - index], picks)).join('');
+};
 
 function createPoster(outputScope, nickname, picks) {
   const entries = pickedEntries(picks, outputScope);

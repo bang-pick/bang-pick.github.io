@@ -604,6 +604,16 @@
     "image": "shizuku.webp"
   },
   {
+    "name": "사와미 카나타",
+    "band": "millsage",
+    "part": "Key. & Vo.",
+    "id": "sawami-kanata",
+    "birthday": "00-00",
+    "japanese": "沢海 奏多",
+    "color": "#FFFF6C",
+    "image": "kanata.webp"
+  },
+  {
     "name": "비올라",
     "band": "others",
     "part": "페어리 부케",
@@ -614,24 +624,14 @@
     "image": "viola.webp"
   },
   {
-    "name": "벨",
+    "name": "스미타 마나",
     "band": "others",
-    "part": "페어리 부케",
-    "id": "bell",
-    "birthday": "00-00",
-    "japanese": "ベル",
-    "color": "#DD96F9",
-    "image": "bell.webp"
-  },
-  {
-    "name": "포포",
-    "band": "others",
-    "part": "페어리 부케",
-    "id": "popo",
-    "birthday": "00-00",
-    "japanese": "ポポ",
-    "color": "#DD96F9",
-    "image": "popo.webp"
+    "part": "sumimi",
+    "id": "sumita-mana",
+    "birthday": "10-02",
+    "japanese": "純田 まな",
+    "color": "#bbff77",
+    "image": "mana.webp"
   },
   {
     "name": "우시고메 유리",
@@ -652,26 +652,6 @@
     "japanese": "戸山 明日香",
     "color": "#ff9ea9",
     "image": "asuka.webp"
-  },
-  {
-    "name": "사와미 카나타",
-    "band": "millsage",
-    "part": "Key. & Vo.",
-    "id": "sawami-kanata",
-    "birthday": "00-00",
-    "japanese": "沢海 奏多",
-    "color": "#FFFF6C",
-    "image": "kanata.webp"
-  },
-  {
-    "name": "스미타 마나",
-    "band": "others",
-    "part": "sumimi",
-    "id": "sumita-mana",
-    "birthday": "10-02",
-    "japanese": "純田 まな",
-    "color": "#bbff77",
-    "image": "mana.webp"
   },
   {
     "name": "츠키시마 마리나",

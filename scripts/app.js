@@ -182,7 +182,7 @@ function renderCouples() {
     pair.className = 'couple-selection-item';
     const label = document.createElement('span');
     label.textContent = getLanguage() === 'ja'
-      ? `${characterName(characterForm(firstId, picks))} → ${characterName(characterForm(secondId, picks))}`
+      ? `${index + 1}. ${characterName(characterForm(firstId, picks))} → ${characterName(characterForm(secondId, picks))}`
       : `${index + 1}. ${couplingName(firstId, secondId, picks)}`;
     const remove = document.createElement('button');
     remove.type = 'button';
