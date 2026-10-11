@@ -1,6 +1,6 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-8';
-import { bands, characters } from './data.js?v=20261006-4';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-5';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261012-1';
+import { bands, characters } from './data.js?v=20261012-1';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261012-1';
 
 const asset = (folder, name) => name ? new URL(`../assets/images/${folder}/${name}`, import.meta.url).href : null;
 export const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));

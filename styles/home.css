@@ -146,6 +146,10 @@ body[data-page="home"] > footer {
   transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
 
+.home-option-profile {
+  grid-column: 1 / -1;
+}
+
 .home-option-art {
   position: absolute;
   bottom: 0;

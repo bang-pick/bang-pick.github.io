@@ -1,20 +1,15 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261006-8';
-import { bands, characters } from './data.js?v=20261006-4';
-import { bandName, getLanguage, t } from './language.js?v=20261006-5';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-4';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261012-1';
+import { bands, characters } from './data.js?v=20261012-1';
+import { bandName, getLanguage, t } from './language.js?v=20261012-1';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261012-1';
+import { loadSongGroup } from './song-data.js?v=20261012-1';
+import { createSongCard } from './song-card.js?v=20261012-1';
 
 const $ = (selector) => document.querySelector(selector);
 const storageKey = 'bandori-song-pick-v1';
 const limit = 9;
 const mainBands = bands.filter(({ id }) => id !== 'others');
-const songs = (await Promise.all(bands.map(async ({ id }) => {
-  const response = await fetch('./data/songs/' + id + '.json?v=20261005-7');
-  return (await response.json()).map((song) => ({
-    ...song,
-    group: id,
-    key: id + ':' + song.band + ':' + song.title,
-  }));
-}))).flat();
+const songs = (await Promise.all(bands.map(({ id }) => loadSongGroup(id)))).flat();
 const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));
 const songByKey = new Map(songs.map((song) => [song.key, song]));
 let saved;
@@ -131,41 +126,6 @@ function renderRanks() {
     });
 }
 
-function createCard(song, band, rank = null) {
-  const card = $('#song-card-template').content.firstElementChild.cloneNode(true);
-  const bandLine = card.querySelector('.song-poster-band');
-  const rankLabel = card.querySelector('.song-poster-rank');
-  card.style.setProperty('--song-color', band.color || '#ccc');
-  rankLabel.textContent = rank ? String(rank).padStart(2, '0') : '';
-
-  const displayBand = song && song.band !== band.name ? artistName(song.band) : bandName(band);
-  if (band.logo) {
-    const logo = document.createElement('img');
-    logo.src = './assets/images/bands_big/' + band.logo;
-    logo.alt = bandName(band);
-    logo.dataset.fallbackText = bandName(band);
-    logo.addEventListener('error', () => { bandLine.textContent = bandName(band); }, { once: true });
-    bandLine.append(logo);
-  } else {
-    bandLine.textContent = displayBand;
-  }
-
-  if (song) {
-    card.querySelector('.song-poster-name').textContent = songName(song);
-    const original = card.querySelector('.song-poster-original');
-    const secondaryTitle = getLanguage() === 'ja' ? song.koTitle : song.title;
-    if (secondaryTitle && secondaryTitle !== songName(song)) original.textContent = secondaryTitle;
-    else original.remove();
-    card.querySelector('.song-poster-artist').textContent = artistName(song.band);
-  } else {
-    card.classList.add('is-empty');
-    card.querySelector('.song-poster-name').textContent = t('songs.empty');
-    card.querySelector('.song-poster-original').remove();
-    card.querySelector('.song-poster-artist').textContent = bandName(band);
-  }
-  return card;
-}
-
 function renderPoster() {
   const preview = $('#poster-preview');
   const empty = $('#poster-empty');
@@ -186,12 +146,12 @@ function renderPoster() {
   if (scope === 'all') {
     bestNine.forEach((key, index) => {
       const song = songByKey.get(key);
-      grid.append(createCard(song, bandById[song.group], index + 1));
+      grid.append(createSongCard(song, bandById[song.group], index + 1, artistName));
     });
   } else {
     for (const [index, band] of mainBands.entries()) {
       const song = songByKey.get(bandPicks[band.id]);
-      grid.append(createCard(song, band, index + 1));
+      grid.append(createSongCard(song, band, index + 1, artistName));
     }
   }
   content.append(grid);

@@ -1,0 +1,271 @@
+body[data-page="profile"] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body[data-page="profile"] > footer {
+  width: 100%;
+}
+
+.profile-layout {
+  display: grid;
+  flex: 1 0 auto;
+  align-content: start;
+  gap: 16px;
+}
+
+.profile-preview-section,
+.profile-editor {
+  min-width: 0;
+}
+
+.profile-preview-section {
+  grid-area: auto;
+}
+
+.profile-preview-wrap {
+  background: var(--paper);
+}
+
+#poster-preview {
+  min-width: 0;
+}
+
+#save-profile {
+  width: 100%;
+}
+
+.profile-field {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  margin: 0 0 24px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.profile-field:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.profile-field > span,
+.profile-field legend {
+  color: var(--ink);
+  font-family: var(--display-font);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.profile-field > input:not([type="range"]),
+.profile-field > select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.profile-field > select {
+  appearance: none;
+  background-image: var(--select-arrow);
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+}
+
+.profile-pick-hint {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-pick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.profile-pick-link {
+  width: fit-content;
+  color: var(--accent);
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.print-poster.profile-card {
+  min-height: 820px;
+  padding: 48px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.profile-card .print-poster-header h2 {
+  font-size: 42px;
+}
+
+.profile-card .print-poster-header h2 > span {
+  white-space: normal;
+}
+
+.profile-card-since {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.profile-card-label {
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 650;
+}
+
+.profile-card-band {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.profile-card-favorite-band {
+  display: grid;
+  place-items: center;
+  min-height: 84px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.profile-card-favorite-band img {
+  max-width: 70%;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.profile-card-characters,
+.profile-card-pairings {
+  margin-top: 22px;
+}
+
+.profile-card-top-three {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr 1fr;
+  align-items: end;
+  gap: 18px;
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.profile-card-top-three .rank-1 {
+  grid-column: 2;
+}
+
+.profile-card-top-three .rank-2 {
+  grid-column: 1;
+}
+
+.profile-card-top-three .rank-3 {
+  grid-column: 3;
+}
+
+.profile-card-top-three .rank-1 .print-poster-portrait {
+  height: 360px;
+}
+
+.profile-card-top-three .rank-2 .print-poster-portrait {
+  height: 320px;
+}
+
+.profile-card-top-three .rank-3 .print-poster-portrait {
+  height: 300px;
+}
+
+.profile-card-couples {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.profile-card-couples .print-couple {
+  flex: 0 0 calc((100% - 18px) / 2);
+  min-width: 0;
+}
+
+.profile-card-couples .print-couple-cards {
+  grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr);
+}
+
+.profile-card-couples .print-poster-portrait {
+  height: 170px;
+}
+
+.profile-card-couples .print-poster-name {
+  font-size: 15px;
+}
+
+.profile-card-couples .print-poster-sub {
+  font-size: 10px;
+}
+
+.profile-card-couples-empty {
+  flex: 1 1 100%;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--muted);
+  text-align: center;
+}
+
+.profile-card-song-section {
+  margin-top: 22px;
+}
+
+.profile-card-songs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.profile-card .print-poster-footer {
+  margin-top: 28px;
+}
+
+@media (min-width: 1200px) {
+  .profile-layout {
+    grid-template-columns: minmax(0, 1fr) 400px;
+    align-items: start;
+  }
+
+  .profile-editor {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .profile-preview-section {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .profile-preview-section,
+  .profile-editor {
+    padding: 24px 20px;
+  }
+
+}

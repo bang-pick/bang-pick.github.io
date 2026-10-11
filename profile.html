@@ -4,27 +4,120 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f31864" />
-    <meta name="description" content="BanG Dream! 최애곡을 자랑해보세요!" data-i18n-content="meta.songsDescription" />
-    <title data-i18n="meta.songsTitle">프로필 카드 | 방픽!</title>
+    <meta name="description" content="BanG Dream! 프로필 카드를 만들어보세요!" data-i18n-content="meta.profileDescription" />
+    <title data-i18n="meta.profileTitle">프로필 카드 | 방픽!</title>
     <link rel="stylesheet" href="./styles/base.css?v=20261006-5" />
     <link rel="stylesheet" href="./styles/picker.css?v=20261006-2" />
     <link rel="stylesheet" href="./styles/poster.css?v=20261006-12" />
-    <link rel="stylesheet" href="./styles/songs.css?v=20261006-18" />
+    <link rel="stylesheet" href="./styles/songs.css?v=20261012-1" />
+    <link rel="stylesheet" href="./styles/profile.css?v=20261012-1" />
     <link rel="icon" href="./assets/favicon.ico" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="프로필 카드 | 방픽!" />
-    <meta property="og:description" content="내 취향을 공유해보세요!" />
+    <meta property="og:description" content="BanG Dream! 프로필 카드를 만들어보세요!" />
     <meta property="og:image" content="https://bang-pick.github.io/assets/images/main-2.webp" />
-    <meta property="og:url" content="https://bang-pick.github.io/songs.html" />
+    <meta property="og:url" content="https://bang-pick.github.io/profile.html" />
     <meta property="og:site_name" content="방픽!" />
-    <script src="./scripts/layout.js?v=20261006-4" type="module"></script>
-    <script src="./scripts/songs.js?v=20261006-11" type="module"></script>
+    <script src="./scripts/layout.js?v=20261012-1" type="module"></script>
+    <script src="./scripts/profile.js?v=20261012-1" type="module"></script>
   </head>
-  <body data-page="songs">
+  <body data-page="profile">
     <header class="topbar" data-shared="header"></header>
-    <main>
-      준비중입니다.
+
+    <main class="profile-layout">
+      <section class="picked-section profile-preview-section">
+        <div class="section-heading picked-heading">
+          <h2 data-i18n="profile.previewHeading">프로필 카드 미리보기</h2>
+        </div>
+        <div class="picked-panel">
+          <div class="poster-preview-wrap profile-preview-wrap">
+            <div id="poster-preview" aria-label="프로필 카드 미리보기" data-i18n-aria="profile.previewLabel"></div>
+          </div>
+          <button class="image-button" id="save-profile" type="button">
+            <span data-i18n="common.saveImage">이미지 저장</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 15V3" />
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <path d="m7 10 5 5 5-5" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section class="workspace profile-editor">
+        <div class="section-heading">
+          <h2 data-i18n="profile.editHeading">프로필 꾸미기</h2>
+        </div>
+
+        <label class="profile-field">
+          <span data-i18n="common.nickname">내 닉네임</span>
+          <input id="profile-nickname" maxlength="24" placeholder="닉네임 입력" data-i18n-placeholder="common.nicknamePlaceholder" autocomplete="nickname" />
+        </label>
+
+        <label class="profile-field">
+          <span data-i18n="profile.since">뱅드림 입덕 연도</span>
+          <input id="profile-since-year" type="number" min="2015" step="1" inputmode="numeric" placeholder="예: 2020" data-i18n-placeholder="profile.sincePlaceholder" />
+        </label>
+
+        <label class="profile-field">
+          <span data-i18n="profile.favoriteBand">최애 밴드</span>
+          <select id="profile-band"></select>
+        </label>
+
+        <div class="profile-field">
+          <span data-i18n="profile.pickData">최애캐 · 커플링 · 최애곡</span>
+          <p class="profile-pick-hint" data-i18n="profile.pickHint">최애캐 베스트9 상위 3명, 최애·차애 커플링 2쌍, 최애곡 베스트9 상위 3곡이 자동으로 표시됩니다.</p>
+          <div class="profile-pick-links">
+            <a class="profile-pick-link" href="./pick.html" data-i18n="profile.editPicks">최애캐 설정하기 →</a>
+            <a class="profile-pick-link" href="./songs.html" data-i18n="profile.editSongs">최애곡 설정하기 →</a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <template id="profile-card-template">
+      <article class="print-poster song-poster profile-card">
+        <header class="print-poster-header">
+          <h2><span class="print-poster-owner profile-card-owner"></span><span data-i18n="profile.cardTitle">의 프로필</span><img src="./assets/exclamation.svg" alt="" /></h2>
+          <p class="profile-card-since" hidden></p>
+        </header>
+        <section class="profile-card-band">
+          <span class="profile-card-label" data-i18n="profile.favoriteBand">최애 밴드</span>
+          <div class="profile-card-favorite-band"></div>
+        </section>
+        <section class="profile-card-characters">
+          <span class="profile-card-label" data-i18n="profile.topThree">최애 · 차애 · 차차애</span>
+          <div class="profile-card-top-three"></div>
+        </section>
+        <section class="profile-card-pairings">
+          <span class="profile-card-label" data-i18n="profile.couples">최애 · 차애 커플링</span>
+          <div class="profile-card-couples"></div>
+        </section>
+        <section class="profile-card-song-section">
+          <span class="profile-card-label" data-i18n="profile.songs">최애곡</span>
+          <div class="profile-card-songs song-poster-best"></div>
+        </section>
+        <footer class="print-poster-footer">
+          <span>©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
+          <span data-i18n="poster.footer">비공식 팬사이트 방픽!에서 생성되었습니다.</span>
+        </footer>
+      </article>
+    </template>
+
+    <template id="song-card-template">
+      <article class="song-poster-card">
+        <span class="song-poster-rank"></span>
+        <div class="song-poster-titles">
+          <div class="song-poster-title-line">
+            <span class="song-poster-name"></span>
+            <span class="song-poster-original"></span>
+          </div>
+          <span class="song-poster-artist"></span>
+        </div>
+        <span class="song-poster-band"></span>
+      </article>
+    </template>
+
     <footer data-shared="footer"></footer>
     <a class="back-to-top" href="#" aria-label="맨 위로 가기" data-i18n-aria="common.backToTop">↑</a>
   </body>

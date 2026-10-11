@@ -1,6 +1,6 @@
-import { bands, characters } from './data.js?v=20261006-4';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261006-5';
-import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261006-4';
+import { bands, characters } from './data.js?v=20261012-1';
+import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261012-1';
+import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261012-1';
 import {
   bandById,
   bandLogo,
@@ -14,22 +14,27 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261006-13';
+} from './poster.js?v=20261012-1';
 
 const bestNineLimit = 9;
 const storageKey = 'bandori-pick-v1';
 let saved;
 try { saved = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch { saved = {}; }
+const savedAll = Array.isArray(saved.all) ? saved.all : [];
+const savedCouples = Array.isArray(saved.couples) ? saved.couples : [];
+const savedAlternateForms = Array.isArray(saved.alternateForms) ? saved.alternateForms : [];
 
 const picks = {
-  all: new Set((saved.all || []).filter((id) => characterById[id]).slice(0, bestNineLimit)),
+  all: new Set(savedAll.filter((id) => characterById[id]).slice(0, bestNineLimit)),
   bands: Object.fromEntries(bands.map((band) => [
     band.id,
-    new Set((saved.bands?.[band.id] || []).filter((id) => characterById[id]).slice(-1)),
+    new Set((Array.isArray(saved.bands?.[band.id]) ? saved.bands[band.id] : [])
+      .filter((id) => characterById[id]?.band === band.id).slice(-1)),
   ])),
 };
-const couples = (saved.couples || []).map((pair) => pair.filter((id) => characterById[id])).filter((pair) => pair.length === 2).slice(0, coupleLimit);
-const alternateForms = new Set(saved.alternateForms || []);
+const couples = savedCouples.filter((pair) => Array.isArray(pair) && pair.length === 2
+  && pair.every((id) => characterById[id])).slice(0, coupleLimit);
+const alternateForms = new Set(savedAlternateForms.filter((id) => characterById[id]?.alternateName));
 picks.couples = couples;
 picks.alternateForms = alternateForms;
 let scope = 'all';
