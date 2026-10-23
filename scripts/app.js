@@ -14,7 +14,7 @@ import {
   pickedEntries,
   renderPosterPreview,
   saveFavoritesImage,
-} from './poster.js?v=20261012-1';
+} from './poster.js?v=20261024-3';
 
 const bestNineLimit = 9;
 const storageKey = 'bandori-pick-v1';

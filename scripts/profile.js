@@ -1,188 +1,196 @@
-import { bands, characters } from './data.js?v=20261012-1';
-import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261012-1';
-import { savePosterImage, fitPosterPreview } from './poster-export.js?v=20261012-1';
-import { bandLogo, characterForm, characterImage, couplingName, initials } from './poster.js?v=20261012-1';
+import { bands } from './data.js?v=20261012-1';
+import { bandName, characterName, getLanguage, t } from './language.js?v=20261012-1';
+import { savePosterImage, fitPosterPreview } from './poster-export.js?v=20261024-3';
+import { bandById, characterById, characterForm, characterImage, couplingName, bandLogo } from './poster.js?v=20261024-3';
 import { loadSongGroup } from './song-data.js?v=20261012-1';
-import { createSongCard } from './song-card.js?v=20261012-1';
+import { initProfileEffects } from './profile-effects.js?v=20261024-1';
+
+function profileSinceYear(saved, currentYear) {
+  const year = Number(saved.sinceYear ?? (typeof saved.sinceDate === 'string' ? saved.sinceDate.slice(0, 4) : NaN));
+  return Number.isInteger(year) && year >= 2015 && year <= currentYear ? year : null;
+}
+
+function cardTitleColor(color) {
+  const hex = color.slice(1);
+  const fullHex = hex.length === 3 ? [...hex].map((channel) => channel.repeat(2)).join('') : hex;
+  const channels = fullHex.match(/../g).map((channel) => parseInt(channel, 16) / 255);
+  const luminance = channels
+    .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+  return luminance > 0.18 ? '#151b32' : '#fff';
+}
 
 const mainBands = bands.filter(({ id }) => id !== 'others');
-const characterById = Object.fromEntries(characters.map((character) => [character.id, character]));
-const bandById = Object.fromEntries(bands.map((band) => [band.id, band]));
 const pickStorageKey = 'bandori-pick-v1';
 const songStorageKey = 'bandori-song-pick-v1';
 const profileStorageKey = 'bandori-profile-v1';
 const readStore = (key) => { try { return JSON.parse(localStorage.getItem(key)) || {}; } catch { return {}; } };
-const saved = readStore(profileStorageKey);
-const state = {
-  nickname: typeof saved.nickname === 'string' ? saved.nickname : '',
-  sinceYear: Number.isInteger(Number(saved.sinceYear)) && Number(saved.sinceYear) >= 2015 && Number(saved.sinceYear) <= new Date().getFullYear()
-    ? Number(saved.sinceYear) : null,
-  favoriteBand: mainBands.some(({ id }) => id === saved.favoriteBand) ? saved.favoriteBand : mainBands[0].id,
-};
+const currentYear = new Date().getFullYear();
+function readProfile() {
+  const saved = readStore(profileStorageKey);
+  return {
+    nickname: typeof saved.nickname === 'string' ? saved.nickname : '',
+    sinceYear: profileSinceYear(saved, currentYear),
+    favoriteBand: mainBands.some(({ id }) => id === saved.favoriteBand) ? saved.favoriteBand : mainBands[0].id,
+  };
+}
+const state = readProfile();
 const $ = (selector) => document.querySelector(selector);
+const preview = $('#poster-preview');
+const previewWrap = $('.profile-preview-wrap');
+const saveButton = $('#save-profile');
 const persist = () => localStorage.setItem(profileStorageKey, JSON.stringify(state));
+let loadingSong = false;
+let saving = false;
+const updateSaveButton = () => { saveButton.disabled = loadingSong || saving; };
+initProfileEffects(preview.parentElement);
 
-function createPosterCard(id, alternateForms, rank = null) {
-  const original = characterById[id];
-  const character = original ? characterForm(id, { alternateForms }) : null;
-  const band = original ? bands.find(({ id: bandId }) => bandId === original.band) : null;
-  const card = document.createElement('article');
-  const portrait = document.createElement('div');
-  const info = document.createElement('footer');
-  const bandLine = document.createElement('div');
-  const name = document.createElement('span');
-  const details = document.createElement('span');
-  card.className = `print-poster-card${character ? '' : ' is-empty'}${rank ? ` rank-${rank}` : ''}`;
-  card.style.setProperty('--character-color', character?.color || '#e8e8e5');
-  portrait.className = 'print-poster-portrait';
-  if (character) {
-    const sprite = characterImage(character);
-    if (sprite) {
-      const image = document.createElement('img');
-      image.src = sprite;
-      if (character.alternateImage && character.image === 'misaki_2.webp') image.dataset.fallbackSrc = characterImage(original);
-      image.addEventListener('error', () => {
-        if (image.dataset.fallbackSrc && !image.dataset.fallback) {
-          image.dataset.fallback = 'true';
-          image.src = image.dataset.fallbackSrc;
-        }
-      });
-      image.alt = '';
-      portrait.append(image);
-    } else portrait.textContent = initials(characterName(character));
+function renderPortrait(card, character) {
+  const portrait = card.querySelector('.profile-card-portrait');
+  if (!character) {
+    portrait.classList.add('is-empty');
+    const title = document.createElement('strong');
+    title.textContent = 'MY FAVORITE';
+    const hint = document.createElement('span');
+    hint.textContent = 'Choose your favorite character.';
+    portrait.append(title, hint);
+    return;
   }
-  if (rank) {
-    const badge = document.createElement('span');
-    badge.className = 'print-poster-rank';
-    badge.textContent = t(`profile.rank${rank}`);
-    portrait.append(badge);
+  const image = document.createElement('img');
+  image.src = characterImage(character);
+  image.alt = characterName(character);
+  const originalImage = characterImage(characterById[character.id]);
+  if (image.src !== originalImage) {
+    image.dataset.fallbackSrc = originalImage;
+    image.addEventListener('error', () => { image.src = image.dataset.fallbackSrc; }, { once: true });
   }
-  info.className = 'print-poster-info';
-  bandLine.className = 'print-poster-band';
-  if (band?.logo) {
-    const image = document.createElement('img');
-    image.src = bandLogo(band);
-    image.alt = bandName(band);
-    bandLine.append(image);
-  } else if (band) bandLine.textContent = bandName(band);
-  name.className = 'print-poster-name';
-  name.textContent = character ? characterName(character) : '';
-  details.className = 'print-poster-sub';
-  details.textContent = character ? [otherCharacterName(character), character.part].filter(Boolean).join(' · ') : '';
-  info.append(bandLine, name, details);
-  card.append(portrait, info);
-  return card;
+  const caption = document.createElement('p');
+  caption.className = 'profile-card-character-caption';
+  caption.textContent = characterName(character);
+  portrait.append(image, caption);
+}
+
+function renderProfileFields(card) {
+  const owner = card.querySelector('.profile-card-owner');
+  owner.textContent = state.nickname.trim() || t('profile.defaultName');
+  owner.classList.toggle('is-long', owner.textContent.length > 12);
+  const since = card.querySelector('.profile-card-since');
+  since.hidden = !state.sinceYear;
+  since.textContent = state.sinceYear ? `since ${state.sinceYear}` : '';
 }
 
 let renderVersion = 0;
-function renderCard() {
+async function renderCard() {
   const version = ++renderVersion;
+  const card = $('#profile-card-template').content.firstElementChild.cloneNode(true);
+  renderProfileFields(card);
+  const band = bandById[state.favoriteBand];
+  const picks = readStore(pickStorageKey);
+  const forms = { alternateForms: new Set(Array.isArray(picks.alternateForms) ? picks.alternateForms : []) };
+  const characterId = Array.isArray(picks.all) ? picks.all.find((id) => Object.hasOwn(characterById, id)) : null;
+  const character = characterId ? characterForm(characterId, forms) : null;
+  renderPortrait(card, character);
+  const themeColor = character?.color || band.color;
+  card.style.setProperty('--card-color', themeColor);
+  card.style.setProperty('--header-title-color', cardTitleColor(themeColor));
+  previewWrap.style.setProperty('--card-color', themeColor);
+  const logo = card.querySelector('.profile-card-band-logo');
+  logo.src = bandLogo(band);
+  logo.alt = t('common.bandLogo', { name: bandName(band) });
+  const couple = Array.isArray(picks.couples) ? picks.couples.find((pair) =>
+    Array.isArray(pair) && pair.length === 2 && pair[0] !== pair[1] && pair.every((id) => Object.hasOwn(characterById, id))) : null;
+  const coupleName = card.querySelector('.profile-card-favorite-couple');
+  coupleName.textContent = 'NOT SELECTED';
+  if (couple) {
+    const names = couple.map((id) => characterName(characterForm(id, forms)));
+    coupleName.textContent = getLanguage() === 'ja'
+      ? names.map((name) => name.split(' ').at(-1)).join(' → ')
+      : couplingName(couple[0], couple[1], forms);
+    coupleName.title = names.join(' → ');
+  }
+  const songName = card.querySelector('.profile-card-favorite-song');
+  songName.textContent = 'NOT SELECTED';
+  preview.replaceChildren(card);
+  fitPosterPreview();
+
   const songPicks = readStore(songStorageKey);
   const savedKeys = songPicks.bestNine || songPicks.picks;
-  const songKeys = Array.isArray(savedKeys) ? [...new Set(savedKeys.filter((key) => typeof key === 'string'))] : [];
-  const groupIds = [...new Set(songKeys.map((key) => key.split(':')[0]))].filter((id) => bandById[id]?.id === id);
-  const card = $('#profile-card-template').content.firstElementChild.cloneNode(true);
-  card.querySelectorAll('[data-i18n]').forEach((element) => { element.textContent = t(element.dataset.i18n); });
-  card.querySelector('.profile-card-owner').textContent = state.nickname.trim() || t('profile.defaultName');
-  const since = card.querySelector('.profile-card-since');
-  if (state.sinceYear) {
-    since.hidden = false;
-    since.textContent = t('profile.yearValue', { year: state.sinceYear });
-  }
-  const favoriteBand = mainBands.find(({ id }) => id === state.favoriteBand);
-  const favoriteLogo = document.createElement('img');
-  if (favoriteBand.logo) favoriteLogo.src = bandLogo(favoriteBand);
-  favoriteLogo.alt = bandName(favoriteBand);
-  card.querySelector('.profile-card-favorite-band').append(favoriteLogo);
-
-  const picks = readStore(pickStorageKey);
-  const alternateForms = new Set(Array.isArray(picks.alternateForms) ? picks.alternateForms : []);
-  const ranked = Array.isArray(picks.all) ? picks.all.filter((id) => characterById[id]).slice(0, 3) : [];
-  const topThree = card.querySelector('.profile-card-top-three');
-  for (const rank of [2, 1, 3]) topThree.append(createPosterCard(ranked[rank - 1], alternateForms, rank));
-
-  const couples = Array.isArray(picks.couples) ? picks.couples.filter((pair) =>
-    Array.isArray(pair) && pair.length === 2 && pair.every((id) => characterById[id])).slice(0, 2) : [];
-  const coupleList = card.querySelector('.profile-card-couples');
-  if (!couples.length) {
-    const empty = document.createElement('div');
-    empty.className = 'profile-card-couples-empty';
-    empty.textContent = t('profile.emptyCouples');
-    coupleList.append(empty);
-  }
-  for (const [firstId, secondId] of couples) {
-    const pair = document.createElement('div');
-    const cards = document.createElement('div');
-    const direction = document.createElement('div');
-    const arrow = document.createElement('span');
-    pair.className = 'print-couple';
-    cards.className = 'print-couple-cards';
-    direction.className = 'print-couple-direction';
-    arrow.className = 'print-couple-arrow';
-    arrow.textContent = '→';
-    if (getLanguage() !== 'ja') {
-      const name = document.createElement('span');
-      name.className = 'print-couple-name';
-      name.textContent = couplingName(firstId, secondId, { alternateForms });
-      direction.append(name);
-    }
-    direction.append(arrow);
-    cards.append(createPosterCard(firstId, alternateForms), direction, createPosterCard(secondId, alternateForms));
-    pair.append(cards);
-    coupleList.append(pair);
-  }
-  const songList = card.querySelector('.profile-card-songs');
-  for (let rank = 1; rank <= 3; rank++) songList.append(createSongCard(null, null, rank));
-  $('#poster-preview').replaceChildren(card);
-  fitPosterPreview();
-  const saveButton = $('#save-profile');
-  saveButton.disabled = Boolean(groupIds.length);
-  if (!groupIds.length) return;
-
-  Promise.allSettled(groupIds.map(loadSongGroup)).then((loaded) => {
+  const songKey = Array.isArray(savedKeys) ? savedKeys.find((key) => typeof key === 'string' && Object.hasOwn(bandById, key.split(':')[0])) : null;
+  loadingSong = Boolean(songKey);
+  updateSaveButton();
+  if (!songKey) return;
+  try {
+    const songs = await loadSongGroup(songKey.split(':')[0]);
     if (version !== renderVersion) return;
-    for (const result of loaded) if (result.status === 'rejected') console.error(result.reason);
-    const songByKey = new Map(loaded.flatMap((result) => result.status === 'fulfilled' ? result.value : [])
-      .map((song) => [song.key, song]));
-    const favoriteSongs = songKeys.map((key) => songByKey.get(key)).filter(Boolean).slice(0, 3);
-    songList.replaceChildren(...[1, 2, 3].map((rank) => {
-      const song = favoriteSongs[rank - 1];
-      return createSongCard(song, song && bandById[song.group], rank);
-    }));
-    fitPosterPreview();
-    saveButton.disabled = false;
-  });
+    const song = songs.find(({ key }) => key === songKey);
+    if (song) {
+      songName.textContent = getLanguage() === 'ja' ? song.title : song.koTitle || song.title;
+      songName.title = songName.textContent;
+    }
+  } catch (error) {
+    if (version !== renderVersion) return;
+    console.error(error);
+    songName.textContent = 'UNAVAILABLE';
+  } finally {
+    if (version === renderVersion) {
+      fitPosterPreview();
+      loadingSong = false;
+      updateSaveButton();
+    }
+  }
 }
 
 $('#profile-nickname').value = state.nickname;
 const sinceYear = $('#profile-since-year');
-sinceYear.max = String(new Date().getFullYear());
+sinceYear.max = String(currentYear);
 sinceYear.value = state.sinceYear || '';
-sinceYear.addEventListener('input', (event) => {
-  const year = Number(event.target.value);
-  state.sinceYear = event.target.value && Number.isInteger(year) && year >= 2015 && year <= Number(sinceYear.max) ? year : null;
+sinceYear.addEventListener('input', () => {
+  state.sinceYear = profileSinceYear({ sinceYear: sinceYear.value }, currentYear);
   persist();
-  renderCard();
+  renderProfileFields(preview.firstElementChild);
 });
 const favoriteBand = $('#profile-band');
-favoriteBand.replaceChildren(...mainBands.map((band) => new Option(bandName(band), band.id)));
-favoriteBand.value = state.favoriteBand;
-renderCard();
-$('#profile-nickname').addEventListener('input', (event) => { state.nickname = event.target.value; persist(); renderCard(); });
-favoriteBand.addEventListener('change', (event) => { state.favoriteBand = event.target.value; persist(); renderCard(); });
-$('#save-profile').addEventListener('click', async () => {
-  const button = $('#save-profile');
-  button.disabled = true;
-  try { await savePosterImage('bang-dream-profile.png'); }
-  catch (error) { window.alert(error.message || t('profile.saveError')); }
-  finally { button.disabled = false; }
-});
-window.addEventListener('resize', fitPosterPreview);
-window.addEventListener('storage', (event) => { if ([pickStorageKey, songStorageKey].includes(event.key)) renderCard(); });
-window.addEventListener('pageshow', renderCard);
-document.fonts.ready.then(fitPosterPreview);
-document.addEventListener('app-language-change', () => {
+function renderBandOptions() {
   favoriteBand.replaceChildren(...mainBands.map((band) => new Option(bandName(band), band.id)));
   favoriteBand.value = state.favoriteBand;
+}
+renderBandOptions();
+renderCard();
+$('#profile-nickname').addEventListener('input', (event) => {
+  state.nickname = event.target.value;
+  persist();
+  renderProfileFields(preview.firstElementChild);
+});
+favoriteBand.addEventListener('change', (event) => { state.favoriteBand = event.target.value; persist(); renderCard(); });
+saveButton.addEventListener('click', async () => {
+  if (saving || loadingSong) return;
+  saving = true;
+  updateSaveButton();
+  try {
+    const withBackground = $('input[name="profile-export"]:checked').value === 'background';
+    await savePosterImage(withBackground ? 'bang-dream-profile-background.png' : 'bang-dream-profile.png', {
+      backgroundColor: withBackground ? preview.firstElementChild.style.getPropertyValue('--card-color') : null,
+    });
+  }
+  catch (error) { window.alert(error.message || t('profile.saveError')); }
+  finally { saving = false; updateSaveButton(); }
+});
+window.addEventListener('resize', fitPosterPreview);
+function reloadProfile() {
+  Object.assign(state, readProfile());
+  $('#profile-nickname').value = state.nickname;
+  sinceYear.value = state.sinceYear || '';
+  favoriteBand.value = state.favoriteBand;
+  renderCard();
+}
+window.addEventListener('storage', (event) => {
+  if (event.key === null || event.key === profileStorageKey) reloadProfile();
+  else if ([pickStorageKey, songStorageKey].includes(event.key)) renderCard();
+});
+window.addEventListener('pageshow', (event) => { if (event.persisted) reloadProfile(); });
+document.fonts.ready.then(fitPosterPreview);
+
+document.addEventListener('app-language-change', () => {
+  renderBandOptions();
   renderCard();
 });

@@ -11,7 +11,8 @@ const banner = document.querySelector('.birthday-notice');
 const label = document.querySelector('#notice-type');
 const text = document.querySelector('#birthday-notice-text');
 let birthdayMessage = '';
-let showingBirthday = true;
+const noticeKeys = ['notice.profileUpdate'];
+let bannerIndex = 0;
 
 function updateBirthdayMessage() {
   const today = new Intl.DateTimeFormat('en-US', {
@@ -27,10 +28,11 @@ function updateBirthdayMessage() {
 
 function renderBanner(animate = false) {
   const update = () => {
+    const showingBirthday = bannerIndex === 0;
     label.textContent = t(showingBirthday ? 'birthday.label' : 'notice.label');
     text.textContent = showingBirthday
       ? birthdayMessage
-      : t('notice.songUpdate');
+      : t(noticeKeys[bannerIndex - 1]);
     banner.classList.remove('is-changing');
   };
 
@@ -45,7 +47,7 @@ function renderBanner(animate = false) {
 updateBirthdayMessage();
 renderBanner();
 window.setInterval(() => {
-  showingBirthday = !showingBirthday;
+  bannerIndex = (bannerIndex + 1) % (noticeKeys.length + 1);
   renderBanner(true);
 }, 3000);
 

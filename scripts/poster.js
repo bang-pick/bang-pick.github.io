@@ -1,4 +1,4 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261012-1';
+import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261024-3';
 import { bands, characters } from './data.js?v=20261012-1';
 import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261012-1';
 
