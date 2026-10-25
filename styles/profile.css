@@ -266,8 +266,8 @@ body[data-page="profile"] > footer { width: 100%; }
   align-items: flex-end;
   min-height: 160px;
   margin: 0;
-  padding: 64px 26px 26px;
-  background: linear-gradient(to top, #101522e6, #10152288 55%, transparent);
+  padding: 60px 26px 26px;
+  background: linear-gradient(to top, #10152288, transparent);
   color: #fff;
   font-size: 32px;
   font-weight: 700;
