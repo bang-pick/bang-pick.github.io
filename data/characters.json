@@ -662,5 +662,15 @@
     "japanese": "月島 まりな",
     "color": "#ff3b72",
     "image": "marina.webp"
+  },
+  {
+    "name": "마츠기 리리코",
+    "band": "others",
+    "part": "CiRCLE / RiNG",
+    "id": "matsuki-ririko",
+    "birthday": "00-00",
+    "japanese": "真次 凛々子",
+    "color": "#ff3b72",
+    "image": "ririko.webp"
   }
 ]
