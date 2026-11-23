@@ -32,10 +32,11 @@ const artistReplacements = [
     [name.split(' ').at(-1), japanese.split(' ').at(-1)],
   ]),
   ...bands.filter(({ nameJa }) => nameJa).map(({ name, nameJa }) => [name, nameJa]),
-  ['사아야', '沙綾'],
-  ['야마부키 사아야', '山吹 沙綾'],
   ['별 내리는 티파티', '星降るティーパーティー'],
   ['스페셜밴드', 'スペシャルバンド'],
+  ['돌로리스', 'ドロリス'],
+  ['에레아', 'エレア'],
+  ['매지컬 피지컬 쿠루루', 'マジカルフィジカル☆くるる'],
 ].sort(([a], [b]) => b.length - a.length);
 const artistName = (name) => getLanguage() === 'ja'
   ? artistReplacements.reduce((localized, [korean, japanese]) => localized.replaceAll(korean, japanese), name)

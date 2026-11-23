@@ -1,0 +1,31 @@
+.live-main { display: grid; gap: 16px; }
+.live-intro, .live-list { padding: 28px; }
+.live-eyebrow { color: var(--accent); font-family: Montserrat, sans-serif; font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+.live-intro p, .live-heading p { color: var(--muted); line-height: 1.6; }
+.live-intro p { margin: 16px 0 0; }
+.live-heading { padding-bottom: 28px; }
+.live-heading p { margin-bottom: 0; font-size: 14px; }
+#live-events { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;}
+.live-event { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+.live-event-image { display: block; width: 100%; aspect-ratio: 1200 / 630; object-fit: cover; background: var(--paper); }
+.live-event-info { min-width: 0; padding: 22px; }
+.live-event time { display: block; color: var(--ink); margin-bottom: 14px; font-weight: 600; }
+.live-tag { color: var(--accent); font-size: 12px; font-weight: 700; }
+.live-event h3 { margin: 4px 0; font-size: 21px; overflow-wrap: anywhere; }
+.live-event p { margin: 5px 0; color: var(--muted); font-size: 14px; }
+.live-event a { display: inline-block; margin-top: 14px; color: var(--accent); font-size: 14px; font-weight: 700; }
+.live-event a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.live-band-group { margin-top: 28px; }
+.live-band-group h3 { margin: 0 0 14px; font-size: 18px; }
+.live-band-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.live-band-grid li { display: grid; place-items: center; min-height: 90px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.live-band-grid img { display: block; max-width: 100%; max-height: 58px; object-fit: contain; }
+.is-unvisited .live-band-grid img { filter: grayscale(1); }
+@media (max-width: 760px) {
+  .live-intro, .live-list { padding: 24px 20px; }
+  .live-heading { padding-bottom: 24px; }
+  #live-events { grid-template-columns: 1fr;}
+  .live-event-info { padding: 18px; }
+  .live-event h3 { font-size: 18px; }
+  .live-band-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

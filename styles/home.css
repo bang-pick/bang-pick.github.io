@@ -146,8 +146,27 @@ body[data-page="home"] > footer {
   transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
 
-.home-option-profile {
-  grid-column: 1 / -1;
+.home-option-live { background: linear-gradient(135deg, #fff 45%, #fff1f5); }
+.live-card-art {
+  position: absolute;
+  right: 5%;
+  bottom: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: rotate(-8deg);
+  color: var(--accent);
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1;
+  opacity: .2;
+  pointer-events: none;
+}
+.live-card-art span:first-child { font-size: clamp(60px, 7vw, 100px); }
+.live-card-art span:last-child { font-size: clamp(17px, 2vw, 27px); }
+@media (prefers-color-scheme: dark) {
+  body.home-option-live { background: linear-gradient(135deg, #25242c 45%, #492b3b); }
 }
 
 .home-option-art {
@@ -160,7 +179,7 @@ body[data-page="home"] > footer {
   transition: transform .25s ease;
 }
 
-.home-option > :not(.home-option-art) {
+.home-option > :not(.home-option-art):not(.live-card-art) {
   position: relative;
   max-width: 59%;
   word-break: keep-all;

@@ -146,6 +146,14 @@ button {
 }
 
 /* Shared page frame */
+.section-heading h2, .section-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 650;
+  letter-spacing: -.06em;
+  font-family: var(--display-font);
+}
+
 main {
   width: calc(100% - 48px);
   max-width: 1400px;
@@ -228,6 +236,10 @@ body > footer a:hover {
 }
 
 @media (max-width: 760px) {
+  .section-heading h2, .section-title {
+    font-size: 24px;
+  }
+
   .topbar {
     height: 52px;
     padding: 0 18px;
@@ -260,3 +272,55 @@ body > footer a:hover {
   }
 }
 
+
+/* Keep artwork and its inherited palette stable when the surrounding UI is dark. */
+.print-poster {
+  color-scheme: only light;
+  --ink: #22231f;
+  --muted: #777870;
+  --line: #e3e5e8;
+  --paper: #faf9f6;
+  --accent: #f31864;
+  --accent-light: #fff1f5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    color: #f0eef2;
+    background: #17171d;
+    --ink: #f0eef2;
+    --muted: #b7b3bd;
+    --line: #44414b;
+    --paper: #25242c;
+    --accent: #ff78a4;
+    --accent-light: #492b3b;
+    --select-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%23b7b3bd' stroke-width='1.5'/%3E%3C/svg%3E");
+  }
+  body { background: linear-gradient(110deg, #251d28, #1b222b, #22251f); }
+  body .topbar, body > footer, body .intro, body .workspace,
+  body .picked-section, body .birthday-notice, body .home-option {
+    background: #25242c;
+    border-color: var(--line);
+  }
+  body .intro::before { background: linear-gradient(90deg, #25242c 30%, #25242cf2 40%, #25242cbf 50%, #25242c40 60%, transparent 70%); }
+  body .intro-visual { background: #25242c; }
+  body .intro-description { color: var(--muted); }
+  body .language-toggle, body .back-to-top, body .search-box,
+  body .band-select, body .scope-tab, body .character-form-switch,
+  body .text-button, body .couple-selection-item button,
+  body .nickname-field input, body .profile-field > input,
+  body .profile-field > select, body .song-list button {
+    background-color: #302f38;
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  body .scope-tab.selected, body .song-list button[aria-pressed="true"],
+  body .language-toggle:hover { background-color: var(--accent-light); color: var(--accent); }
+  body .profile-preview-wrap { background: #1d2028; }
+  body .image-button { color: #23121a; }
+  body .image-button:disabled { background: #44414b; border-color: #44414b; color: #aaa5af; }
+  @media (max-width: 760px) {
+    body .intro::before { background: linear-gradient(180deg, #25242c 40%, #25242cf2 45%, #25242cbf 50%, #25242c40 60%, transparent 70%); }
+  }
+}

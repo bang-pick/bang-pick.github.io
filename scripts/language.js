@@ -1,5 +1,9 @@
 const messages = {
   ko: {
+    'live.bands': '밴드별 내한 현황',
+    'home.liveTitle': '내한', 'home.liveDescription': 'BanG Dream! 내한 공연', 'home.liveAction': '공연 목록 보기',
+    'live.title': '내한 공연', 'live.description': '한국에서 열린 BanG Dream! 밴드의 라이브를 모았어요.', 'live.list': '내한 공연 목록', 'live.source': '공식 안내 보기 ↗', 'live.festival': '페스티벌', 'live.solo': '단독 공연',
+
     'meta.homeTitle': '방픽!', 'meta.pickTitle': '최애캐 | 방픽!', 'meta.songsTitle': '최애곡 | 방픽!', 'meta.profileTitle': '프로필 | 방픽!', 'meta.profileDescription': 'BanG Dream! 프로필 카드를 만들어보세요!',
     'home.description': '최애캐와 최애곡을 자랑해보세요!',
     'meta.homeDescription': 'BanG Dream! 최애캐와 최애곡을 자랑해보세요!',
@@ -12,7 +16,7 @@ const messages = {
     'export.canvasError': '이미지 캔버스를 만들 수 없습니다.', 'export.pngError': 'PNG 이미지를 만들 수 없습니다.',
     'nav.home': '홈', 'nav.characters': '최애캐', 'nav.songs': '최애곡', 'nav.profile': '프로필',
     'nav.menu': '주 메뉴', 'nav.homeLabel': '방픽 홈', 'common.backToTop': '맨 위로 가기', 'common.bandLogo': '{name} 로고', 'language.toJapanese': '일본어로 전환', 'language.toKorean': '한국어로 전환',
-    'footer.copyright': '©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 비공식・비영리 팬 사이트입니다.',
+    'footer.copyright': '©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 비공식・비영리 팬 사이트로, 모든 이미지의 권리는 원작자에게 있습니다.',
     'footer.source': '이미지 출처', 'footer.feedback': '건의 및 오류 제보',
     'home.characterTitle': '최애캐',
     'home.characterDescription': '베스트 9 · 밴드별 최애캐 · 최애 커플', 'home.characterAction': '최애표 만들기',
@@ -20,7 +24,7 @@ const messages = {
     'home.profileTitle': '프로필', 'home.profileDescription': '최애캐와 최애곡, 그리고 최애 밴드를 한눈에', 'home.profileAction': '프로필 카드 만들기',
     'birthday.label': '생일', 'notice.label': '공지',
     'birthday.today': '오늘은 {names}의 생일이에요!', 'birthday.next': '{month}월 {day}일은 {names}의 생일입니다!',
-    'notice.profileUpdate': '26.10.24. 프로필 카드가 추가되었습니다!',
+    'notice.profileUpdate': '26.11.23. 내한 공연 목록이 추가되었습니다!',
     'pick.selectedHeading': '내가 고른 캐릭터', 'common.clear': '전체 삭제', 'common.nickname': '내 닉네임',
     'common.nicknamePlaceholder': '닉네임 입력', 'pick.couplesHeading': '선택한 커플링', 'pick.rankHeading': '순위 조정',
     'pick.posterLabel': '선택한 캐릭터 최애표 미리보기', 'pick.posterEmpty': '캐릭터를 선택하면 최애표가 여기에 표시됩니다.',
@@ -55,6 +59,10 @@ const messages = {
     'profile.defaultName': '나', 'profile.saveError': '프로필 이미지를 저장하지 못했습니다.',
   },
   ja: {
+    'live.bands': 'バンド別韓国公演状況',
+    'home.liveTitle': '韓国公演', 'home.liveDescription': 'BanG Dream! 韓国公演', 'home.liveAction': '公演一覧を見る',
+    'live.title': '韓国公演', 'live.description': '韓国で開催された BanG Dream! バンドのライブを集めました。', 'live.list': '韓国公演一覧', 'live.source': '公式案内を見る ↗', 'live.festival': 'フェス出演', 'live.solo': '単独公演',
+
     'meta.homeTitle': '방픽!', 'meta.pickTitle': '推しキャラ | 방픽!', 'meta.songsTitle': '推し曲 | 방픽!', 'meta.profileTitle': 'プロフィールカード | 방픽!', 'meta.profileDescription': 'BanG Dream!のプロフィールカードを作ろう！',
     'home.description': '推しキャラと推し曲を自慢しよう！',
     'meta.homeDescription': 'BanG Dream!の推しキャラと推し曲を自慢しよう！',
@@ -67,7 +75,7 @@ const messages = {
     'export.canvasError': '画像キャンバスを作成できません。', 'export.pngError': 'PNG画像を作成できません。',
     'nav.home': 'ホーム', 'nav.characters': '推しキャラ', 'nav.songs': '推し曲', 'nav.profile': 'プロフィールカード',
     'nav.menu': 'メインメニュー', 'nav.homeLabel': 'BanG Pick! ホーム', 'common.backToTop': 'ページの先頭へ', 'common.bandLogo': '{name}のロゴ', 'language.toJapanese': '日本語に切り替える', 'language.toKorean': '韓国語に切り替える',
-    'footer.copyright': '©BanG Dream! Project. 本サイトはBanG Dream!公式とは関係のない、非公式・非営利のファンサイトです。',
+    'footer.copyright': '©BanG Dream! Project. 本サイトはBanG Dream!公式とは関係のない、非公式・非営利のファンサイトです。全ての画像の権利は原作者にあります。',
     'footer.source': '画像出典', 'footer.feedback': 'ご意見・不具合の報告',
     'home.characterTitle': '推しキャラ',
     'home.characterDescription': 'ベスト9・バンド別推しキャラ・推しカプ', 'home.characterAction': '推しキャラ表を作る',
@@ -75,7 +83,7 @@ const messages = {
     'home.profileTitle': 'プロフィールカード', 'home.profileDescription': 'バンドリの趣味や好きなものを共有しよう！', 'home.profileAction': 'プロフィールカードを作る',
     'birthday.label': '誕生日', 'notice.label': 'お知らせ',
     'birthday.today': '今日は{names}の誕生日です！', 'birthday.next': '{month}月{day}日は{names}の誕生日です！',
-    'notice.profileUpdate': '26.10.24. プロフィールカードを追加しました！',
+    'notice.profileUpdate': '26.11.23. 韓国公演情報が追加されました！',
     'pick.selectedHeading': '選んだキャラクター', 'common.clear': 'すべて削除', 'common.nickname': 'ニックネーム',
     'common.nicknamePlaceholder': 'ニックネームを入力', 'pick.couplesHeading': '選んだカップリング', 'pick.rankHeading': '順位を調整',
     'pick.posterLabel': '選んだキャラクター表のプレビュー', 'pick.posterEmpty': 'キャラクターを選ぶと、ここに推しキャラ表が表示されます。',
