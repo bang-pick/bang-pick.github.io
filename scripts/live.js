@@ -83,13 +83,19 @@ function renderEvents() {
   const language = getLanguage();
   const list = document.querySelector('#live-events');
   list.replaceChildren(...events.map((event) => {
-    const article = document.createElement('article');
-    article.className = 'live-event';
+    const link = document.createElement('a');
+    link.className = 'live-event';
+    link.href = event.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    const imageWrap = document.createElement('div');
+    imageWrap.className = 'live-event-image-wrap';
     const image = document.createElement('img');
     image.className = 'live-event-image';
     image.src = `./assets/images/live/${event.image}`;
     image.alt = '';
     image.loading = 'lazy';
+    imageWrap.append(image);
     const time = document.createElement('time');
     time.dateTime = event.date;
     time.textContent = event.date.replaceAll('-', '.');
@@ -105,14 +111,9 @@ function renderEvents() {
     detail.textContent = event.detail[language];
     const venue = document.createElement('p');
     venue.textContent = event.venue[language];
-    const link = document.createElement('a');
-    link.href = event.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = t('live.source');
-    info.append(tag, title, time, detail, venue, link);
-    article.append(image, info);
-    return article;
+    info.append(tag, title, time, detail, venue);
+    link.append(imageWrap, info);
+    return link;
   }));
 }
 

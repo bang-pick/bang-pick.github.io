@@ -1,62 +1,57 @@
 const messages = {
   ko: {
-    'live.bands': '밴드별 내한 현황',
-    'home.liveTitle': '내한', 'home.liveDescription': 'BanG Dream! 내한 공연', 'home.liveAction': '공연 목록 보기',
-    'live.title': '내한 공연', 'live.description': '한국에서 열린 BanG Dream! 밴드의 라이브를 모았어요.', 'live.list': '내한 공연 목록', 'live.source': '공식 안내 보기 ↗', 'live.festival': '페스티벌', 'live.solo': '단독 공연',
-
-    'meta.homeTitle': '방픽!', 'meta.pickTitle': '최애캐 | 방픽!', 'meta.songsTitle': '최애곡 | 방픽!', 'meta.profileTitle': '프로필 | 방픽!', 'meta.profileDescription': 'BanG Dream! 프로필 카드를 만들어보세요!',
-    'home.description': '최애캐와 최애곡을 자랑해보세요!',
-    'meta.homeDescription': 'BanG Dream! 최애캐와 최애곡을 자랑해보세요!',
-    'meta.pickDescription': 'BanG Dream! 최애캐를 자랑해보세요!', 'meta.songsDescription': 'BanG Dream! 최애곡을 자랑해보세요!',
-    'layout.loadError': '공통 화면을 불러오지 못했습니다.', 'data.loadError': '데이터를 불러오지 못했습니다: {file}',
+    'live.festival': '페스티벌',
+    'live.solo': '단독 공연',
+    'layout.loadError': '공통 화면을 불러오지 못했습니다.',
+    'data.loadError': '데이터를 불러오지 못했습니다: {file}',
     'birthday.loadError': '캐릭터 데이터를 불러오지 못했습니다.',
-    'export.imageError': '이미지 파일을 불러오지 못했습니다.', 'export.fontFileError': '글꼴 파일을 불러오지 못했습니다.', 'export.fontUrlError': 'Pretendard JP Variable 폰트 주소를 찾지 못했습니다.',
-    'export.fontLoadError': 'Pretendard JP Variable 폰트 정보를 불러오지 못했습니다.', 'export.fontFaceError': 'Pretendard JP Variable 폰트 정의를 찾지 못했습니다.',
+    'export.imageError': '이미지 파일을 불러오지 못했습니다.',
+    'export.fontFileError': '글꼴 파일을 불러오지 못했습니다.',
+    'export.fontUrlError': 'Pretendard JP Variable 폰트 주소를 찾지 못했습니다.',
+    'export.fontLoadError': 'Pretendard JP Variable 폰트 정보를 불러오지 못했습니다.',
+    'export.fontFaceError': 'Pretendard JP Variable 폰트 정의를 찾지 못했습니다.',
     'export.previewError': '이미지 미리보기를 찾지 못했습니다. 선택 항목을 확인해 주세요.',
-    'export.canvasError': '이미지 캔버스를 만들 수 없습니다.', 'export.pngError': 'PNG 이미지를 만들 수 없습니다.',
-    'nav.home': '홈', 'nav.characters': '최애캐', 'nav.songs': '최애곡', 'nav.profile': '프로필',
-    'nav.menu': '주 메뉴', 'nav.homeLabel': '방픽 홈', 'common.backToTop': '맨 위로 가기', 'common.bandLogo': '{name} 로고', 'language.toJapanese': '일본어로 전환', 'language.toKorean': '한국어로 전환',
-    'footer.copyright': '©BanG Dream! Project. 본 사이트는 BanG Dream! 공식과 관련이 없는 비공식・비영리 팬 사이트로, 모든 이미지의 권리는 원작자에게 있습니다.',
-    'footer.source': '이미지 출처', 'footer.feedback': '건의 및 오류 제보',
-    'home.characterTitle': '최애캐',
-    'home.characterDescription': '베스트 9 · 밴드별 최애캐 · 최애 커플', 'home.characterAction': '최애표 만들기',
-    'home.songTitle': '최애곡', 'home.songDescription': '베스트 9 · 밴드별 최애곡', 'home.songAction': '최애곡표 만들기',
-    'home.profileTitle': '프로필', 'home.profileDescription': '최애캐와 최애곡, 그리고 최애 밴드를 한눈에', 'home.profileAction': '프로필 카드 만들기',
-    'birthday.label': '생일', 'notice.label': '공지',
-    'birthday.today': '오늘은 {names}의 생일이에요!', 'birthday.next': '{month}월 {day}일은 {names}의 생일입니다!',
+    'export.canvasError': '이미지 캔버스를 만들 수 없습니다.',
+    'export.pngError': 'PNG 이미지를 만들 수 없습니다.',
+    'common.bandLogo': '{name} 로고',
+    'language.toJapanese': '일본어로 전환',
+    'language.toKorean': '한국어로 전환',
+    'birthday.label': '생일',
+    'notice.label': '공지',
+    'birthday.today': '오늘은 {names}의 생일이에요!',
+    'birthday.next': '{month}월 {day}일은 {names}의 생일입니다!',
     'notice.profileUpdate': '26.11.23. 내한 공연 목록이 추가되었습니다!',
-    'pick.selectedHeading': '내가 고른 캐릭터', 'common.clear': '전체 삭제', 'common.nickname': '내 닉네임',
-    'common.nicknamePlaceholder': '닉네임 입력', 'pick.couplesHeading': '선택한 커플링', 'pick.rankHeading': '순위 조정',
-    'pick.posterLabel': '선택한 캐릭터 최애표 미리보기', 'pick.posterEmpty': '캐릭터를 선택하면 최애표가 여기에 표시됩니다.',
-    'common.saveImage': '이미지 저장', 'pick.chooseHeading': '최애캐 고르기', 'pick.types': '최애표 종류',
-    'pick.bestTab': '베스트 9', 'pick.bandTab': '밴드별 최애캐', 'pick.coupleTab': '최애 커플',
-    'pick.filters': '캐릭터 필터', 'pick.searchPlaceholder': '이름으로 찾기', 'filter.bandLabel': '밴드 필터',
-    'filter.allBands': '전체 밴드', 'filter.others': '그 외', 'pick.rosterAll': '모든 캐릭터', 'pick.bestSubtitle': '최애 9명을 골라보세요. (현재 {count}/9명 선택됨)',
+    'filter.allBands': '전체 밴드',
+    'filter.others': '그 외',
+    'pick.rosterAll': '모든 캐릭터',
+    'pick.bestSubtitle': '최애 9명을 골라보세요. (현재 {count}/9명 선택됨)',
     'pick.bandSubtitle': '선택한 밴드 안에서 최애를 골라보세요.',
     'pick.coupleSubtitle': '두 캐릭터를 순서대로 선택하세요. (현재 {count}/{limit}쌍 선택됨){pending}',
-    'pick.pending': ' · 한 명 선택됨', 'pick.noResults': '찾는 캐릭터가 없어요.', 'pick.tryAnother': '다른 이름으로 검색해 보세요.',
-    'pick.deleteConfirm': '선택한 최애를 모두 지울까요?', 'pick.bestLimit': '베스트 9은 최대 9명까지 선택할 수 있어요.',
-    'pick.coupleRemove': '삭제', 'pick.rankLabel': '{name} 순위', 'pick.rank': '{rank}위',
-    'pick.selection': '선택', 'pick.selected': '선택됨', 'pick.saveError': '이미지를 저장하지 못했습니다.',
-    'poster.defaultOwner': '신입 스태프', 'poster.allTitle': '의 베스트 9', 'poster.bandTitle': '의 밴드별 최애',
-    'poster.coupleTitle': '의 최애커플', 'poster.footer': '비공식 팬사이트 방픽!에서 생성되었습니다.',
+    'pick.pending': ' · 한 명 선택됨',
+    'pick.deleteConfirm': '선택한 최애를 모두 지울까요?',
+    'pick.bestLimit': '베스트 9은 최대 9명까지 선택할 수 있어요.',
+    'pick.coupleRemove': '삭제',
+    'pick.rankLabel': '{name} 순위',
+    'pick.rank': '{rank}위',
+    'pick.selection': '선택',
+    'pick.selected': '선택됨',
+    'pick.saveError': '이미지를 저장하지 못했습니다.',
+    'poster.defaultOwner': '신입 스태프',
+    'poster.allTitle': '의 베스트 9',
+    'poster.bandTitle': '의 밴드별 최애',
+    'poster.coupleTitle': '의 최애커플',
+    'poster.footer': '비공식 팬사이트 방픽!에서 생성되었습니다.',
     'poster.rank': '{rank}위',
-    'songs.selectedHeading': '내가 고른 곡', 'songs.posterLabel': '선택한 최애곡표 미리보기',
-    'songs.posterEmpty': '곡을 선택하면 최애곡표가 여기에 표시됩니다.',
-    'songs.chooseHeading': '최애곡 고르기',
-    'songs.types': '최애곡표 종류', 'songs.bestTab': '베스트 9', 'songs.bandTab': '밴드별 최애곡',
-    'songs.filters': '곡 필터', 'songs.searchPlaceholder': '곡 제목 또는 밴드 검색', 'songs.rosterAll': '전체',
-    'songs.noResults': '검색 결과가 없습니다.', 'songs.count': '{count}곡', 'songs.deleteConfirm': '선택한 최애곡을 모두 지울까요?',
+    'songs.rosterAll': '전체',
+    'songs.count': '{count}곡',
+    'songs.deleteConfirm': '선택한 최애곡을 모두 지울까요?',
     'songs.bestLimit': '최애곡은 최대 9곡까지 선택할 수 있어요.',
-    'songs.bestTitle': '의 최애곡 베스트 9', 'songs.bandTitle': '의 밴드별 최애곡',
-    'songs.saveError': '이미지를 저장하지 못했습니다.', 'songs.empty': '미선택',
-    'profile.previewHeading': '프로필 미리보기', 'profile.previewLabel': '프로필 미리보기', 'profile.editHeading': '프로필 꾸미기',
-    'profile.favoriteBand': '최애 밴드',
-    'profile.saveFormat': '저장 형식', 'profile.cardOnly': '카드만', 'profile.withBackground': '배경 포함',
-    'profile.pickData': '최애캐 · 커플링 · 최애곡', 'profile.pickHint': '최애캐·최애곡 베스트9의 1위와 첫 번째 커플링이 자동으로 표시됩니다.',
-    'profile.editPicks': '최애캐 · 커플링 설정하기 →', 'profile.editSongs': '최애곡 설정하기 →',
-    'profile.since': '뱅드림 입덕 연도', 'profile.sincePlaceholder': '예: 2020',
-    'profile.defaultName': '나', 'profile.saveError': '프로필 이미지를 저장하지 못했습니다.',
+    'songs.bestTitle': '의 최애곡 베스트 9',
+    'songs.bandTitle': '의 밴드별 최애곡',
+    'songs.saveError': '이미지를 저장하지 못했습니다.',
+    'songs.empty': '미선택',
+    'profile.defaultName': '나',
+    'profile.saveError': '프로필 이미지를 저장하지 못했습니다.',
   },
   ja: {
     'live.bands': 'バンド別韓国公演状況',
@@ -128,13 +123,33 @@ export const bandName = (band) => language === 'ja' ? band.nameJa || band.name :
 export const characterName = (character) => language === 'ja' ? character.japanese || character.name : character.name;
 export const otherCharacterName = (character) => language === 'ja' ? character.name : character.japanese;
 
+// 정적인 한국어는 HTML을 기준으로 보관하고, 동적으로 생성되는 문구는 t()를 사용한다.
+const koreanDefaults = new WeakMap();
+
 export function applyLanguage() {
   document.documentElement.lang = language;
   for (const element of document.querySelectorAll('[data-i18n], [data-i18n-placeholder], [data-i18n-aria], [data-i18n-content]')) {
-    if (element.dataset.i18n) element.textContent = t(element.dataset.i18n);
-    if (element.dataset.i18nPlaceholder) element.placeholder = t(element.dataset.i18nPlaceholder);
-    if (element.dataset.i18nAria) element.setAttribute('aria-label', t(element.dataset.i18nAria));
-    if (element.dataset.i18nContent) element.content = t(element.dataset.i18nContent);
+    if (!koreanDefaults.has(element)) {
+      koreanDefaults.set(element, {
+        text: element.textContent,
+        placeholder: element.getAttribute('placeholder'),
+        aria: element.getAttribute('aria-label'),
+        content: element.getAttribute('content'),
+      });
+    }
+    const defaults = koreanDefaults.get(element);
+    const translated = (key, original) => language === 'ja' ? messages.ja[key] ?? original : original;
+    if (element.dataset.i18n) element.textContent = translated(element.dataset.i18n, defaults.text);
+    for (const [datasetKey, attribute, original] of [
+      ['i18nPlaceholder', 'placeholder', defaults.placeholder],
+      ['i18nAria', 'aria-label', defaults.aria],
+      ['i18nContent', 'content', defaults.content],
+    ]) {
+      if (!element.dataset[datasetKey]) continue;
+      const value = translated(element.dataset[datasetKey], original);
+      if (value === null) element.removeAttribute(attribute);
+      else element.setAttribute(attribute, value);
+    }
   }
   const toggle = document.querySelector('#language-toggle');
   if (toggle) {
