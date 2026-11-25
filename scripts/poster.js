@@ -1,4 +1,4 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261024-3';
+import { fitPosterPreview, savePosterImage, updatePosterPreview } from './poster-export.js?v=20261125-4';
 import { bands, characters } from './data.js?v=20261012-1';
 import { bandName, characterName, getLanguage, otherCharacterName, t } from './language.js?v=20261012-1';
 
@@ -172,19 +172,7 @@ function createPoster(outputScope, nickname, picks) {
 }
 
 export function renderPosterPreview(scope, nickname, picks) {
-  const preview = document.querySelector('#poster-preview');
-  const empty = document.querySelector('#poster-empty');
-  const poster = createPoster(scope, nickname, picks);
-  if (!poster) {
-    preview.replaceChildren();
-    preview.hidden = true;
-    empty.hidden = false;
-    return;
-  }
-  preview.replaceChildren(poster);
-  preview.hidden = false;
-  empty.hidden = true;
-  fitPosterPreview();
+  updatePosterPreview(createPoster(scope, nickname, picks));
 }
 
 export { fitPosterPreview };

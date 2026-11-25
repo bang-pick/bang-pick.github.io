@@ -11,6 +11,15 @@ export function fitPosterPreview() {
   if (preview.style.height !== height) preview.style.height = height;
 }
 
+export function updatePosterPreview(poster) {
+  const preview = document.querySelector('#poster-preview');
+  const empty = document.querySelector('#poster-empty');
+  preview.replaceChildren(...(poster ? [poster] : []));
+  preview.hidden = !poster;
+  empty.hidden = Boolean(poster);
+  if (poster) fitPosterPreview();
+}
+
 function inlineComputedStyles(source, target) {
   const computed = getComputedStyle(source);
   target.style.cssText = [...computed].map((property) => `${property}:${computed.getPropertyValue(property)};`).join('');
@@ -34,6 +43,10 @@ async function embedPosterImages(poster) {
     try {
       image.src = await fetchDataUrl(image.src, t('export.imageError'));
     } catch (error) {
+      if (image.dataset.fallbackRemove) {
+        image.remove();
+        return;
+      }
       if (image.dataset.fallbackText) {
         image.replaceWith(document.createTextNode(image.dataset.fallbackText));
         return;
@@ -109,6 +122,7 @@ export async function savePosterImage(filename, { backgroundColor = null } = {})
     if (getLanguage() !== 'ja') fonts.push(document.fonts.load('700 42px "Godo"'));
     if (getComputedStyle(poster).fontFamily.includes('Montserrat')) fonts.push(document.fonts.load('650 17px "Montserrat"'));
     await Promise.all(fonts);
+    await document.fonts.ready;
     await embedPosterImages(poster);
     const fontStyles = await embeddedFontStyles(poster);
     const height = Math.max(poster.offsetHeight, poster.scrollHeight);

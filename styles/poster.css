@@ -191,10 +191,6 @@
   white-space: nowrap;
 }
 
-.print-poster.song-poster {
-  width: 960px;
-}
-
 .print-poster-header h2 > span {
   flex: 0 0 auto;
 }
@@ -446,7 +442,6 @@
   font-size: 12px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 4px;
 }
 
 .print-poster-lower-grid .print-poster-info {

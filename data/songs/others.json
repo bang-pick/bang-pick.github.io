@@ -1,50 +1,60 @@
 [
   {
     "title": "Don't be afraid!",
-    "band": "Glitter*Green"
+    "band": "Glitter*Green",
+    "coverReleaseMbid": "dfe0d1c1-3d8b-4e71-a35d-7ca78338a972"
   },
   {
     "title": "クインティプル☆すまいる",
     "band": "GBP!스페셜밴드",
-    "koTitle": "퀸티플☆스마일"
+    "koTitle": "퀸티플☆스마일",
+    "coverReleaseMbid": "56723b62-179d-4992-add3-f9bc7e54eb55"
   },
   {
     "title": "ピコっと！パピっと!!ガルパ☆ピコ!!!",
     "band": "카스미×란×아야×유키나×코코로",
-    "koTitle": "피콧토! 파핏토!! 걸파☆피코!!!"
+    "koTitle": "피콧토! 파핏토!! 걸파☆피코!!!",
+    "coverReleaseMbid": "56723b62-179d-4992-add3-f9bc7e54eb55"
   },
   {
     "title": "ひとりじゃないんだから",
     "band": "아야×모카×리사×카논×츠구미",
-    "koTitle": "혼자가 아니니까"
+    "koTitle": "혼자가 아니니까",
+    "coverReleaseMbid": "f00dc0ea-e1fa-419d-9589-9e3bbf72bbb5"
   },
   {
     "title": "TWiNKLE CiRCLE",
-    "band": "GBP!스페셜밴드"
+    "band": "GBP!스페셜밴드",
+    "coverReleaseMbid": "59067e00-67db-42bc-adb2-59f8e3a7e2c4"
   },
   {
     "title": "大盛り一丁！ガルパ☆ピコ",
     "band": "카스미×란×아야×유키나×코코로",
-    "koTitle": "곱빼기 한 그릇! 걸파☆피코"
+    "koTitle": "곱빼기 한 그릇! 걸파☆피코",
+    "coverReleaseMbid": "59067e00-67db-42bc-adb2-59f8e3a7e2c4"
   },
   {
     "title": "絆色のアンサンブル",
     "band": "Poppin'Party×Pastel*Palettes×Morfonica",
-    "koTitle": "인연색 앙상블"
+    "koTitle": "인연색 앙상블",
+    "coverReleaseMbid": "5ecbb4bd-9236-441e-a433-c850d619ebe9"
   },
   {
     "title": "ラスハピーポー！",
-    "band": "RAISE A SUILEN×ハロー、ハッピーワールド！"
+    "band": "RAISE A SUILEN×ハロー、ハッピーワールド！",
+    "coverReleaseMbid": "5ecbb4bd-9236-441e-a433-c850d619ebe9"
   },
   {
     "title": "競宴Red×Violet",
     "band": "Roselia×Afterglow",
-    "koTitle": "경연 Red×Violet"
+    "koTitle": "경연 Red×Violet",
+    "coverReleaseMbid": "5ecbb4bd-9236-441e-a433-c850d619ebe9"
   },
   {
     "title": "ピコたるもの、ふぃーばー！",
     "band": "카스미×란×아야×유키나×코코로×마시로×레이야",
-    "koTitle": "피코라면, 피버!"
+    "koTitle": "피코라면, 피버!",
+    "coverReleaseMbid": "2504a60c-3f74-4615-9a92-977d705644ad"
   },
   {
     "title": "ナカナ イナ カナイ",
@@ -53,74 +63,90 @@
   },
   {
     "title": "CATASTROPHE BANQUET",
-    "band": "레이야×사요×사아야×미셸×루이"
+    "band": "레이야×사요×사아야×미셸×루이",
+    "coverReleaseMbid": "3c481ceb-4779-42af-83b3-f8deb46d013f"
   },
   {
     "title": "CiRCLE THANKS MUSiC♪",
-    "band": "CiRCLE THANKS PARTY！스페셜밴드"
+    "band": "CiRCLE THANKS PARTY！스페셜밴드",
+    "coverReleaseMbid": "3c481ceb-4779-42af-83b3-f8deb46d013f"
   },
   {
     "title": "See you! 〜それぞれの明日へ〜",
     "band": "아야×히나×치사토×마야×유키나×사요×리사×린코×카오루×카논",
-    "koTitle": "See you! ~각자의 내일로~"
+    "koTitle": "See you! ~각자의 내일로~",
+    "coverReleaseMbid": "8e032c90-a0d7-4fa7-9b04-b29b9eba79eb"
   },
   {
     "title": "Glee! Glee! Glee!",
-    "band": "Glitter*Green"
+    "band": "Glitter*Green",
+    "coverReleaseMbid": "dfe0d1c1-3d8b-4e71-a35d-7ca78338a972"
   },
   {
     "title": "Wonder Night Land",
-    "band": "별 내리는 티파티"
+    "band": "별 내리는 티파티",
+    "coverReleaseMbid": "b751edd8-5df1-4e59-b442-5ba0aea8dea0"
   },
   {
     "title": "Be shine, shining!",
-    "band": "CHiSPA"
+    "band": "CHiSPA",
+    "coverReleaseMbid": "d43caf00-b983-49c6-965a-df8abc3397f3"
   },
   {
     "title": "人間になりたいうた",
     "band": "CRYCHIC",
-    "koTitle": "인간이 되고 싶은 노래"
+    "koTitle": "인간이 되고 싶은 노래",
+    "coverReleaseMbid": "8f9498be-125e-4a08-8d8d-e632971b538c"
   },
   {
     "title": "春日影",
     "band": "CRYCHIC",
-    "koTitle": "봄볕"
+    "koTitle": "봄볕",
+    "coverReleaseMbid": "f68332db-c5b6-423a-8986-b421907e3a4b"
   },
   {
     "title": "元祖！バンドリちゃんのテーマ",
     "band": "카스미×란×아야×유키나×코코로×마시로×레이야×토모리×돌로리스×아라레",
-    "koTitle": "원조! 뱅드림짱의 테마"
+    "koTitle": "원조! 뱅드림짱의 테마",
+    "coverReleaseMbid": "6efc4146-ccbb-4cf5-b7df-ce3343372c58"
   },
   {
     "title": "Here, the world!",
-    "band": "sumimi"
+    "band": "sumimi",
+    "coverReleaseMbid": "d85f631d-e634-4606-8a01-97dfbb63118d"
   },
   {
     "title": "Sweet Escape",
-    "band": "sumimi"
+    "band": "sumimi",
+    "coverReleaseMbid": "9e9ba95a-7c75-4a02-b5b5-8671746a02ca"
   },
   {
     "title": "雪華は無常に微笑む",
     "band": "유키나×아논×리미×츠쿠시×츠구미",
-    "koTitle": "설화는 덧없이 미소짓는다"
+    "koTitle": "설화는 덧없이 미소짓는다",
+    "coverReleaseMbid": "f69d94a9-1aa7-41ea-9fea-c05295054261"
   },
   {
     "title": "マジるる！ナイスバルク",
     "band": "매지컬 피지컬 쿠루루",
-    "koTitle": "매지루루! 나이스 벌크"
+    "koTitle": "매지루루! 나이스 벌크",
+    "coverReleaseMbid": "335c6142-c3d0-4e75-93b2-e5fdd2d6b857"
   },
   {
     "title": "さらば上腕二頭筋",
     "band": "매지컬 피지컬 쿠루루",
-    "koTitle": "안녕 상완이두근"
+    "koTitle": "안녕 상완이두근",
+    "coverReleaseMbid": "13f61390-a5bf-4314-8d8d-01bdde803fe3"
   },
   {
     "title": "等身大あんりみてっど",
     "band": "에레아",
-    "koTitle": "등신대 언리미티드"
+    "koTitle": "등신대 언리미티드",
+    "coverReleaseMbid": "56b9790c-e5a6-41fb-9f2d-54966ed8545f"
   },
   {
     "title": "disobedience",
-    "band": "supremacy"
+    "band": "supremacy",
+    "coverReleaseMbid": "337e89b8-0b8b-4f1e-9a10-4a3faa4e25f2"
   }
 ]

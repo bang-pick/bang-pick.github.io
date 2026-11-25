@@ -2,24 +2,29 @@
   {
     "title": "起死開戦",
     "band": "millsage",
-    "koTitle": "기사개전"
+    "koTitle": "기사개전",
+    "coverReleaseMbid": "f9c110d0-3d25-4eb6-8610-1ce23a385f0d"
   },
   {
     "title": "カーネーションの咲く日に",
     "band": "millsage",
-    "koTitle": "카네이션이 피는 날에"
+    "koTitle": "카네이션이 피는 날에",
+    "coverReleaseMbid": "b25ae3af-7625-4c22-b5dc-f5c173ac336b"
   },
   {
     "title": "everscape",
-    "band": "millsage"
+    "band": "millsage",
+    "coverReleaseMbid": "59e9983c-a89c-42fa-ae2f-bbe427db3265"
   },
   {
     "title": "鳴らす",
     "band": "millsage",
-    "koTitle": "울림"
+    "koTitle": "울림",
+    "coverReleaseMbid": "b25ae3af-7625-4c22-b5dc-f5c173ac336b"
   },
   {
     "title": "Odd Dice",
-    "band": "millsage"
+    "band": "millsage",
+    "coverReleaseMbid": "5e4e0693-e331-4f29-8db0-3bd7bfe26ba2"
   }
 ]

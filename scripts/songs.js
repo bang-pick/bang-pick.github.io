@@ -1,9 +1,8 @@
-import { fitPosterPreview, savePosterImage } from './poster-export.js?v=20261024-3';
+import { fitPosterPreview, savePosterImage, updatePosterPreview } from './poster-export.js?v=20261125-4';
 import { bands, characters } from './data.js?v=20261012-1';
 import { bandName, getLanguage, t } from './language.js?v=20261012-1';
 import { renderRankEditor as renderRankRows } from './rank-editor.js?v=20261012-1';
-import { loadSongGroup } from './song-data.js?v=20261012-1';
-import { createSongCard } from './song-card.js?v=20261012-1';
+import { loadSongGroup, songDisplayName as songName } from './song-data.js?v=20261125-10';
 
 const $ = (selector) => document.querySelector(selector);
 const storageKey = 'bandori-song-pick-v1';
@@ -25,7 +24,6 @@ let nickname = typeof saved.nickname === 'string' ? saved.nickname : '';
 let scope = 'all';
 
 $('#song-nickname').value = nickname;
-const songName = (song) => getLanguage() === 'ja' ? song.title : song.koTitle || song.title;
 const artistReplacements = [
   ...characters.flatMap(({ name, japanese }) => [
     [name, japanese],
@@ -127,13 +125,66 @@ function renderRanks() {
     });
 }
 
+function createSongCard(song, band, rank, artistName = (name) => name, bandMode = false) {
+  const card = document.querySelector('#song-card-template').content.firstElementChild.cloneNode(true);
+  const bandLine = card.querySelector('.song-poster-band');
+  const original = card.querySelector('.song-poster-original');
+  const cover = card.querySelector('.song-poster-cover');
+  card.style.setProperty('--character-color', band?.color || '#e8e8e5');
+  if (bandMode) card.classList.add('print-poster-card-band');
+  if (rank) card.classList.add(`rank-${rank}`);
+  if (song?.coverReleaseMbid) {
+    const image = document.createElement('img');
+    image.src = 'https://coverartarchive.org/release/' + song.coverReleaseMbid + '/front-500';
+    image.alt = '';
+    image.dataset.fallbackRemove = 'true';
+    image.addEventListener('error', () => image.remove(), { once: true });
+    cover.append(image);
+  }
+
+  if (rank) {
+    const badge = document.createElement('span');
+    badge.className = 'print-poster-rank';
+    badge.textContent = t('poster.rank', { rank });
+    cover.append(badge);
+  }
+
+  if (song) {
+    const name = songName(song);
+    const secondary = getLanguage() === 'ja' ? song.koTitle : song.title;
+    const nameLine = card.querySelector('.song-poster-name');
+    nameLine.textContent = name;
+    nameLine.title = name;
+    original.textContent = secondary || name;
+    original.title = original.textContent;
+    card.querySelector('.song-poster-artist').textContent = artistName(song.band === band?.name ? bandName(band) : song.band);
+  } else {
+    card.classList.add('is-empty');
+    card.querySelector('.song-poster-name').textContent = '';
+    card.querySelector('.song-poster-artist').remove();
+    original.remove();
+  }
+
+  if (bandMode) {
+    bandLine.className = 'print-poster-featured-logo';
+    card.prepend(bandLine);
+  }
+  if (band?.logo) {
+    const logo = document.createElement('img');
+    logo.src = `./assets/images/bands_big/${band.logo}`;
+    logo.alt = bandName(band);
+    logo.dataset.fallbackText = bandName(band);
+    logo.addEventListener('error', () => { bandLine.textContent = bandName(band); }, { once: true });
+    bandLine.append(logo);
+  } else if (band) {
+    bandLine.textContent = song && song.band !== band.name ? artistName(song.band) : bandName(band);
+  }
+  return card;
+}
+
 function renderPoster() {
-  const preview = $('#poster-preview');
-  const empty = $('#poster-empty');
   if (scope === 'all' && !hasPicks()) {
-    preview.replaceChildren();
-    preview.hidden = true;
-    empty.hidden = false;
+    updatePosterPreview(null);
     return;
   }
   const poster = $('#song-poster-template').content.firstElementChild.cloneNode(true);
@@ -141,25 +192,24 @@ function renderPoster() {
   poster.querySelector('.print-poster-title').textContent = t(scope === 'all' ? 'songs.bestTitle' : 'songs.bandTitle');
   poster.querySelector('.print-poster-footer span:last-child').textContent = t('poster.footer');
   const content = poster.querySelector('.print-poster-content');
-  const grid = document.createElement('div');
-  grid.className = scope === 'all' ? 'song-poster-best' : 'song-poster-bands';
-
   if (scope === 'all') {
+    const grid = document.createElement('div');
+    grid.className = 'song-poster-best';
     bestNine.forEach((key, index) => {
       const song = songByKey.get(key);
       grid.append(createSongCard(song, bandById[song.group], index + 1, artistName));
     });
+    content.append(grid);
   } else {
-    for (const [index, band] of mainBands.entries()) {
+    const grid = document.createElement('div');
+    grid.className = 'print-poster-grid print-poster-band-grid';
+    for (const band of mainBands) {
       const song = songByKey.get(bandPicks[band.id]);
-      grid.append(createSongCard(song, band, index + 1, artistName));
+      grid.append(createSongCard(song, band, null, artistName, true));
     }
+    content.append(grid);
   }
-  content.append(grid);
-  preview.replaceChildren(poster);
-  preview.hidden = false;
-  empty.hidden = true;
-  fitPosterPreview();
+  updatePosterPreview(poster);
 }
 
 function render() {

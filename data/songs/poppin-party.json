@@ -1,355 +1,432 @@
-[ 
+[
   {
     "title": "Yes! BanG_Dream!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "dbaf2b5c-2d74-40f5-874d-da43ed8e847c"
   },
   {
     "title": "ぽっぴん'しゃっふる",
     "band": "Poppin'Party",
-    "koTitle": "팝핀 셔플"
+    "koTitle": "팝핀 셔플",
+    "coverReleaseMbid": "dbaf2b5c-2d74-40f5-874d-da43ed8e847c"
   },
   {
     "title": "STAR BEAT!〜ホシノコドウ〜",
     "band": "Poppin'Party",
-    "koTitle": "STAR BEAT! ~별의 고동 소리~"
+    "koTitle": "STAR BEAT! ~별의 고동 소리~",
+    "coverReleaseMbid": "9f9630bf-0ee8-4f89-9a10-fd9665694202"
   },
   {
     "title": "夏空 SUN! SUN! SEVEN!",
     "band": "Poppin'Party",
-    "koTitle": "여름 하늘 SUN! SUN! SEVEN!"
+    "koTitle": "여름 하늘 SUN! SUN! SEVEN!",
+    "coverReleaseMbid": "9f9630bf-0ee8-4f89-9a10-fd9665694202"
   },
   {
     "title": "走り始めたばかりのキミに",
     "band": "Poppin'Party",
-    "koTitle": "이제 막 달리기 시작한 너에게"
+    "koTitle": "이제 막 달리기 시작한 너에게",
+    "coverReleaseMbid": "8ee850b9-fe1a-440a-ab63-0085ca8f036e"
   },
   {
     "title": "ティアドロップス",
     "band": "Poppin'Party",
-    "koTitle": "티어 드롭스"
+    "koTitle": "티어 드롭스",
+    "coverReleaseMbid": "8ee850b9-fe1a-440a-ab63-0085ca8f036e"
   },
   {
     "title": "ときめきエクスペリエンス！",
     "band": "Poppin'Party",
-    "koTitle": "두근두근 익스피리언스!"
+    "koTitle": "두근두근 익스피리언스!",
+    "coverReleaseMbid": "88d7d72d-ff8e-471e-b9e8-098faf7f12e7"
   },
   {
     "title": "1000回潤んだ空",
     "band": "Poppin'Party",
-    "koTitle": "1000번 눈물 지은 하늘"
+    "koTitle": "1000번 눈물 지은 하늘",
+    "coverReleaseMbid": "88d7d72d-ff8e-471e-b9e8-098faf7f12e7"
   },
   {
     "title": "キラキラだとか夢だとか 〜Sing Girls〜",
     "band": "Poppin'Party",
-    "koTitle": "반짝임이나 꿈이나 ~Sing Girls~"
+    "koTitle": "반짝임이나 꿈이나 ~Sing Girls~",
+    "coverReleaseMbid": "b56a0c96-6ec1-4279-a8ed-f6a89213dfb7"
   },
   {
     "title": "Happy Happy Party!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "b56a0c96-6ec1-4279-a8ed-f6a89213dfb7"
   },
   {
     "title": "前へススメ！",
     "band": "Poppin'Party",
-    "koTitle": "앞으로 나아가자!"
+    "koTitle": "앞으로 나아가자!",
+    "coverReleaseMbid": "032288ec-e536-4cfd-8c1f-bfe58b241b74"
   },
   {
     "title": "夢見るSunflower",
     "band": "Poppin'Party",
-    "koTitle": "꿈꾸는 Sunflower"
+    "koTitle": "꿈꾸는 Sunflower",
+    "coverReleaseMbid": "032288ec-e536-4cfd-8c1f-bfe58b241b74"
   },
   {
     "title": "Time Lapse",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "b409f174-48f2-43a5-8e80-52df46bdccce"
   },
   {
     "title": "八月のif",
     "band": "Poppin'Party",
-    "koTitle": "8월의 if"
+    "koTitle": "8월의 if",
+    "coverReleaseMbid": "b409f174-48f2-43a5-8e80-52df46bdccce"
   },
   {
     "title": "夏のドーン！",
     "band": "Poppin'Party",
-    "koTitle": "여름의 펑!"
+    "koTitle": "여름의 펑!",
+    "coverReleaseMbid": "b409f174-48f2-43a5-8e80-52df46bdccce"
   },
   {
     "title": "クリスマスのうた",
     "band": "Poppin'Party",
-    "koTitle": "크리스마스의 노래"
+    "koTitle": "크리스마스의 노래",
+    "coverReleaseMbid": "468fb2d8-42e6-4adf-86b7-7a8b5c9cbeba"
   },
   {
     "title": "B.O.F",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "468fb2d8-42e6-4adf-86b7-7a8b5c9cbeba"
   },
   {
     "title": "キミにもらったもの",
     "band": "Poppin'Party",
-    "koTitle": "너에게 받은 것"
+    "koTitle": "너에게 받은 것",
+    "coverReleaseMbid": "468fb2d8-42e6-4adf-86b7-7a8b5c9cbeba"
   },
   {
     "title": "CiRCLING",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "aa4f6e4d-39f0-4f9d-ba60-27ca75b02ef0"
   },
   {
     "title": "Light Delight",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "aa4f6e4d-39f0-4f9d-ba60-27ca75b02ef0"
   },
   {
     "title": "私の心はチョココロネ",
     "band": "Poppin'Party",
-    "koTitle": "내 마음은 초코소라빵"
+    "koTitle": "내 마음은 초코소라빵",
+    "coverReleaseMbid": "de96b55a-ff6b-4a88-aeed-d4a86fa88b14"
   },
   {
     "title": "二重の虹（ダブル レインボウ）",
     "band": "Poppin'Party",
-    "koTitle": "쌍무지개 (더블 레인보우)"
+    "koTitle": "쌍무지개 (더블 레인보우)",
+    "coverReleaseMbid": "90a16479-1edd-4363-9641-ae07fe2f89b3"
   },
   {
     "title": "最高（さあ行こう）！",
     "band": "Poppin'Party",
-    "koTitle": "최고(자, 가자)!"
+    "koTitle": "최고(자, 가자)!",
+    "coverReleaseMbid": "90a16479-1edd-4363-9641-ae07fe2f89b3"
   },
   {
     "title": "ガールズコード",
     "band": "Poppin'Party",
-    "koTitle": "걸즈 코드"
+    "koTitle": "걸즈 코드",
+    "coverReleaseMbid": "dd22cc16-1f53-4523-8045-d3d7456890cd"
   },
   {
     "title": "切ないSandglass",
     "band": "Poppin'Party",
-    "koTitle": "애달픈 Sandglass"
+    "koTitle": "애달픈 Sandglass",
+    "coverReleaseMbid": "dd22cc16-1f53-4523-8045-d3d7456890cd"
   },
   {
     "title": "キズナミュージック♪",
     "band": "Poppin'Party",
-    "koTitle": "인연 뮤직♪"
+    "koTitle": "인연 뮤직♪",
+    "coverReleaseMbid": "639976d0-5fb9-4b37-be2f-616ec1b6671b"
   },
   {
     "title": "Home Street",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "639976d0-5fb9-4b37-be2f-616ec1b6671b"
   },
   {
     "title": "Jumpin'",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "334f4719-6a68-4cc5-a482-e63fb0918777"
   },
   {
     "title": "What's the POPIPA!?",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "334f4719-6a68-4cc5-a482-e63fb0918777"
   },
   {
     "title": "NO GIRL NO CRY",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "fd869c17-0382-46d2-ab6b-5d529f8421ad"
   },
   {
     "title": "Dreamers Go!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "e3118f4c-20a4-4b17-a2d0-3077feb36a30"
   },
   {
     "title": "Returns",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "e3118f4c-20a4-4b17-a2d0-3077feb36a30"
   },
   {
     "title": "イニシャル",
     "band": "Poppin'Party",
-    "koTitle": "이니셜"
+    "koTitle": "이니셜",
+    "coverReleaseMbid": "38bf11d6-02e3-4071-877d-9f89c47434a7"
   },
   {
     "title": "夢を撃ち抜く瞬間に！",
     "band": "Poppin'Party",
-    "koTitle": "꿈을 꿰뚫는 순간에!"
+    "koTitle": "꿈을 꿰뚫는 순간에!",
+    "coverReleaseMbid": "38bf11d6-02e3-4071-877d-9f89c47434a7"
   },
   {
     "title": "SAKURA MEMORIES",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "38bf11d6-02e3-4071-877d-9f89c47434a7"
   },
   {
     "title": "アニバーサリー",
     "band": "Poppin'Party",
-    "koTitle": "기념일"
+    "koTitle": "기념일",
+    "coverReleaseMbid": "9f934ca3-bd1b-42de-a1d8-b89f38ed843c"
   },
   {
     "title": "White Afternoon",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "2849d991-e5de-4995-a02f-55533d9d0c5e"
   },
   {
     "title": "Breakthrough!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c24fdfde-5aff-4ff1-bbb7-8af2184e39fe"
   },
   {
     "title": "Hello! Wink!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c24fdfde-5aff-4ff1-bbb7-8af2184e39fe"
   },
   {
     "title": "Step×Step!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c24fdfde-5aff-4ff1-bbb7-8af2184e39fe"
   },
   {
     "title": "キラキラスター！",
     "band": "Poppin'Party",
-    "koTitle": "반짝반짝 스타!"
+    "koTitle": "반짝반짝 스타!",
+    "coverReleaseMbid": "c24fdfde-5aff-4ff1-bbb7-8af2184e39fe"
   },
   {
     "title": "ミライトレイン",
     "band": "Poppin'Party",
-    "koTitle": "미래 열차"
+    "koTitle": "미래 열차",
+    "coverReleaseMbid": "c24fdfde-5aff-4ff1-bbb7-8af2184e39fe"
   },
   {
     "title": "Photograph",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c336085b-0bcc-41e9-8f20-4462ec6336c7"
   },
   {
     "title": "開けたらDream!",
     "band": "Poppin'Party",
-    "koTitle": "열었더니 Dream!"
+    "koTitle": "열었더니 Dream!",
+    "coverReleaseMbid": "c336085b-0bcc-41e9-8f20-4462ec6336c7"
   },
   {
     "title": "Live Beyond!!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "98d8de9f-6e3e-49da-b7bf-468859f4e06f"
   },
   {
     "title": "Sweets BAN!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "98d8de9f-6e3e-49da-b7bf-468859f4e06f"
   },
   {
     "title": "キミが始まる！",
     "band": "Poppin'Party",
-    "koTitle": "네가 시작돼!"
+    "koTitle": "네가 시작돼!",
+    "coverReleaseMbid": "98d8de9f-6e3e-49da-b7bf-468859f4e06f"
   },
   {
     "title": "Moonlight Walk",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "98d8de9f-6e3e-49da-b7bf-468859f4e06f"
   },
   {
     "title": "ここから先は歌にならない",
     "band": "Poppin'Party",
-    "koTitle": "여기서부터는 노래가 되지 않아"
+    "koTitle": "여기서부터는 노래가 되지 않아",
+    "coverReleaseMbid": "98d8de9f-6e3e-49da-b7bf-468859f4e06f"
   },
   {
     "title": "ぽっぴん'どりーむ！",
     "band": "Poppin'Party",
-    "koTitle": "팝핀'드림!"
+    "koTitle": "팝핀'드림!",
+    "coverReleaseMbid": "e1bfdc25-a2ee-4ffb-93c2-942af11846d3"
   },
   {
     "title": "星の約束",
     "band": "Poppin'Party",
-    "koTitle": "별의 약속"
+    "koTitle": "별의 약속",
+    "coverReleaseMbid": "e1bfdc25-a2ee-4ffb-93c2-942af11846d3"
   },
   {
     "title": "イントロダクション",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "e1bfdc25-a2ee-4ffb-93c2-942af11846d3"
   },
   {
     "title": "夏に閉じこめて",
     "band": "Poppin'Party",
-    "koTitle": "여름에 가두고"
+    "koTitle": "여름에 가두고",
+    "coverReleaseMbid": "72072c02-5ad3-448d-9ce9-797896e16152"
   },
   {
     "title": "勇気Limit!",
     "band": "Poppin'Party",
-    "koTitle": "용기 Limit!"
+    "koTitle": "용기 Limit!",
+    "coverReleaseMbid": "72072c02-5ad3-448d-9ce9-797896e16152"
   },
   {
     "title": "青春 To Be Continued",
     "band": "Poppin'Party",
-    "koTitle": "청춘 To Be Continued"
+    "koTitle": "청춘 To Be Continued",
+    "coverReleaseMbid": "4950c4cf-1bd7-40fb-b860-ca2e6de9fb73"
   },
   {
     "title": "Future Place",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "4950c4cf-1bd7-40fb-b860-ca2e6de9fb73"
   },
   {
     "title": "大好き！",
     "band": "Poppin'Party",
-    "koTitle": "정말 좋아해!"
+    "koTitle": "정말 좋아해!",
+    "coverReleaseMbid": "4950c4cf-1bd7-40fb-b860-ca2e6de9fb73"
   },
   {
     "title": "Five Letters",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "4950c4cf-1bd7-40fb-b860-ca2e6de9fb73"
   },
   {
     "title": "最強☆ソング",
     "band": "Poppin'Party",
-    "koTitle": "최강☆송"
+    "koTitle": "최강☆송",
+    "coverReleaseMbid": "c0df9d8d-9552-42c2-9cfb-5ab98f4195eb"
   },
   {
     "title": "RiNG A BELL",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "4950c4cf-1bd7-40fb-b860-ca2e6de9fb73"
   },
   {
     "title": "Freedom (w. 나츠키)",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "76d89d99-b34a-4669-a3d8-28d29450f85b"
   },
   {
     "title": "新しい季節に",
     "band": "Poppin'Party",
-    "koTitle": "새로운 계절에"
+    "koTitle": "새로운 계절에",
+    "coverReleaseMbid": "c9eda3e9-a2a3-4cef-a7d0-ccb42fa8524a"
   },
   {
     "title": "Chu Chueen!",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c9eda3e9-a2a3-4cef-a7d0-ccb42fa8524a"
   },
   {
     "title": "ほな！",
     "band": "Poppin'Party",
-    "koTitle": "그럼!"
+    "koTitle": "그럼!",
+    "coverReleaseMbid": "c9eda3e9-a2a3-4cef-a7d0-ccb42fa8524a"
   },
   {
     "title": "TARINAI",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "c4f8b36a-38dd-44c4-b8eb-23f176f3b2f4"
   },
   {
     "title": "トレモロアイズ",
     "band": "Poppin'Party",
-    "koTitle": "트레몰로아이즈"
+    "koTitle": "트레몰로아이즈",
+    "coverReleaseMbid": "c4f8b36a-38dd-44c4-b8eb-23f176f3b2f4"
   },
   {
     "title": "Tomorrow's Door",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "64548def-8b7f-44f1-a8d7-c8c8b85e90f8"
   },
   {
     "title": "DOKI DOKI SCARY",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "64548def-8b7f-44f1-a8d7-c8c8b85e90f8"
   },
   {
     "title": "雨上がり、キミと",
     "band": "Poppin'Party",
-    "koTitle": "비가 그친 후, 너와"
+    "koTitle": "비가 그친 후, 너와",
+    "coverReleaseMbid": "64548def-8b7f-44f1-a8d7-c8c8b85e90f8"
   },
   {
     "title": "花咲く未来に",
     "band": "Poppin'Party",
-    "koTitle": "꽃 피는 미래에"
+    "koTitle": "꽃 피는 미래에",
+    "coverReleaseMbid": "64548def-8b7f-44f1-a8d7-c8c8b85e90f8"
   },
   {
     "title": "Drive Your Heart",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "4df1117a-538c-43a6-99e0-17fadd3b90f1"
   },
   {
     "title": "とっておきAnswer",
     "band": "Poppin'Party",
-    "koTitle": "소중히 간직한 Answer"
+    "koTitle": "소중히 간직한 Answer",
+    "coverReleaseMbid": "4df1117a-538c-43a6-99e0-17fadd3b90f1"
   },
   {
     "title": "世界中の青空をあつめて",
     "band": "Poppin'Party",
-    "koTitle": "온 세상의 푸른 하늘을 모아서"
+    "koTitle": "온 세상의 푸른 하늘을 모아서",
+    "coverReleaseMbid": "4df1117a-538c-43a6-99e0-17fadd3b90f1"
   },
   {
     "title": "どきどきデエト",
     "band": "Poppin'Party",
-    "koTitle": "두근두근 데이트"
+    "koTitle": "두근두근 데이트",
+    "coverReleaseMbid": "e3253f96-e500-4aa6-9d24-4cab09a3a7cf"
   },
   {
     "title": "Game Changer",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "e3253f96-e500-4aa6-9d24-4cab09a3a7cf"
   },
   {
     "title": "スキップ･スランプ･スリッパ",
     "band": "Poppin'Party",
-    "koTitle": "스킵･슬럼프･슬리퍼"
+    "koTitle": "스킵･슬럼프･슬리퍼",
+    "coverReleaseMbid": "d7df8f9d-dadc-4e52-b1c8-df8180fd1b43"
   },
   {
     "title": "Amore",
-    "band": "Poppin'Party"
+    "band": "Poppin'Party",
+    "coverReleaseMbid": "d7df8f9d-dadc-4e52-b1c8-df8180fd1b43"
   },
   {
     "title": "ライムライト",
@@ -359,26 +436,31 @@
   {
     "title": "どきどきSINGOUT!",
     "band": "토야마 카스미",
-    "koTitle": "두근두근 SING OUT!"
+    "koTitle": "두근두근 SING OUT!",
+    "coverReleaseMbid": "288c1fd0-7707-49d9-8fdf-65fab5cb1857"
   },
   {
     "title": "花園電気ギター!!!",
     "band": "하나조노 타에",
-    "koTitle": "하나조노 일렉 기타!!!"
+    "koTitle": "하나조노 일렉 기타!!!",
+    "coverReleaseMbid": "b1852958-c50c-43be-97c2-6d0681aff37d"
   },
   {
     "title": "チョコレイトの低音レシピ",
     "band": "우시고메 리미",
-    "koTitle": "초콜릿의 저음 레시피"
+    "koTitle": "초콜릿의 저음 레시피",
+    "coverReleaseMbid": "2cd5aa47-918a-4d38-933f-5b6e31f6a736"
   },
   {
     "title": "遠い音楽〜ハートビート〜",
     "band": "야마부키 사아야",
-    "koTitle": "멀어진 음악 ~하트비트~"
+    "koTitle": "멀어진 음악 ~하트비트~",
+    "coverReleaseMbid": "fa0bb5fd-28d7-4ea8-9f20-3ed35db4a673"
   },
   {
     "title": "す、好きなんかじゃない！",
     "band": "이치가야 아리사",
-    "koTitle": "좋, 좋아하는 게 아니야!"
+    "koTitle": "좋, 좋아하는 게 아니야!",
+    "coverReleaseMbid": "517c8066-e929-41f0-82c0-f486dc02cbc2"
   }
 ]

@@ -118,109 +118,50 @@
   max-width: 100%;
 }
 
-.song-poster-best,
-.song-poster-bands {
-  display: flex;
-  flex-direction: column;
-  margin-top: 32px;
-  padding: 0 20px;
-  overflow: hidden;
-  border: 1px solid #e4e2dc;
-  border-radius: 10px;
+.print-poster.song-poster {
+  width: 1400px;
+}
+
+.song-poster-best {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.song-poster .song-poster-cover {
+  height: auto;
+  aspect-ratio: 1;
   background: #fff;
 }
 
-.song-poster-card {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 20px;
-  min-width: 0;
-  min-height: 92px;
-  padding: 16px 4px;
-  overflow: hidden;
-  border-bottom: 1px solid #e4e2dc;
-  background: transparent;
-}
-
-.song-poster-card:last-child {
-  border-bottom: 0;
-}
-
-.song-poster-rank {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--song-color) 16%, #fff);
-  color: color-mix(in srgb, var(--song-color) 70%, #222);
-  font-size: 16px;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  text-align: center;
-}
-
-.song-poster-band {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  color: var(--muted);
-  font-size: 12px;
-  text-align: center;
-}
-
-.song-poster-band img {
-  display: block;
-  max-width: 100%;
-  max-height: 36px;
+.song-poster .song-poster-cover img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
-.song-poster-titles {
+.song-poster .print-poster-info {
+  justify-content: flex-start;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.song-poster .print-poster-info .print-poster-name,
+.song-poster .print-poster-info .print-poster-sub {
   min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.song-poster-title-line {
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  min-width: 0;
+.song-poster .print-poster-info .print-poster-name {
+  line-height: 26px;
 }
 
-.song-poster-name {
-  min-width: 0;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.3;
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-
-.song-poster-original {
-  color: #666860;
-  font-size: 14px;
-  line-height: 1.35;
-  text-align: right;
-  margin-left: 8px;
-  overflow-wrap: anywhere;
-}
-
-.song-poster-artist {
-  display: block;
-  color: #777870;
-  font-size: 14px;
-  overflow-wrap: anywhere;
-}
-
-.song-poster-card.is-empty {
-  --song-color: #a6a7a1;
-}
-
-.song-poster-card.is-empty .song-poster-name {
-  color: #9b9c96;
-  font-size: 16px;
+.song-poster .print-poster-info .print-poster-sub {
+  line-height: 18px;
 }
 
 @media (min-width: 1200px) {
@@ -279,10 +220,6 @@
   .song-list button {
     grid-template-columns: minmax(0, 1fr) minmax(100px, 40%);
     gap: 12px;
-  }
-
-  .song-list-head {
-    padding: 0 6px 10px;
   }
 
   .song-list button {

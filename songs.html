@@ -6,10 +6,10 @@
     <meta name="theme-color" content="#f31864" />
     <meta name="description" content="BanG Dream! 최애곡을 자랑해보세요!" data-i18n-content="meta.songsDescription" />
     <title data-i18n="meta.songsTitle">최애곡 | 방픽!</title>
-    <link rel="stylesheet" href="./styles/base.css?v=20261123-2" />
+    <link rel="stylesheet" href="./styles/base.css?v=20261125-1" />
     <link rel="stylesheet" href="./styles/picker.css?v=20261123-1" />
-    <link rel="stylesheet" href="./styles/poster.css?v=20261125-1" />
-    <link rel="stylesheet" href="./styles/songs.css?v=20261012-1" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261125-2" />
+    <link rel="stylesheet" href="./styles/songs.css?v=20261125-8" />
     <link rel="icon" href="./assets/favicon.ico" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="최애곡 | 방픽!" />
@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://bang-pick.github.io/songs.html" />
     <meta property="og:site_name" content="방픽!" />
     <script src="./scripts/layout.js?v=20261012-1" type="module"></script>
-    <script src="./scripts/songs.js?v=20261024-3" type="module"></script>
+    <script src="./scripts/songs.js?v=20261125-13" type="module"></script>
   </head>
   <body data-page="songs">
     <header class="topbar" data-shared="header"></header>
@@ -89,16 +89,14 @@
       </article>
     </template>
     <template id="song-card-template">
-      <article class="song-poster-card">
-        <span class="song-poster-rank"></span>
-        <div class="song-poster-titles">
-          <div class="song-poster-title-line">
-            <span class="song-poster-name"></span>
-            <span class="song-poster-original"></span>
-          </div>
-          <span class="song-poster-artist"></span>
-        </div>
-        <span class="song-poster-band"></span>
+      <article class="print-poster-card song-poster-card">
+        <div class="print-poster-portrait song-poster-cover"></div>
+        <footer class="print-poster-info">
+          <div class="print-poster-band song-poster-band"></div>
+          <span class="print-poster-name song-poster-name"></span>
+          <span class="print-poster-sub song-poster-original"></span>
+          <span class="print-poster-sub song-poster-artist"></span>
+        </footer>
       </article>
     </template>
     <footer data-shared="footer"></footer>
