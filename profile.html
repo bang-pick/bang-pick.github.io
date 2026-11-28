@@ -3,123 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f31864" />
-    <meta name="description" content="BanG Dream! 프로필 카드를 만들어보세요!" data-i18n-content="meta.profileDescription" />
-    <title data-i18n="meta.profileTitle">프로필 카드 | 방픽!</title>
-    <link rel="stylesheet" href="./styles/base.css?v=20261123-2" />
-    <link rel="stylesheet" href="./styles/picker.css?v=20261123-1" />
-    <link rel="stylesheet" href="./styles/poster.css?v=20261125-1" />
-    <link rel="stylesheet" href="./styles/profile.css?v=20261024-5" />
-    <link rel="icon" href="./assets/favicon.ico" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="프로필 카드 | 방픽!" />
-    <meta property="og:description" content="BanG Dream! 프로필 카드를 만들어보세요!" />
-    <meta property="og:image" content="https://bang-pick.github.io/assets/images/main-2.webp" />
-    <meta property="og:url" content="https://bang-pick.github.io/profile.html" />
-    <meta property="og:site_name" content="방픽!" />
-    <script src="./scripts/layout.js?v=20261012-1" type="module"></script>
-    <script src="./scripts/profile.js?v=20261024-6" type="module"></script>
+    <meta http-equiv="refresh" content="0;url=./profile/" />
+    <title>페이지가 이동했어요. | 방픽!</title>
+    <script>location.replace('./profile/' + location.search + location.hash);</script>
   </head>
-  <body data-page="profile">
-    <header class="topbar" data-shared="header"></header>
-
-    <main class="profile-layout">
-      <section class="picked-section profile-preview-section">
-        <div class="section-heading picked-heading">
-          <h2 data-i18n="profile.previewHeading">프로필 미리보기</h2>
-        </div>
-        <div class="picked-panel">
-          <div class="poster-preview-wrap profile-preview-wrap">
-            <div class="profile-preview-card">
-              <div id="poster-preview" aria-label="프로필 미리보기" data-i18n-aria="profile.previewLabel"></div>
-            </div>
-          </div>
-          <fieldset class="profile-export-options">
-            <legend data-i18n="profile.saveFormat">저장 형식</legend>
-            <label><input type="radio" name="profile-export" value="card" /><span data-i18n="profile.cardOnly">카드만</span></label>
-            <label><input type="radio" name="profile-export" value="background" checked /><span data-i18n="profile.withBackground">배경 포함</span></label>
-          </fieldset>
-          <button class="image-button" id="save-profile" type="button" disabled>
-            <span data-i18n="common.saveImage">이미지 저장</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 15V3" />
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <path d="m7 10 5 5 5-5" />
-            </svg>
-          </button>
-        </div>
-      </section>
-
-      <section class="workspace profile-editor">
-        <div class="section-heading">
-          <h2 data-i18n="profile.editHeading">프로필 꾸미기</h2>
-        </div>
-
-        <label class="profile-field">
-          <span data-i18n="common.nickname">내 닉네임</span>
-          <input id="profile-nickname" maxlength="24" placeholder="닉네임 입력" data-i18n-placeholder="common.nicknamePlaceholder" autocomplete="nickname" />
-        </label>
-
-        <label class="profile-field">
-          <span data-i18n="profile.since">뱅드림 입덕 연도</span>
-          <input id="profile-since-year" type="number" min="2015" step="1" inputmode="numeric" placeholder="예: 2020" data-i18n-placeholder="profile.sincePlaceholder" />
-        </label>
-
-        <label class="profile-field">
-          <span data-i18n="profile.favoriteBand">최애 밴드</span>
-          <select id="profile-band"></select>
-        </label>
-
-        <div class="profile-field">
-          <span data-i18n="profile.pickData">최애캐 · 커플링 · 최애곡</span>
-          <p class="profile-pick-hint" data-i18n="profile.pickHint">최애캐·최애곡 베스트9의 1위와 첫 번째 커플링이 자동으로 표시됩니다.</p>
-          <div class="profile-pick-links">
-            <a class="profile-pick-link" href="./pick.html" data-i18n="profile.editPicks">최애캐 · 커플링 설정하기 →</a>
-            <a class="profile-pick-link" href="./songs.html" data-i18n="profile.editSongs">최애곡 설정하기 →</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <template id="profile-card-template">
-      <article class="print-poster profile-card">
-        <header class="profile-card-header">
-          <span class="profile-card-title">MEMBER’S CARD</span>
-          <span class="profile-card-hole" aria-hidden="true"></span>
-        </header>
-        <div class="profile-card-portrait"></div>
-        <div class="profile-card-details">
-          <img class="profile-card-brand" src="./assets/images/ring_logo.webp" alt="LIVEHOUSE RiNG" />
-          <section class="profile-card-name-field">
-            <span class="profile-card-label">NAME</span>
-            <h2 class="profile-card-owner"></h2>
-          </section>
-          <div class="profile-card-favorites">
-            <section>
-              <span class="profile-card-label">FAVORITE BAND</span>
-              <img class="profile-card-band-logo" alt="" />
-            </section>
-            <section>
-              <span class="profile-card-label">FAVORITE COUPLE</span>
-              <p class="profile-card-favorite-couple"></p>
-            </section>
-          </div>
-          <section class="profile-card-song-field">
-            <span class="profile-card-label">FAVORITE SONG</span>
-            <p class="profile-card-favorite-song"></p>
-          </section>
-          <footer class="profile-card-footer">
-            <div class="profile-card-footer-notes">
-              <span>비공식 팬사이트 방픽!에서 생성되었습니다.</span>
-              <span>©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
-            </div>
-            <span class="profile-card-since" hidden></span>
-          </footer>
-        </div>
-      </article>
-    </template>
-
-    <footer data-shared="footer"></footer>
-    <a class="back-to-top" href="#" aria-label="맨 위로 가기" data-i18n-aria="common.backToTop">↑</a>
+  <body>
+    <h1>페이지가 이동했어요.</h1>
+    <p>이동하지 않으면 새 페이지를 열어 주세요.</p>
+    <a href="./profile/">새 페이지로 가기</a>
   </body>
 </html>

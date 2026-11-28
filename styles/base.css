@@ -44,7 +44,10 @@ html[lang="ja"] {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-width: 320px;
+  min-height: 100vh;
   margin: 0;
   background: linear-gradient(90deg,#fdf1f4,#faf2fd,#ebf9fd,#eafdf3,#fdfcea,#fdf2ec);
 }
@@ -91,7 +94,7 @@ button {
 .topbar nav {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
   height: 100%;
 }
 
@@ -173,7 +176,8 @@ body > footer {
   align-items: center;
   justify-content: space-between;
   padding: 24px max(24px, calc((100vw - 1400px) / 2));
-  margin: 0 auto;
+  width: 100%;
+  margin: auto 0 0;
   border-top: 1px solid #dfe1e4;
   background: #fff;
   color: var(--muted);

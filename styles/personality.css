@@ -1,0 +1,92 @@
+.personality-main { max-width: 960px; min-height: 75vh; }
+.personality-panel { min-width: 0; padding: 28px; }
+.personality-main:has(.personality-result-layout) { max-width: 1400px; }
+.personality-result-layout { display: grid; gap: 16px; }
+.personality-title { margin: 0 0 16px; word-break: keep-all; }
+.personality-intro { color: var(--muted); line-height: 1.7; word-break: keep-all; }
+.personality-intro { max-width: 620px; margin: 0 0 28px; }
+.personality-button { min-height: 46px; padding: 12px 20px; border: 1px solid var(--accent); border-radius: 8px; background: var(--accent); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+.personality-button.secondary { border-color: var(--line); background: transparent; color: var(--ink); }
+.personality-button:disabled { opacity: .45; cursor: default; }
+.personality-button:focus-visible, .personality-option:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+.personality-progress { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; font-weight: 600; }
+.personality-progress-bar { height: 6px; margin: 12px 0 32px; overflow: hidden; border-radius: 10px; background: var(--line); }
+.personality-progress-bar span { display: block; height: 100%; background: var(--accent); transition: width .18s ease; }
+.personality-question { margin: 0 0 24px; line-height: 1.5; word-break: keep-all; }
+.personality-options { display: grid; gap: 10px; margin: 0; padding: 0; border: 0; }
+.personality-option { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; line-height: 1.5; }
+.personality-option:has(input:checked) { border-color: var(--accent); background: var(--accent-light); }
+.personality-option input { accent-color: var(--accent); }
+.personality-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.personality-result-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 16px; width: min(100%, 560px); margin: 24px auto 0; }
+.personality-result { position: relative; min-width: 0; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+.personality-result-portrait { position: absolute; inset: 0; overflow: hidden; background: var(--character-color, #eeede8); }
+.personality-portrait { position: absolute; top: -4%; left: 50%; width: 120%; height: 120%; object-fit: cover; object-position: center top; transform: translateX(-50%); }
+.personality-result-info { position: absolute; inset: auto 0 0; padding: 30px 14px 14px; background: linear-gradient(transparent, #10131bdf); color: #fff; }
+.personality-result-caption { margin: 0 0 4px; color: #fff; font-size: 12px; font-weight: 600; }
+.personality-name { margin: 0 0 4px; font-family: var(--display-font); font-size: clamp(16px, 3vw, 24px); overflow-wrap: anywhere; }
+.personality-sub { margin: 0; color: #fff; font-size: 12px; }
+.personality-result-times { color: var(--muted); font-size: 28px; font-weight: 400; }
+.personality-band-result { display: flex; justify-content: space-between; align-items: center; gap: 16px; width: min(100%, 560px); min-height: 92px; margin: 12px auto 0; padding: 16px 20px; border: 2px solid var(--band-color); border-radius: 12px; background: #fff; color: #22231f; }
+.personality-band-result > span { min-width: 0; font-family: var(--display-font); font-size: 16px; font-weight: 700; }
+.personality-band-result-logo { flex: 0 1 24%; min-width: 0; height: 56px; }
+.personality-band-result-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.personality-band-basis { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; word-break: keep-all; }
+.personality-section-title { margin: 32px 0 12px; font-size: 20px;}
+.personality-axes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+.personality-axis { min-width: 0; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.personality-axis:last-child, .personality-axis:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.personality-axis-head, .personality-axis-labels { display: flex; justify-content: space-between; gap: 12px; }
+.personality-axis-head { align-items: center; flex-wrap: wrap; font-weight: 700; }
+.personality-axis-labels { color: var(--muted); font-size: 12px; }
+.personality-axis-labels span { flex: 1; min-width: 0; word-break: keep-all; }
+.personality-axis-labels span:last-child { text-align: right; }
+.personality-axis-description { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; word-break: keep-all; }
+.personality-axis-track { position: relative; height: 7px; margin: 16px 0; border-radius: 5px; background: var(--line); }
+.personality-axis-user { position: absolute; top: 50%; width: 12px; height: 12px; border: 3px solid var(--accent); border-radius: 50%; background: var(--paper); transform: translate(-50%, -50%); }
+.personality-matches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.personality-match { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff;}
+.personality-match img { width: 56px; height: 56px; object-fit: cover; object-position: top; border-radius: 4px; background: var(--character-color, var(--paper)); }
+.personality-match span { display: block; color: var(--muted); font-size: 12px; }
+.personality-share-controls { display: flex; gap: 10px; }
+.personality-share-controls input { flex: 1; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; font-size: 13px; }
+.personality-copy-button { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 6px; padding: 10px 12px; font-size: 13px; white-space: nowrap; }
+.personality-copy-button svg { flex: 0 0 16px; }
+.personality-output .personality-actions { margin-top: 16px; }
+.personality-button.secondary.personality-restart-button { width: 100%; background: var(--paper); font-size: 14px; transition: border-color .18s ease, color .18s ease; }
+.personality-restart-button:hover, .personality-copy-button:hover { border-color: var(--accent); color: var(--accent); }
+.personality-share-note, .personality-share-status { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.personality-share-status:empty { display: none; }
+
+/* 미리보기와 저장 이미지에 공통으로 적용할 고정 크기 레이아웃 */
+.print-poster.personality-print { width: 960px; }
+.personality-print .personality-result-pair { width: 620px; gap: 24px; margin: 32px auto 0; }
+.personality-print .personality-result-times { font-size: 32px; }
+.personality-print .personality-result-info { padding: 30px 14px 14px; }
+.personality-print .personality-name { font-size: 24px; }
+.personality-print .personality-result-caption { font-size: 14px; }
+.personality-print .personality-sub { font-size: 13px; }
+.personality-print .personality-band-result { width: 620px; padding: 16px 20px; }
+.personality-print .personality-band-result > span { font-size: 18px; }
+.personality-print-title-accent { color: var(--accent); }
+.personality-print .print-poster-header h2 span { white-space: pre; }
+.personality-print-heading { margin: 36px 0 8px; font-family: var(--display-font); font-size: 24px; }
+.personality-print-axes .personality-axis-head { font-size: 16px; }
+.personality-print-axes .personality-axis-labels { font-size: 13px; }
+.personality-print-axes .personality-axis-description { font-size: 14px; }
+.personality-print .personality-matches { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.personality-print .personality-match img { flex: 0 0 56px; }
+.personality-print .personality-match div { min-width: 0; overflow-wrap: anywhere; }
+@media (min-width: 1200px) {
+  .personality-result-layout { grid-template-areas: "result picked"; grid-template-columns: minmax(0, 1fr) 400px; align-items: start; }
+  .personality-result-layout > .personality-panel { grid-area: result; }
+}
+@media (max-width: 760px) {
+  .personality-panel { padding: 24px 20px; }
+  .personality-result-pair { gap: 8px; }
+  .personality-result-times { font-size: 22px; }
+  .personality-result-info { padding: 24px 10px 10px; }
+  .personality-sub { font-size: 10px; }
+  .personality-band-result { padding: 12px; }
+  .personality-matches { grid-template-columns: 1fr; }
+}

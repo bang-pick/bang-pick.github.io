@@ -1,6 +1,6 @@
 import { applyLanguage, t } from './language.js?v=20261012-1';
 
-const response = await fetch('./shared-layout.html?v=20261012-1');
+const response = await fetch('./shared-layout.html?v=20261128-1');
 if (!response.ok) throw new Error(t('layout.loadError'));
 
 const shared = new DOMParser().parseFromString(await response.text(), 'text/html');

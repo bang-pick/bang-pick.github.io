@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <base href="../" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f31864" />
+    <meta name="description" content="나와 비슷한 캐릭터와 밴드를 찾아보세요" />
+    <title>성향 테스트 | 방픽!</title>
+    <link rel="stylesheet" href="./styles/base.css?v=20261128-1" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261125-1" />
+    <link rel="stylesheet" href="./styles/personality.css?v=20261128-23" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <script src="./scripts/layout.js?v=20261128-2" type="module"></script>
+    <script src="./scripts/personality.js?v=20261128-56" type="module"></script>
+  </head>
+  <body data-page="personality" id="top">
+    <header class="topbar" data-shared="header"></header>
+    <main class="personality-main">
+      <div id="personality-app" aria-live="polite"></div>
+    </main>
+    <template id="personality-copy">
+      <span data-copy="title">나와 닮은 뱅드림 캐릭터와 밴드는?</span>
+      <span data-copy="intro">질문 30개에 답하고 나와 비슷한 캐릭터와 밴드를 찾아보세요</span>
+      <span data-copy="start">테스트 시작</span>
+      <span data-copy="question">질문</span>
+      <span data-copy="previous">이전</span>
+      <span data-copy="next">다음</span>
+      <span data-copy="result">결과 보기</span>
+      <span data-copy="resultTitle">나와 가까운 캐릭터와 밴드</span>
+      <span data-copy="printTitlePrefix">나와 </span>
+      <span data-copy="printTitleHighlight">가장 가까운</span>
+      <span data-copy="printTitleSuffix"> 캐릭터와 밴드</span>
+      <span data-copy="bandResult">나와 가까운 밴드</span>
+      <span data-copy="similarCharacter">나와 닮은 캐릭터</span>
+      <span data-copy="compatibleCharacter">나와 어울리는 캐릭터</span>
+      <span data-copy="bandBasis">닮은 캐릭터는 성향이 가장 비슷한 캐릭터임. 어울리는 캐릭터는 관계와 역할의 차이 및 다른 성향의 유사성을 고려함. 밴드의 경우 멤버들의 성향 평균과 비교한 결과임.</span>
+      <span data-copy="axes">내 선택의 경향</span>
+      <span data-copy="resultAxis0Title">관계를 이끄는 방식</span>
+      <span data-copy="resultAxis0Positive">먼저 다가가 의견을 냄</span>
+      <span data-copy="resultAxis0Negative">살피며 신중히 다가감</span>
+      <span data-copy="resultAxis1Title">변화를 대하는 방식</span>
+      <span data-copy="resultAxis1Positive">새로운 가능성을 시도함</span>
+      <span data-copy="resultAxis1Negative">익숙한 것부터 준비함</span>
+      <span data-copy="resultAxis2Title">마음을 전하는 방식</span>
+      <span data-copy="resultAxis2Positive">말로 표현</span>
+      <span data-copy="resultAxis2Negative">행동으로 표현</span>
+      <span data-copy="resultAxis3Title">걱정을 다루는 방식</span>
+      <span data-copy="resultAxis3Positive">추스르고 털어놓음</span>
+      <span data-copy="resultAxis3Negative">걱정을 혼자 정리함</span>
+      <span data-copy="similar">다음으로 비슷한 캐릭터</span>
+      <span data-copy="again">다시 하기</span>
+      <span data-copy="neutral">두 방향 사이</span>
+      <span data-copy="shareLabel">결과 링크</span>
+      <span data-copy="copyLink">링크 복사</span>
+      <span data-copy="copied">링크 복사 완료</span>
+      <span data-copy="copyFallback">주소 선택 완료</span>
+      <span data-copy="previewTitle">이미지 미리보기</span>
+      <span data-copy="saveImage">이미지 저장</span>
+      <span data-copy="saveError">이미지를 저장하지 못했어요.</span>
+    </template>
+    <footer data-shared="footer"></footer>
+  </body>
+</html>
