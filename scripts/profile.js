@@ -1,8 +1,8 @@
 import { bands } from './data.js?v=20261012-1';
 import { bandName, characterName, getLanguage, t } from './language.js?v=20261012-1';
-import { savePosterImage, fitPosterPreview } from './poster-export.js?v=20261024-3';
-import { bandById, characterById, characterForm, characterImage, couplingName, bandLogo } from './poster.js?v=20261024-3';
-import { loadSongGroup } from './song-data.js?v=20261012-1';
+import { savePosterImage, fitPosterPreview } from './poster-export.js?v=20261125-4';
+import { bandById, characterById, characterForm, characterImage, couplingName, bandLogo } from './poster.js?v=20261125-1';
+import { loadSongGroup, songDisplayName } from './song-data.js?v=20261125-10';
 import { initProfileEffects } from './profile-effects.js?v=20261024-1';
 
 function profileSinceYear(saved, currentYear) {
@@ -124,7 +124,7 @@ async function renderCard() {
     if (version !== renderVersion) return;
     const song = songs.find(({ key }) => key === songKey);
     if (song) {
-      songName.textContent = getLanguage() === 'ja' ? song.title : song.koTitle || song.title;
+      songName.textContent = songDisplayName(song);
       songName.title = songName.textContent;
     }
   } catch (error) {

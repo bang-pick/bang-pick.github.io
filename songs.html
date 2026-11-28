@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+<<<<<<< HEAD
     <meta http-equiv="refresh" content="0;url=./songs/" />
     <title>페이지가 이동했어요. | 방픽!</title>
     <script>location.replace('./songs/' + location.search + location.hash);</script>
@@ -11,5 +12,105 @@
     <h1>페이지가 이동했어요.</h1>
     <p>이동하지 않으면 새 페이지를 열어 주세요.</p>
     <a href="./songs/">새 페이지로 가기</a>
+=======
+    <meta name="theme-color" content="#f31864" />
+    <meta name="description" content="내 뱅드림 최애곡을 자랑해보세요!" data-i18n-content="meta.songsDescription" />
+    <title data-i18n="meta.songsTitle">최애곡 | 방픽!</title>
+    <link rel="stylesheet" href="./styles/base.css?v=20261125-1" />
+    <link rel="stylesheet" href="./styles/picker.css?v=20261123-1" />
+    <link rel="stylesheet" href="./styles/poster.css?v=20261125-2" />
+    <link rel="stylesheet" href="./styles/songs.css?v=20261125-8" />
+    <link rel="icon" href="./assets/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="최애곡 | 방픽!" />
+    <meta property="og:description" content="내 뱅드림 최애곡을 자랑해보세요!" />
+    <meta property="og:image" content="https://bang-pick.github.io/assets/images/main-2.webp" />
+    <meta property="og:url" content="https://bang-pick.github.io/songs.html" />
+    <meta property="og:site_name" content="방픽!" />
+    <script src="./scripts/layout.js?v=20261012-1" type="module"></script>
+    <script src="./scripts/songs.js?v=20261125-13" type="module"></script>
+  </head>
+  <body data-page="songs">
+    <header class="topbar" data-shared="header"></header>
+    <main>
+      <div class="song-layout">
+        <section class="song-preview picked-section">
+          <div class="section-heading picked-heading">
+            <h2 data-i18n="songs.selectedHeading">내가 고른 곡</h2>
+            <button class="text-button" id="clear-songs" type="button" data-i18n="common.clear">전체 삭제</button>
+          </div>
+          <div class="picked-panel">
+            <div class="poster-preview-wrap">
+              <label class="nickname-field" for="song-nickname">
+                <span data-i18n="common.nickname">내 닉네임</span>
+                <input id="song-nickname" type="text" maxlength="24" placeholder="닉네임 입력" data-i18n-placeholder="common.nicknamePlaceholder" autocomplete="nickname" />
+              </label>
+              <div class="rank-editor" id="song-rank-editor" hidden>
+                <div class="picked-list-heading" data-i18n="pick.rankHeading">순위 조정</div>
+                <div class="rank-editor-list" id="song-rank-list"></div>
+              </div>
+              <div id="poster-preview" aria-label="선택한 최애곡표 미리보기" data-i18n-aria="songs.posterLabel" hidden></div>
+              <div class="poster-empty" id="poster-empty" data-i18n="songs.posterEmpty">곡을 선택하면 최애곡표가 여기에 표시됩니다.</div>
+            </div>
+            <button class="image-button" id="save-songs" type="button" disabled><span data-i18n="common.saveImage">이미지 저장</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="workspace song-picker" id="song-picker">
+          <div class="section-heading">
+            <h2 data-i18n="songs.chooseHeading">최애곡 고르기</h2>
+          </div>
+          <div class="scope-tabs" role="group" aria-label="최애곡표 종류" data-i18n-aria="songs.types">
+            <button class="scope-tab selected" data-scope="all" type="button" aria-pressed="true" data-i18n="songs.bestTab">베스트 9</button>
+            <button class="scope-tab" data-scope="band" type="button" aria-pressed="false" data-i18n="songs.bandTab">밴드별 최애곡</button>
+          </div>
+          <aside class="filters" aria-label="곡 필터" data-i18n-aria="songs.filters">
+            <label class="search-box">
+              <span class="search-symbol" aria-hidden="true"></span>
+              <input id="song-search" type="search" placeholder="곡 제목 또는 밴드 검색" aria-label="곡 제목 또는 밴드 검색" data-i18n-placeholder="songs.searchPlaceholder" data-i18n-aria="songs.searchPlaceholder" autocomplete="off" />
+            </label>
+            <select id="song-band" class="band-select" aria-label="밴드 필터" data-i18n-aria="filter.bandLabel">
+              <option value="all">전체 밴드</option>
+            </select>
+          </aside>
+          <div class="roster">
+            <div class="roster-title">
+              <h3 id="song-roster-title" data-i18n="songs.rosterAll">전체</h3>
+              <span id="song-count" aria-live="polite"></span>
+            </div>
+            <ul id="song-list" class="song-list"></ul>
+            <p id="song-empty" class="song-empty" data-i18n="songs.noResults" hidden>검색 결과가 없습니다.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+    <template id="song-poster-template">
+      <article class="print-poster song-poster">
+        <header class="print-poster-header">
+          <h2><span class="print-poster-owner"></span><span class="print-poster-title"></span><img src="./assets/exclamation.svg" alt="" /></h2>
+        </header>
+        <div class="print-poster-content"></div>
+        <footer class="print-poster-footer">
+          <span>©BanG Dream! Project, Bushiroad All Rights Reserved.</span>
+          <span data-i18n="poster.footer">비공식 팬사이트 방픽!에서 생성되었습니다.</span>
+        </footer>
+      </article>
+    </template>
+    <template id="song-card-template">
+      <article class="print-poster-card song-poster-card">
+        <div class="print-poster-portrait song-poster-cover"></div>
+        <footer class="print-poster-info">
+          <div class="print-poster-band song-poster-band"></div>
+          <span class="print-poster-name song-poster-name"></span>
+          <span class="print-poster-sub song-poster-original"></span>
+          <span class="print-poster-sub song-poster-artist"></span>
+        </footer>
+      </article>
+    </template>
+    <footer data-shared="footer"></footer>
+    <a class="back-to-top" href="#" aria-label="맨 위로 가기" data-i18n-aria="common.backToTop">↑</a>
+>>>>>>> c8fae2281a65fb73962079bab23110a8b892333a
   </body>
 </html>

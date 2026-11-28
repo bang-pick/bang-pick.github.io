@@ -2,67 +2,80 @@
   {
     "title": "迷星叫",
     "band": "MyGO!!!!!",
-    "koTitle": "헤매는 노래 (미성규)"
+    "koTitle": "헤매는 노래 (미성규)",
+    "coverReleaseMbid": "3a02ef14-0bcf-4a56-9556-e3536e13edfa"
   },
   {
     "title": "名無声",
     "band": "MyGO!!!!!",
-    "koTitle": "무명"
+    "koTitle": "무명 (명무성)",
+    "coverReleaseMbid": "3a02ef14-0bcf-4a56-9556-e3536e13edfa"
   },
   {
     "title": "影色舞",
     "band": "MyGO!!!!!",
-    "koTitle": "실루엣 댄스 (영색무)"
+    "koTitle": "실루엣 댄스 (영색무)",
+    "coverReleaseMbid": "7aa87f1a-7792-43ea-8a7f-e0fd0af01894"
   },
   {
     "title": "潜在表明",
     "band": "MyGO!!!!!",
-    "koTitle": "잠재표명"
+    "koTitle": "잠재표명",
+    "coverReleaseMbid": "7aa87f1a-7792-43ea-8a7f-e0fd0af01894"
   },
   {
     "title": "音一会",
     "band": "MyGO!!!!!",
-    "koTitle": "음일회"
+    "koTitle": "음일회",
+    "coverReleaseMbid": "7aa87f1a-7792-43ea-8a7f-e0fd0af01894"
   },
   {
     "title": "無路矢",
     "band": "MyGO!!!!!",
-    "koTitle": "봉화 (무로시)"
+    "koTitle": "봉화 (무로시)",
+    "coverReleaseMbid": "8f34ca2a-8331-4b9b-b01c-61144486cd09"
   },
   {
     "title": "壱雫空",
     "band": "MyGO!!!!!",
-    "koTitle": "한 방울 (일하공)"
+    "koTitle": "한 방울 (일하공)",
+    "coverReleaseMbid": "95c1d4ec-a5c1-4890-a041-a3283c6127a0"
   },
   {
     "title": "栞",
     "band": "MyGO!!!!!",
-    "koTitle": "길잡이 (시오리)"
+    "koTitle": "길잡이 (시오리)",
+    "coverReleaseMbid": "95c1d4ec-a5c1-4890-a041-a3283c6127a0"
   },
   {
     "title": "焚音打",
     "band": "MyGO!!!!!",
-    "koTitle": "불씨 (분음타)"
+    "koTitle": "불씨 (분음타)",
+    "coverReleaseMbid": "95c1d4ec-a5c1-4890-a041-a3283c6127a0"
   },
   {
     "title": "碧天伴走",
     "band": "MyGO!!!!!",
-    "koTitle": "벽천반주"
+    "koTitle": "벽천반주",
+    "coverReleaseMbid": "7bdcf668-3288-4380-ab9a-3dd1cc6f18e3"
   },
   {
     "title": "詩超絆",
     "band": "MyGO!!!!!",
-    "koTitle": "시초반"
+    "koTitle": "시초반",
+    "coverReleaseMbid": "bb5c7a99-e4c6-4066-ae3a-63649ef40431"
   },
   {
     "title": "迷路日々",
     "band": "MyGO!!!!!",
-    "koTitle": "멜로디"
+    "koTitle": "멜로디",
+    "coverReleaseMbid": "32943808-3fe0-466d-a0e4-ef11b925bb2f"
   },
   {
     "title": "歌いましょう鳴らしましょう",
     "band": "MyGO!!!!!",
-    "koTitle": "노래하자 울려 퍼트리자"
+    "koTitle": "노래하자 울려 퍼트리자",
+    "coverReleaseMbid": "c971ba6e-8539-43c8-a05e-2dd1ce0f181e"
   },
   {
     "title": "春日影(MyGO!!!!! ver.)",
@@ -72,116 +85,139 @@
   {
     "title": "処救生",
     "band": "MyGO!!!!!",
-    "koTitle": "호흡"
+    "koTitle": "호흡",
+    "coverReleaseMbid": "209e7779-0650-449c-8134-1a249cb2e8e1"
   },
   {
     "title": "砂寸奏",
     "band": "MyGO!!!!!",
-    "koTitle": "방랑 (사스라이)"
+    "koTitle": "방랑 (사스라이)",
+    "coverReleaseMbid": "209e7779-0650-449c-8134-1a249cb2e8e1"
   },
   {
     "title": "回層浮",
     "band": "MyGO!!!!!",
-    "koTitle": "회상"
+    "koTitle": "회상",
+    "coverReleaseMbid": "209e7779-0650-449c-8134-1a249cb2e8e1"
   },
   {
     "title": "輪符雨",
     "band": "MyGO!!!!!",
-    "koTitle": "리프레인"
+    "koTitle": "리프레인",
+    "coverReleaseMbid": "e250add5-cf34-4013-9546-242eea3a7696"
   },
   {
     "title": "孤壊牢",
     "band": "MyGO!!!!!",
-    "koTitle": "마음 (코코로)"
+    "koTitle": "마음 (코코로)",
+    "coverReleaseMbid": "e250add5-cf34-4013-9546-242eea3a7696"
   },
   {
     "title": "端程山",
     "band": "MyGO!!!!!",
-    "koTitle": "파노라마 (단정산)"
+    "koTitle": "파노라마 (단정산)",
+    "coverReleaseMbid": "e250add5-cf34-4013-9546-242eea3a7696"
   },
   {
     "title": "過惰幻",
     "band": "MyGO!!!!!",
-    "koTitle": "헛꿈 (과타환)"
+    "koTitle": "헛꿈 (과타환)",
+    "coverReleaseMbid": "f7952c0c-da14-4a2b-a86c-123a642ecc31"
   },
   {
     "title": "霧周途",
     "band": "MyGO!!!!!",
-    "koTitle": "미스트 (무주도)"
+    "koTitle": "미스트 (무주도)",
+    "coverReleaseMbid": "f0323754-b30c-4134-b3e5-266a507f5e4d"
   },
   {
     "title": "歩拾道",
     "band": "MyGO!!!!!",
-    "koTitle": "스피드 (보습도)"
+    "koTitle": "스피드 (보습도)",
+    "coverReleaseMbid": "9776f22c-b9fd-4c4f-877d-55a5cd7e1acc"
   },
   {
     "title": "明弦音",
     "band": "MyGO!!!!!",
-    "koTitle": "어게인 (명현음)"
+    "koTitle": "어게인 (명현음)",
+    "coverReleaseMbid": "e5d2d8c5-5633-49e4-b5cb-46ad1897cc5a"
   },
   {
     "title": "夜隠染",
     "band": "MyGO!!!!!",
-    "koTitle": "밤바람 (야은염)"
+    "koTitle": "밤바람 (야은염)",
+    "coverReleaseMbid": "e5d2d8c5-5633-49e4-b5cb-46ad1897cc5a"
   },
   {
     "title": "聿日箋秋",
     "band": "MyGO!!!!!",
-    "koTitle": "일일천추"
+    "koTitle": "일일천추",
+    "coverReleaseMbid": "40823933-081b-4055-9e93-854d921067bc"
   },
   {
     "title": "掌心正銘",
     "band": "MyGO!!!!!",
-    "koTitle": "정진정명"
+    "koTitle": "정진정명",
+    "coverReleaseMbid": "40823933-081b-4055-9e93-854d921067bc"
   },
   {
     "title": "往欄印",
     "band": "MyGO!!!!!",
-    "koTitle": "왕래 (왕란인)"
+    "koTitle": "왕래 (왕란인)",
+    "coverReleaseMbid": "a9ebbebf-d76b-42bb-a7bf-eb5c95c51501"
   },
   {
     "title": "残痕字",
     "band": "MyGO!!!!!",
-    "koTitle": "페이지 (잔흔자)"
+    "koTitle": "페이지 (잔흔자)",
+    "coverReleaseMbid": "a9ebbebf-d76b-42bb-a7bf-eb5c95c51501"
   },
   {
     "title": "静降想",
     "band": "MyGO!!!!!",
-    "koTitle": "사일런트 (정강상)"
+    "koTitle": "사일런트 (정강상)",
+    "coverReleaseMbid": "418e85cf-76bb-46cd-acc5-094449b84a48"
   },
   {
     "title": "エガクミライ",
     "band": "MyGO!!!!!",
-    "koTitle": "그려갈 미래 (에가쿠미라이)"
+    "koTitle": "그려갈 미래 (에가쿠미라이)",
+    "coverReleaseMbid": "418e85cf-76bb-46cd-acc5-094449b84a48"
   },
   {
     "title": "羅永線",
     "band": "MyGO!!!!!",
-    "koTitle": "라인 (라영선)"
+    "koTitle": "라인 (라영선)",
+    "coverReleaseMbid": "5dc34333-0ef1-491f-a861-36306d0a0d82"
   },
   {
     "title": "証命讃歌",
     "band": "MyGO!!!!!",
-    "koTitle": "증명찬가"
+    "koTitle": "증명찬가",
+    "coverReleaseMbid": "caa4c0c4-1d17-4f47-9ae1-4a28d06c2056"
   },
   {
     "title": "素寄曲",
     "band": "MyGO!!!!!",
-    "koTitle": "틈새 (소기곡)"
+    "koTitle": "틈새 (소기곡)",
+    "coverReleaseMbid": "5dc34333-0ef1-491f-a861-36306d0a0d82"
   },
   {
     "title": "騒混出",
     "band": "MyGO!!!!!",
-    "koTitle": "선데이 (소혼출)"
+    "koTitle": "선데이 (소혼출)",
+    "coverReleaseMbid": "5dc34333-0ef1-491f-a861-36306d0a0d82"
   },
   {
     "title": "世点彩",
     "band": "MyGO!!!!!",
-    "koTitle": "세피아 (세점채)"
+    "koTitle": "세피아 (세점채)",
+    "coverReleaseMbid": "56b6a8a2-8c82-4136-905a-5478b9049b3f"
   },
   {
     "title": "迷況指漱",
     "band": "MyGO!!!!!",
-    "koTitle": "명경지수 (미황치수)"
+    "koTitle": "명경지수 (미황치수)",
+    "coverReleaseMbid": "56b6a8a2-8c82-4136-905a-5478b9049b3f"
   }
 ]

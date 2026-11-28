@@ -141,13 +141,6 @@ button {
   outline-offset: 2px;
 }
 
-.soon {
-  padding: 3px 7px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  font-size: 11px;
-}
-
 /* Shared page frame */
 .section-heading h2, .section-title {
   margin: 0;
