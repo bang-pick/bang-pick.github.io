@@ -132,7 +132,6 @@
   transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
 }
 
-<<<<<<< HEAD
 .live-card-art {
   position: absolute;
   right: 5%;
@@ -155,8 +154,6 @@
   body.home-option-live { background: linear-gradient(135deg, #25242c 45%, #492b3b); }
 }
 
-=======
->>>>>>> c8fae2281a65fb73962079bab23110a8b892333a
 .home-option-art {
   position: absolute;
   bottom: 0;

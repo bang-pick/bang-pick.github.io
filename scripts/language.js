@@ -20,11 +20,7 @@ const messages = {
     'notice.label': '공지',
     'birthday.today': '오늘은 {names}의 생일이에요!',
     'birthday.next': '{month}월 {day}일은 {names}의 생일입니다!',
-<<<<<<< HEAD
     'notice.profileUpdate': '26.11.28. 성향 테스트가 추가되었습니다!',
-=======
-    'notice.profileUpdate': '26.11.25. 최애곡표에서 앨범 커버가 지원됩니다!',
->>>>>>> c8fae2281a65fb73962079bab23110a8b892333a
     'filter.allBands': '전체 밴드',
     'filter.others': '그 외',
     'pick.rosterAll': '모든 캐릭터',
@@ -175,11 +171,7 @@ const messages = {
     'home.profileTitle': 'プロフィールカード', 'home.profileDescription': 'バンドリの趣味や好きなものを共有しよう！', 'home.profileAction': 'プロフィールカードを作る',
     'birthday.label': '誕生日', 'notice.label': 'お知らせ',
     'birthday.today': '今日は{names}の誕生日です！', 'birthday.next': '{month}月{day}日は{names}の誕生日です！',
-<<<<<<< HEAD
     'notice.profileUpdate': '26.11.28. キャラクターテストが追加されました！',
-=======
-    'notice.profileUpdate': '26.11.25. 推し曲表でアルバムジャケットが表示できるようになりました！',
->>>>>>> c8fae2281a65fb73962079bab23110a8b892333a
     'pick.selectedHeading': '選んだキャラクター', 'common.clear': 'すべて削除', 'common.nickname': 'ニックネーム',
     'common.nicknamePlaceholder': 'ニックネームを入力', 'pick.couplesHeading': '選んだカップリング', 'pick.rankHeading': '順位を調整',
     'pick.posterLabel': '選んだキャラクター表のプレビュー', 'pick.posterEmpty': 'キャラクターを選ぶと、ここに推しキャラ表が表示されます。',
